@@ -1,0 +1,43 @@
+.contaiter-2 {
+  margin-top: 100px;
+  position: relative;
+  width: 960px;
+  height: 820px;
+  /* border: 1px solid red; */
+}
+
+.contaiter-2 .c2p1 {
+  width: 695px;
+  height: 430px;
+  position: relative;
+  top: 16.6%;
+  left: 0%;
+  z-index: 1;
+
+}
+
+.contaiter-2 .c2p2 {
+  width: 355px;
+  height: 360px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.contaiter-2 .c2p3 {
+  width: 682px;
+  height: 178px;
+  position: relative;
+  top: 13%;
+  left: 29%;
+  z-index: 2;
+}
+.contaiter-2 .c2p4 {
+  width: 518px;
+  height: 413px;
+  background-color: rgba(0, 0, 0, .1);
+  position: absolute;
+  right: 15%;
+  top: 7%;
+}
