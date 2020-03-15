@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+    integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous">
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: 'Lato', sans-serif;
+      text-decoration: none;
+    }
+
+    .main-header1 {
+      width: 100vw;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* background-color: yellow; */
+    }
+
+    .main-header2 {
+      width: 100vw;
+      height: 190px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: rgb(255, 255, 255);
+    }
+
+    .account,
+    .menu,
+    .logo,
+    .list {
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+
+    /* 清單還沒做完 */
+    .menu-selection {
+      display: none;
+    }
+
+    .menu {
+      width: 220px;
+      display: flex;
+      justify-content: start;
+      /* background-color: crimson; */
+    }
+
+    .menu-option a {
+      font-size: 20px;
+      margin: 8px;
+    }
+
+    .logo {
+      height: 30px;
+      width: 200px;
+      /* background-color: crimson; */
+      position: relative;
+    }
+
+    .logo .food {
+      width: 100%;
+      font-size: 25px;
+      position: absolute;
+      bottom: -40px;
+      left: -7px;
+      /* background-color: cyan; */
+    }
+
+    .list-ul {
+      width: 440px;
+      display: flex;
+      justify-content: start;
+      /* background-color: gold; */
+    }
+
+    .list-ul .list-li {
+      position: relative;
+      margin: 8px;
+    }
+
+    .list-li::after {
+      content: '';
+      width: 100%;
+      border-top: 2px solid black;
+      position: absolute;
+      top: 130%;
+      left: 0;
+      opacity: 0;
+      transition: .8s;
+      transform: scale(0);
+    }
+
+    .list-li:hover::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* 超連結 */
+    .header-a {
+      margin: 5px;
+      color: #000;
+    }
+    a:hover {
+      color: yellow
+    }
+
+    /*--------------------------------------------------------------------------------*/
+    .container-1 {
+      display: flex;
+      background-color: turquoise;
+    }
+
+    /*--------------------------------------------------------------------------------*/
+    .container-2 {
+      width: 100vw;
+      display: flex;
+      justify-content: space-around;
+      margin: auto;
+      /* background-color: tomato; */
+    }
+
+    .container-2 .c2-items{
+      margin: auto;
+      border: 1px solid red;
+      position: relative;
+
+    }
+    .container-2 .c2-items img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .container-2 .c2-items .c2-item-a{
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="main-header1">
+    <div class="account">
+      <a class="header-a" href="#" title="Myaccount" style="display: inline-block; margin: 5px;">
+        <i class="fa fa-user"></i>
+        <span>My account</span>
+      </a>
+    </div>
+    <div class="menu">
+      <div class="menu-option">
+        <a class="header-a" href="#"><i class="fa fa-search"></i></a>
+        <a class="header-a" href="#"><i class="fa fa-heart"></i></a>
+        <a class="header-a" href="#"><i class="fa fa-shopping-cart"></i></a>
+      </div>
+      <div class="menu-selection">
+        <ul>
+          <li>EUR</li>
+          <li>USD</li>
+          <li>GBP</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main-header2">
+    <div class="logo">
+      <img src="./fruit-pic/asset 1.webp" alt="Healtly Food" style="max-width: 240px">
+      <a class="header-a food" href="#">HEALTLY FOOD</a>
+    </div>
+    <div class="list">
+      <ul class="list-ul">
+        <li class="list-li"><a class="header-a" href="#">HOME</a></li>
+        <li class="list-li"><a class="header-a" href="#">ABOUTUS</a></li>
+        <li class="list-li"><a class="header-a" href="#">COLLECTIONS</a></li>
+        <li class="list-li"><a class="header-a" href="#">BLOG</a></li>
+        <li class="list-li"><a class="header-a" href="#">SALE</a></li>
+        <li class="list-li"><a class="header-a" href="#">CONTACTUS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-1">
+    <div class="c1-items">
+      <img src="./fruit-pic/asset 15.webp" alt="">
+    </div>
+    <div class="c1-items">
+      <h2>Fresh and Delicious</h2>
+      <h3>ALL YEAR DOUND!</h3>
+      <a href="#" class="c1btn">READ MORE</a>
+    </div>
+  </div>
+  <div class="container-2">
+    <div class="c2-items">
+        <div class="c2-item-pic">
+          <img src="./fruit-pic/asset 50.webp" alt="">
+        </div>
+        <div class="c2-item-a">
+        <a href="#">Fresh Fruits</a>
+      </div>
+    </div>
+    <div class="c2-items">
+      <div class="c2-item-pic">
+        <img src="./fruit-pic/asset 51.webp" alt="">
+      </div>
+      <div class="c2-item-a">
+      <a href="#">Veggies</a>
+    </div>
+  </div>
+    <div class="c2-items">
+        <div class="c2-item-pic">
+          <img src="./fruit-pic/asset 52.webp" alt="">
+        </div>
+        <div class="c2-item-a">
+        <a href="#">Fish</a>
+      </div>
+    </div>
+    <div class="c2-items">
+        <div class="c2-item-pic">
+          <img src="./fruit-pic/asset 53.webp" alt="">
+        </div>
+        <div class="c2-item-a">
+        <a href="#">Nuts&Seeds</a>
+      </div>
+    </div>
+    <div class="c2-items">
+        <div class="c2-item-pic">
+          <img src="./fruit-pic/asset 54.webp" alt="">
+        </div>
+        <div class="c2-item-a">
+        <a href="#">Bread</a>
+      </div>
+    </div>
+    <div class="c2-items">
+        <div class="c2-item-pic">
+          <img src="./fruit-pic/asset 55.webp" alt="">
+        </div>
+        <div class="c2-item-a">
+        <a href="#">Dairy</a>
+      </div>
+    </div>
+  </div>
+  <div class="container-3"></div>
+  <div class="container-4"></div>
+  <div class="container-5"></div>
+  <div class="container-6"></div>
+  <div class="container-7"></div>
+  <div class="container-8"></div>
+  <div class="main-footer1"></div>
+  <div class="main-footer2"></div>
+</body>
+
+</html>
