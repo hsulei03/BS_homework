@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toyota_作業</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: "微軟正黑體";
+    }
+
+    .wrap {
+      width: 960px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* background-color:rosybrown; */
+    }
+
+    .header {
+      width: 100vw;
+      position: sticky;
+      top: 0;
+      background-color: #000;
+      z-index: 5;
+    }
+
+    .header ul {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .header li {
+      margin: 30px;
+      color: white;
+      font-size: 15px;
+      position: relative;
+
+    }
+
+    .header li::after {
+      content: '';
+      width: 160%;
+      height: 30px;
+      border-bottom: 2px solid red;
+      position: absolute;
+      left: -30%;
+      opacity: 0;
+    }
+
+    .header li:hover::after {
+      opacity: 1;
+    }
+
+    .container1 {
+      margin-top: 40px;
+    }
+
+    .container1 h2 {
+      font-size: 40px;
+      text-align: center;
+      position: relative;
+      margin: auto;
+    }
+
+    .container1 h2::after {
+      content: '';
+      width: 35px;
+      border-top: 3px solid #000;
+      position: absolute;
+      top: 120%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+
+    .container2 ul {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .container2 li {
+      display: block;
+      /* background-color: tomato; */
+      height: 25px;
+      width: 180px;
+      font-size: 18px;
+      text-align: center;
+      border: 1px dotted rgba(0, 0, 0, .5);
+      padding-top: 10px;
+      margin: 0 10px;
+      position: relative;
+    }
+
+    .container2 li::after {
+      content: '';
+      width: 100%;
+      border-bottom: 2px solid red;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+    }
+
+    .container2 li:hover {
+      background-color: red;
+      color: white;
+    }
+
+    .container3 {
+      margin-top: 100px;
+      position: relative;
+      width: 960px;
+      height: 820px;
+      /* border: 1px solid red; */
+    }
+
+    .container3 .p1 {
+      width: 695px;
+      height: 430px;
+      position: relative;
+      top: 16.6%;
+      left: 22%;
+      z-index: 1;
+
+    }
+
+    .container3 .p2 {
+      width: 355px;
+      height: 388px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .container3 .p3 {
+      width: 822px;
+      height: 275px;
+      position: relative;
+      top: 13%;
+      left: 5%;
+      z-index: 2;
+    }
+
+    .container3 .p4 {
+      width: 440px;
+      height: 280px;
+      background-color: rgba(0, 0, 0, .1);
+      position: absolute;
+      right: 0;
+      top: 5%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="header">
+      <ul>
+        <li>核心理念</li>
+        <li>五大優勢</li>
+        <li>46 THINGS</li>
+        <li>影片演示</li>
+        <li>搭載車款</li>
+      </ul>
+    </div>
+    <div class="container1">
+      <h2>五大優勢</h2>
+    </div>
+    <div class="container2">
+      <ul>
+        <li>操控樂趣</li>
+        <li>安全守護</li>
+        <li>乘坐舒適</li>
+        <li>以人為本</li>
+        <li>引以為傲</li>
+      </ul>
+    </div>
+    <div class="container3">
+      <div class="c3-pic p1">
+        <img src="https://www.toyota.com.tw/asset/img/tech_tnga/advantage-1-video-button-bg.png?9e068d9b" alt="">
+      </div>
+      <div class="c3-pic p2">
+        <img src="https://www.toyota.com.tw/asset/img/tech_tnga/advantage-1-info.png?0a3640e4" alt="">
+      </div>
+      <div class="c3-pic p3">
+        <img src="https://www.toyota.com.tw/asset/img/tech_tnga/advantage-1-revolution.png?03f7cf26" alt="">
+      </div>
+      <div class="c3-pic p4">
+      </div>
+
+    </div>
+  </div>
+</body>
+</div>
