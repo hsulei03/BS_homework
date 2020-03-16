@@ -1,0 +1,92 @@
+    /*--------------------------------------------------------------------------------*/
+    .container-1 {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      /* background-color: turquoise; */
+    }
+    .container-1 .c1-pic{
+      width: 65%;
+
+    }
+    .container-1 .c1-pic img{
+      width: 100%;
+      height: 100%;
+    }
+    .container-1 .c1-txt{
+      /* display: block; */
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto;
+      padding: 100px;
+      /* background-color: rosybrown; */
+    }
+    .container-1 .c1-txt h2{
+      font-size: 80px;
+      line-height: 100px;
+      font-weight:400;
+      margin-bottom: 20px;      
+    }
+    .container-1 .c1-txt h3{
+      font-size: 55px;
+      line-height: 75px;
+      width: 75%;
+      color:#ffe605;
+    }
+    .container-1 .c1-txt .c1btn{
+    display: inline-block;
+    margin-top: 55px;
+    width: 120px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 38px;
+    border-radius: 5px;
+    background-color: #000;
+    /* border: 1px solid #000; */
+    color: #fff;
+    }
+    .c1-txt .c1btn:hover{
+      background-color: #ffe605;
+      color: #000;
+    }
+    .container-1 .c1-selection ol{
+      margin: auto;
+      display: flex;
+      position: absolute;
+      right: 0;
+      bottom: 40%;
+    }
+    .container-1 .c1-selection li{
+      margin: 20px;
+      font-size: 12px;
+      line-height: 21px;
+      text-align: start;
+      letter-spacing: normal;
+      position: relative;
+    }
+    .c1-selection li::after{
+      content: '';
+      height:  40px;
+      border-left: 1px solid #000;
+      position: absolute;
+      left: 50%;
+      top: 120%;
+      opacity: 0;
+    }
+    .c1-selection li::before{      
+      content: '';
+      height:  40px;
+      border-left: 1px solid #000;
+      position: absolute;
+      left: 50%;
+      bottom: 120%;
+      opacity: 0;
+    }
+    .c1-selection li a:hover{
+      color: #000;
+    }
+    .c1-selection li:hover::after,.c1-selection li:hover::before{
+      opacity: 1;
+    }  

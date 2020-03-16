@@ -1,0 +1,91 @@
+.main-header1 {
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: yellow; */
+}
+
+.main-header2 {
+  width: 100vw;
+  height: 190px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  z-index: 50;
+}
+
+.account,
+.menu,
+.logo,
+.list {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+/* 清單還沒做完 */
+.menu-selection {
+  display: none;
+}
+
+.menu {
+  width: 220px;
+  display: flex;
+  justify-content: start;
+  /* background-color: crimson; */
+}
+
+.menu-option a {
+  font-size: 20px;
+  margin: 8px;
+}
+
+.logo {
+  height: 30px;
+  width: 200px;
+  /* background-color: crimson; */
+  position: relative;
+}
+
+.logo .food {
+  width: 100%;
+  font-size: 25px;
+  position: absolute;
+  bottom: -40px;
+  left: -7px;
+  /* background-color: cyan; */
+}
+
+.list-ul {
+  width: 440px;
+  display: flex;
+  justify-content: start;
+  /* background-color: gold; */
+}
+
+.list-ul .list-li {
+  position: relative;
+  margin: 8px;
+}
+
+.list-li::after {
+  content: '';
+  width: 100%;
+  border-top: 2px solid black;
+  position: absolute;
+  top: 130%;
+  left: 0;
+  opacity: 0;
+  transition: .8s;
+  transform: scale(0);
+}
+
+.list-li:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
