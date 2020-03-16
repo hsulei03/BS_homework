@@ -1,0 +1,36 @@
+.container-2 {
+  width: 100vw;
+  display: flex;
+  margin: 150px 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-2 .c2-items{
+  margin: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.container-2 .c2-items:hover{
+  box-shadow: 4px 4px 12px 4px darkgrey;
+}
+.container-2 .c2-items:hover .c2-item-a a{
+  color: yellow;
+} 
+
+.container-2 .c2-items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container-2 .c2-items .c2-item-a{
+  font-size: 30px;
+  text-align: center;
+  position: absolute;
+  top: 60%;
+}
