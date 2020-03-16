@@ -1,0 +1,46 @@
+.container-5{
+  margin-top: 100px;
+  height: 475px;
+  /* background-color: brown; */
+  display: flex;
+  position: relative;
+}
+.container-5 .c5txt{
+  width: 600px;
+  height: 470px;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow:4px 4px 12px 4px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+.container-5 .c5pic{
+  width: 892px;
+  height: 470px;
+  position: absolute;
+  right: 0;
+  top: 15%;
+}
+.container-5 .c5txt h3,.container-5 .c5txt h4{
+  font-size: 80px;
+}
+.container-5 .c5txt a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 135px;
+  height: 40px;
+  margin:35px 0 0;
+  font-size: 12px;
+  /* padding: 14px; */
+  text-align: center;
+  color: #000;
+  background-color: #ffe605;
+  border-radius: 5px;
+}
+.container-5 .c5txt a:hover{
+  color: #fff;
+  background-color: #000;
+}
