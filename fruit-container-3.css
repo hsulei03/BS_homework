@@ -1,0 +1,64 @@
+.container-3{
+  width: 1200px;
+  margin: 120px 0;
+  display: flex;
+  justify-content: space-between;  
+  /* background-color: aqua;     */
+}
+.container-3 .c3-left-pic{
+  display: flex;
+  position: relative;
+  margin: 0 15px 0 0;
+}
+.container-3 .c3-left-pic .c3-lable h3{
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 20px;
+  color: white;
+}
+.c3link{
+  text-align: start;
+  font-size: 25px;
+  margin-top: 20px;
+  color: white;
+  text-decoration:underline;      
+}
+.c3link:hover{
+  color: black;
+}
+.container-3 .c3-left-pic .c3-lable{
+  height: 60px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  bottom: 15%;
+  left: 5%;
+}
+.container-3 .c3-right-pic{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/****************************************************/
+.container-3 .c3-right-pic .c3-lable-r h3{
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 20px;
+  color: white;
+}
+.c3-r1,.c3-r2{
+position: relative;
+}
+.container-3 .c3-right-pic .c3-lable-r{
+  height: 120px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  bottom: 10%;
+  left: 10%;
+}
+.contaner-3 .c3-left-pic img,.contaner-3 .c3-right-pic img{
+  width: 100%;      
+}
