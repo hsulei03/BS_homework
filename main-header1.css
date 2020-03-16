@@ -89,3 +89,6 @@
   opacity: 1;
   transform: scale(1);
 }
+.list-li a:hover{
+  color: black;
+}
