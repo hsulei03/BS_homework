@@ -1,0 +1,27 @@
+.container-7{
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container-7 .c7title h2{
+  font-size: 24px;
+  padding: 10px 30px;
+
+}
+.container-7 .c7wrap{
+  display: flex;
+  margin: auto;
+  /* background-color: red; */
+}
+.c7wrap .c7items{
+  width: 380px;
+  margin: 10px;
+}
+.c7txt p{
+  font-size: 14px;
+  margin: 10px 0;
+}
+.c7txt a{
+  font-size: 18px;
+}

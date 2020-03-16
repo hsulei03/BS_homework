@@ -1,0 +1,24 @@
+.container-8{
+  margin: 70px 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.c8list li{
+  padding: 9px 0 0 0;
+font-size: 14px;
+}
+.c8list h3{
+margin: 0;
+font-size: 20px;
+font-weight: 500;
+color: #000;
+}
+.c8list h5{
+  font-size: 14px;
+font-weight: 400;
+margin-top: 25px;
+}
+.c8list p{
+  margin: 10px 0 0 0;
+}

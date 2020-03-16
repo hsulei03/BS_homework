@@ -1,0 +1,21 @@
+.main-footer1{
+  margin: 30px 0;
+}
+.footerwrap ul{
+  display: flex;
+  
+}
+.footerwrap li{
+  margin: 15px;
+  margin-left: 0;
+}
+.footerwrap li a{
+  font-size: 60px;
+  color: #000;
+}
+.main-footer2{
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #fff605;
+}
