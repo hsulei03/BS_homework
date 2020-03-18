@@ -1,111 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/44b0cfe14b.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="RWD.css">
   <title>MANUFAX</title>
   <style>
-        * {
+    * {
       margin: 0;
       padding: 0;
       list-style: none;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
     }
-
-    .top-panel {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .top-panel .top-panel-wrap {
-      width: 94.6666666666667%;
-      margin: 10px 2.66666666666667%;
-      line-height: 32px;
-      font-size: 16px;
-      /* padding: 0 10px; */
-      /*這個會讓rwd算錯*/
+    .services h2{
       text-align: center;
+      font-family: "Montserrat", Sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 90px;
+      letter-spacing: 1.8px;
+      margin: 90px;
     }
-
-    .top-panel .top-panel-icons .icons-ul {
+    .services .services-container{
       display: flex;
-      margin: auto;
-      justify-content: center;
     }
 
-    .top-panel .top-panel-icons .icons-ul li {
-      margin: 5px;
-      font-size: 15px;
+    /*************************RWD******************************/
+    @media screen and (max-width:375) {
+      .header-background .header-pic img{
+      height:  81.25%;
     }
-
-    @media screen and (min-width:768px) {
-      .top-panel .top-panel-wrap {
+  }
+    @media screen and (min-width: 768px) {
+      .top-panel .top-panel-txt {
         width: 47.3958333333333%;
         margin: 10px 1.30208333333333%;
       }
+      .top-panel-icons {
+        width: 97.3958333333333%;
+        margin: 10px 2.60416666666667%;
+      }
+      .menu-btn{
+        display: none;
+      }
+      .header-navigation .logo,.header-navigation .search-btn {
+        width: 50%;
+        color: white;
+      }
+      .header-navigation .search-btn{
+        text-align: right;
+      }
+      .header-navigation .navigation-bar{
+        width: 100%;
+        order:1;
+      }
+      .header-navigation .navigation-bar nav{
+        display: block;
+      }
+      .header-navigation .navigation-bar {
+        width: 100%;
+      } 
+      .header-navigation .navigation-bar nav {
+        text-align: center;
+      }
+      .header-navigation .navigation-bar nav a {
+        margin: 15px;
+        font-family: "Montserrat", Sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 27px;
+        color: #fff;
+      }
+      .header-background .header-pic img{  
+      height:  117.1875% 
+      }
     }
-
     @media screen and (min-width:1200px) {
       .top-panel .top-panel-wrap {
         width: 31.6666666666667%;
-        margin: 10px 0.833333333333333%;
+        margin: 10px 0;
       }
-
       .top-panel .top-panel-icons .icons-ul {
         justify-content: flex-end;
       }
+      .header-navigation .logo{
+        width: 26%;
+      }
+      .header-navigation .navigation-bar {
+        width: 64%;
+      } 
+      .header-navigation .search-btn {
+        width: 10%; 
+        text-align: right;
+        order:2
+      }
+      .header-background .title-wrap h2{
+        font-size: 110px;
+        line-height: 146px;
+      }
+      .header-background .title-wrap h3{
+        font-size: 30px;
+        line-height: 50px;
+      } 
+    
     }
-
   </style>
 </head>
+
 <body>
-  <div class="top-panel">
-    <div class="top-panel-wrap">
-      <i class="fas fa-map-marker-alt"></i>
-      <span>Address: 4578 Marmora Road, Glasgow, D04 89GR</span>
+  <header>
+    <div class="top-panel">
+      <div class="top-panel-wrap top-panel-txt">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Address: 4578 Marmora Road, Glasgow, D04 89GR</span>
+      </div>
+      <div class="top-panel-wrap top-panel-txt">
+        <i class="fas fa-phone"></i>
+        <span>Phones: (800) 123-0045; (800) 123-0046</span>
+      </div>
+      <div class="top-panel-wrap top-panel-icons">
+        <ul class="icons-ul">
+          <li class="icons-li">
+            <a class="icnos-a" href="#">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+          <li class="icons-li">
+            <a class="icnos-a" href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li class="icons-li">
+            <a class="icnos-a" href="#">
+              <i class="fab fa-vimeo-v"></i>
+            </a>
+          </li>
+          <li class="icons-li">
+            <a class="icnos-a" href="#">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+          <li class="icons-li">
+            <a class="icnos-a" href="#">
+              <i class="fab fa-pinterest"></i>
+            </a>
+          </li>
+          <li class="icons-li">
+            <a class="icnos-a" href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="top-panel-wrap">
-      <i class="fas fa-phone"></i>
-      <span>Phones: (800) 123-0045; (800) 123-0046</span>
+    <div class="header-background">
+      <div class="header-pic">
+        <img src="MANUFAX-PIC/slide-1.png" alt="MANUFAX">  
+      </div>
+      <div class="header-navigation">
+        <div class="header-wrap logo">
+          <a href="#">
+            <img src="MANUFAX-PIC/logo.png" alt="MANUFAX LOGO">
+          </a>
+        </div>
+        <div class="header-wrap navigation-bar">
+          <input type="checkbox" name="" id="menu-control">
+          <label for="menu-control">
+            <div class="menu-btn">
+              <i class="fas fa-list"></i>
+            </div>
+          </label>
+          <nav>
+            <a href="#" class="nav-option">HOME</a>
+            <a href="#" class="nav-option">ABOUT</a>
+            <a href="#" class="nav-option">SERVICES</a>
+            <a href="#" class="nav-option">PROJECTS</a>
+            <a href="#" class="nav-option">BLOG</a>
+            <a href="#" class="nav-option">CONTACTS</a>
+          </nav>
+        </div>
+        <div class="header-wrap search-btn">
+          <a>
+            <i class="fas fa-search"></i>
+          </a>
+        </div>
+      </div>
+      <div class="title-wrap">
+        <h2>CONSTRUCTION</h2>
+        <h3>See how a 10-stories tower’s being built, in a time-lapse!</h3>
+      <div class="projects-btn">
+        <a href="">See Our Recent Projects</a>
+      </div>
+      </div>
     </div>
-    <div class="top-panel-wrap top-panel-icons">
-      <ul class="icons-ul">
-        <li class="icons-li">
-          <a class="icnos-a" href="#">
-            <i class="fab fa-facebook"></i>
-          </a>
-        </li>
-        <li class="icons-li">
-          <a class="icnos-a" href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        <li class="icons-li">
-          <a class="icnos-a" href="#">
-            <i class="fab fa-vimeo-v"></i>
-          </a>
-        </li>
-        <li class="icons-li">
-          <a class="icnos-a" href="#">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </li>
-        <li class="icons-li">
-          <a class="icnos-a" href="#">
-            <i class="fab fa-pinterest"></i>
-          </a>
-        </li>
-        <li class="icons-li">
-          <a class="icnos-a" href="#">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
-      </ul>
+  </header>
+  <div class="services">
+    <h2>OUR SERVICES</h2>
+    <div class="services-container">
+      <div class="items">
+        <a href="#" class="container-icons">
+          <i class="fas fa-home"></i>
+        </a>
+        <h3>BUILDING INFORMATION MODELING</h3>
+        <p>Oftentimes physical and functional essence of any construction project needs to be represented digitally, in a 3D model format. In...</p>
+      </div>
+      <div class="items">
+        <a href="#" class="container-icons">
+          <i aria-hidden="true" class="fab fa-codepen"></i>
+        </a>
+        <h3>CONSTRUCTION SERVICES</h3>
+        <p>Our customers love the pace/quality tempo that we show during each of the principal construction processes! We're comfortable with any...</p>
+      </div>
+      <div class="items">
+        <a href="#" class="container-icons">
+          <i aria-hidden="true" class="fas fa-th"></i>
+        </a>
+        <h3>PRE-CONSTRUCTION SERVICES</h3>
+        <p>We take our time on initial planning before any construction begins, to balance all the financial and efficiency issues beforehand.This...</p>
+      </div>
+      <div class="items">
+        <a href="#" class="container-icons">
+          <i aria-hidden="true" class="fas fa-edit"></i>
+        </a>
+        <h3>DESIGN-BUILD</h3>
+        <p>If a project is not too complex, we may hire a designer-builder type of contractor, to make the longevity of...</p>
+      </div>
+      <div class="items">
+        <a href="#" class="container-icons">
+          <i aria-hidden="true" class="far fa-building"></i>
+        </a>
+        <h3>CONSTRUCTION MANAGEMENT</h3>
+        <p>Construction project management is essential. We're using the most time and iterations efficient life cycles for that.As you may know,...</p>
+      </div>
+      <div class="items">
+        <a href="#" class="container-icons">
+          <i aria-hidden="true" class="far fa-address-book"></i>
+        </a>
+        <h3>GENERAL CONTRACTING</h3>
+        <p>We have a long list of professional contractors, whom our engineers and architects enjoy to work with on a majority...</p>
+      </div>
     </div>
   </div>
 </body>
+
 </html>

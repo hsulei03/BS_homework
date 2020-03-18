@@ -1,0 +1,150 @@
+.top-panel {
+  width: 100%;
+  margin: 0 30px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #272727;
+}
+.top-panel .top-panel-wrap {
+  width: 94.6666666666667%;
+  margin: 10px 2.66666666666667%;
+  line-height: 32px;
+  font-size: 16px;
+  /* padding: 0 10px; */
+  /*這個會讓rwd算錯*/
+  text-align: center;
+  color: #fff;
+}
+
+.top-panel .top-panel-icons .icons-ul {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.top-panel .top-panel-icons .icons-ul li {
+  margin: 5px;
+  font-size: 15px;
+}
+
+.top-panel .top-panel-txt .fas {
+  color: #2ac5f4;
+}
+
+.icons-li .fab {
+  color: #fff;
+}
+
+.icons-li a:hover .fab {
+  color: #2ac5f4;
+}
+
+
+
+
+    /*---------------------------------------------------------*/
+    .header-background {
+      width: 100%;
+      position: relative;
+      /* border: 5px solid red; */
+    }
+
+    .header-background .header-pic {
+      background-color: #272727;
+    }
+
+    .header-background .header-pic img {
+      width: 100%;
+      height: 880px;
+      object-fit: none;      
+      opacity: .5;
+    }
+
+    /*---------------------------------------------------------*/
+    .header-navigation {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;      
+        position: absolute;
+        top: 3%;
+      }
+      .header-navigation .logo {
+        width: 100%;
+        text-align: center;
+      }
+      .header-navigation .search-btn{
+        padding-right: 3.6231884057971%;
+        text-align: right;
+      }
+      .header-navigation .navigation-bar{
+        padding-left: 3.6231884057971%;
+        text-align: left;
+      }
+
+      .header-navigation .logo img{
+        width: 100%;
+        object-fit: none;
+      }
+
+      .header-navigation .navigation-bar nav{
+        display: none;
+      }
+
+      .header-navigation .navigation-bar,
+      .header-navigation .search-btn
+      {
+        width: 50%;
+        color: white;
+        font-size: 20px;
+        box-sizing: border-box;
+      }
+    .header-navigation .header-wrap a:hover {
+      cursor: pointer;
+      color: #2ac5f4;
+    }
+    input{
+      position: absolute; /*利用定位，脫離畫面*/
+      left: -1000px;
+    }
+    .header-background .title-wrap{
+      padding: 195px 0 0 0;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+    .header-background .title-wrap h2{
+      font-family: "Montserrat", Sans-serif;
+      font-size: 24px;
+      line-height: 72px;
+      font-weight: 700;
+      letter-spacing: 5.6px;
+      color: #fff;
+    }
+    .header-background .title-wrap h3{
+    font-family: "Montserrat", Sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    padding: 0 10.8695652173913%;
+    font-weight: 400;
+      letter-spacing: .2px;
+      color: #fff;
+    }
+    .header-background .title-wrap .projects-btn a{
+    font-family: "Montserrat", Sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: .06px;
+    }
+    .header-background .title-wrap .projects-btn{
+      width: 205px;
+      background-color: #2ac5f4;
+      padding: 22px 38px 22px 39px;
+      border-radius: 3px;;
+      margin: 10% auto 0 auto; 
+    }
