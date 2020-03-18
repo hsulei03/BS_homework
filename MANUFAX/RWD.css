@@ -148,3 +148,112 @@
       border-radius: 3px;;
       margin: 10% auto 0 auto; 
     }
+
+    .services h2{
+      text-align: center;
+      font-family: "Montserrat", Sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 90px;
+      letter-spacing: 1.8px;
+      margin: 90px auto 0;
+      position: relative;
+    }
+    .services h2::before{
+      content: '';
+      width: 100px;
+      border-top: 3px solid #2ac5f4;
+      position: absolute;
+      top :0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .services .services-container{
+      display: flex;
+      flex-wrap: wrap;
+      margin: auto;
+      text-align: center;
+    }
+    .services .services-container .items{
+      width: 100%;
+      margin: 0 0 15px;
+      padding: 15px;
+    }
+
+    .services .services-container .items a{
+      font-size: 45px;
+      color: #2ac5f4;
+    }
+    .services .services-container .items h3,
+    .history .history-txt h3{
+      color: #333333;
+      font-family: "Montserrat", Sans-serif;
+      font-size: 16px;
+      line-height: 22px;
+      padding: 15px 0;
+    }
+    .services .services-container .items p,
+    .history .history-txt p{
+      font-size: 18px;
+      line-height: 22px;
+      color: #888888;
+      font-family: "Lato", Sans-serif;
+    }
+    .history{
+      background-color: #f6f6f7;
+      padding: 75px 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .history .history-txt h2{
+      font-family: "Montserrat", Sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 42px;
+      letter-spacing: 1.8px;
+      margin: 90px auto 0;     
+      position: relative; 
+    }
+    .history .history-txt h2::before{
+      content: '';
+      width: 100px;
+      border-top: 3px solid #2ac5f4;
+      position: absolute;
+      top :-30px;
+      left: 0;
+      margin: auto;
+    }
+
+
+    .history .history-txt a{
+      font-family: "Montserrat", Sans-serif;
+      font-size: 14px;
+      padding: 22px 37px;
+      color: white;
+      background-color:#398ffc;
+    }
+    .history .history-txt a:hover{
+      background-color: #000;
+    }
+    .history .history-txt .history-btn{
+      display: flex;
+      margin: 75px 0;
+    }
+
+    .history-wrap{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 37px 22px;
+    }
+    .history-pic{
+      order: -1;
+    }
+    .history-pic img{
+      width: 100%;
+    }
+
+
