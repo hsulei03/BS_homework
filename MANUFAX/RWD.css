@@ -36,7 +36,8 @@
   color: #fff;
 }
 
-.icons-li a:hover .fab {
+.search-btn a:hover,
+.icons-li a:hover .fab{
   color: #2ac5f4;
 }
 
