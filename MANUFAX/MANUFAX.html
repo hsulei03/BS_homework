@@ -23,7 +23,7 @@
       justify-content: center;
     }
 
-    .animated .animated-items {
+    .animated .items {
       width: 100%;
       height: 358px;
       background-color: slategrey;
@@ -31,32 +31,32 @@
       box-sizing: border-box;
     }
 
-    .animated .animated-items h3 {
+    .animated .items h3 {
       text-align: center;
     }
 
-    .animated .animated-items img {
+    .animated .items img {
       width: 100%;
     }
 
     .news{
       text-align: center;
-      margin: 30px;
+      /* margin: 30px; */
     }
     .news .news-container{
         display: flex;
         flex-wrap: wrap;
         margin: auto;
       }
-      .news-items{
+      .news-container .items{
         width: 100%;
         padding: 0 15px 35px;
       }
 
-      .news-items img{
+      .news-container .items img{
         width: 100%;
       }
-      .news .news-items span{
+      .news .items span{
         color: #888888;
         font-family: "Lato", Sans-serif;
         font-size: 14px;
@@ -84,6 +84,9 @@
       }
       .news .all-btn:hover{
         background-color: black;
+      }
+      footer{
+        background-color: #333333;
       }
 
 
@@ -209,11 +212,11 @@
         order: 1;
       }
 
-      .animated .animated-items {
+      .animated .items {
         width: 25%;
       }
 
-      .news-container .news-items{
+      .news-container .items{
         width:30.8333333333333%;
         padding: 0 15px 35px;
       }
@@ -379,35 +382,35 @@
     </div>
   </div>
   <div class="animated">
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-1.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-2.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-3.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-4.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-5.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-6.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-7.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
-    <div class="animated-items">
+    <div class="items">
       <!-- <img src="MANUFAX-PIC/project-8.jpg" alt=""> -->
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
@@ -415,7 +418,7 @@
   <div class="news">
     <h2>RECENT NEWS</h2>
     <div class="news-container">
-    <div class="news-items">
+    <div class="items">
       <img src="MANUFAX-PIC/blog-26.jpg" alt="recent news">
       <h3>FUTURE PROOFING HOSPITALS</h3>
       <span>Posted by
@@ -425,7 +428,7 @@
       </span>
       <p>By improving the physical layout of hospitals and medical facilities, we can enhance and increase safety mechanisms, improve care, and…</p>
     </div>
-    <div class="news-items">
+    <div class="items">
       <img src="MANUFAX-PIC/blog-27.jpg" alt="recent news">
       <h3>BIKE PARTS WAREHOUSE, DE</h3>
       <span>Posted by
@@ -435,7 +438,7 @@
     </span>
       <p>Delaware proved to be a very friendly place to work at… While invited there for completing a mid-sized warehouse for…</p>
     </div>
-    <div class="news-items">
+    <div class="items">
       <img src="MANUFAX-PIC/blog-28.jpg" alt="recent news">
       <h3>JOY HOTEL & CASINO</h3>
       <span>Posted by
@@ -449,6 +452,29 @@
     <a class="all-btn" href="#">SEE ALL NEWS</a>
   </div>
   <footer>
+    <div class="footer-logo">
+      <img src="MANUFAX-PIC/logo.png" alt="logo">
+      <p>Construction’s core values have been shaped over more than 10 years of delivering the finest construction services to our clients. They stood to the test of time and these principles remain our bedrock lynchpins. We never tried to cut on either quality, the pace of work or any other construction aspect. We stay true to our full promise of efficiency!</p>
+    </div>
+    <div class="footer-info">
+      <h3>NAVIGATION</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </div>
+    <div class="footer-info">
+      <h3>RECENT COMMENTS</h3>
+      <a href="#"></a>
+    </div>
+    <div class="footer-info">
+      <h3>CONTACTS</h3>
+      <address>Address: 4578 Marmora Road, Glasgow, D04 89GR</address>
+    </div>
 
   </footer>
 </body>
