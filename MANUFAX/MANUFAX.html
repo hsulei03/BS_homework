@@ -17,64 +17,107 @@
       font-family: 'Lato', sans-serif;
     }
 
-    .animated{
+    .animated {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      
     }
-    .animated .animated-items{
-      width:100%;
+
+    .animated .animated-items {
+      width: 100%;
       height: 358px;
       background-color: slategrey;
       border: 1px solid red;
       box-sizing: border-box;
     }
-    .animated .animated-items h3{
+
+    .animated .animated-items h3 {
       text-align: center;
     }
-    .animated .animated-items img{
+
+    .animated .animated-items img {
       width: 100%;
     }
 
+    .news .news-container{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+      }
+      .news-items{
+        width: 100%;
+        padding: 0 15px 35px;
+      }
+
+      .news-items img{
+        width: 100%;
+      }
+      .news .news-items span{
+        color: #888888;
+        font-family: "Lato", Sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 34px;
+        text-align: left;
+      }
+      .news-items a{
+        color: #2ac5f4;
+      }
+      .news-items a:hover {
+        color: black;
+      }
+
+
     /*************************RWD******************************/
     @media screen and (max-width:375) {
-      .header-background .header-pic img{
-      height:  81.25%;
+      .header-background .header-pic img {
+        height: 81.25%;
+      }
     }
-  }
+
     @media screen and (min-width: 768px) {
       .top-panel .top-panel-txt {
         width: 47.3958333333333%;
         margin: 10px 1.30208333333333%;
       }
+
       .top-panel-icons {
         width: 97.3958333333333%;
         margin: 10px 2.60416666666667%;
       }
-      .menu-btn{
+
+      .menu-btn {
         display: none;
       }
-      .header-navigation .logo,.header-navigation .search-btn {
+
+      .header-navigation .logo,
+      .header-navigation .search-btn {
         width: 50%;
         color: white;
       }
-      .header-navigation .search-btn{
+
+      .header-navigation .search-btn {
         text-align: right;
       }
-      .header-navigation .navigation-bar{
-        width: 100%;
-        order:1;
-      }
-      .header-navigation .navigation-bar nav{
-        display: block;
-      }
+
       .header-navigation .navigation-bar {
         width: 100%;
-      } 
+        order: 1;
+      }
+
+      .header-navigation .navigation-bar nav {
+        display: block;
+      }
+
+      .header-navigation .navigation-bar {
+        width: 100%;
+      }
+
       .header-navigation .navigation-bar nav {
         text-align: center;
       }
+
       .header-navigation .navigation-bar nav a {
         margin: 15px;
         font-family: "Montserrat", Sans-serif;
@@ -83,63 +126,80 @@
         line-height: 27px;
         color: #fff;
       }
-      .header-background .header-pic img{  
-      height:  117.1875% 
+
+      .header-background .header-pic img {
+        height: 117.1875%
       }
     }
+
     @media screen and (min-width:1200px) {
       .top-panel .top-panel-wrap {
         width: 31.6666666666667%;
         margin: 10px 0;
       }
+
       .top-panel .top-panel-icons .icons-ul {
         justify-content: flex-end;
       }
-      .header-navigation .logo{
+
+      .header-navigation .logo {
         width: 26%;
       }
+
       .header-navigation .navigation-bar {
         width: 64%;
-      } 
-      .header-navigation .search-btn {
-        width: 10%; 
-        text-align: right;
-        order:2
       }
-      .header-background .title-wrap h2{
+
+      .header-navigation .search-btn {
+        width: 10%;
+        text-align: right;
+        order: 2
+      }
+
+      .header-background .title-wrap h2 {
         font-size: 110px;
         line-height: 146px;
       }
-      .header-background .title-wrap h3{
+
+      .header-background .title-wrap h3 {
         font-size: 30px;
         line-height: 50px;
-      } 
-      .services .services-container .items{
+      }
+
+      .services .services-container .items {
         width: 30.8333333333333%;
         text-align: left;
 
       }
-      .services .services-container .items a{
+
+      .services .services-container .items a {
         float: left;
         margin: 15px 15px 30px 15px;
       }
-      .history{
-        padding: 100px 200px;        
-      }
-      .history-wrap{
-      width: 50%;
-      padding: 15px;
-      box-sizing: border-box;
-    }
-      .history-pic{
-      order: 1;
-    }
-    .animated .animated-items{
-      width: 25%;
-    }
 
-    
-    }
+      .history {
+        padding: 100px 200px;
+      }
+
+      .history-wrap {
+        width: 50%;
+        padding: 15px;
+        box-sizing: border-box;
+      }
+
+      .history-pic {
+        order: 1;
+      }
+
+      .animated .animated-items {
+        width: 25%;
+      }
+
+      .news-container .news-items{
+        width:30.8333333333333%;
+        padding: 0 15px 35px;
+      }
+   }
   </style>
 </head>
 
@@ -191,7 +251,7 @@
     </div>
     <div class="header-background">
       <div class="header-pic">
-        <img src="MANUFAX-PIC/slide-1.png" alt="MANUFAX">  
+        <img src="MANUFAX-PIC/slide-1.png" alt="MANUFAX">
       </div>
       <div class="header-navigation">
         <div class="header-wrap logo">
@@ -224,9 +284,9 @@
       <div class="title-wrap">
         <h2>CONSTRUCTION</h2>
         <h3>See how a 10-stories tower’s being built, in a time-lapse!</h3>
-      <div class="projects-btn">
-        <a href="">See Our Recent Projects</a>
-      </div>
+        <div class="projects-btn">
+          <a href="">See Our Recent Projects</a>
+        </div>
       </div>
     </div>
   </header>
@@ -238,54 +298,63 @@
           <i class="fas fa-home"></i>
         </a>
         <h3>BUILDING INFORMATION MODELING</h3>
-        <p>Oftentimes physical and functional essence of any construction project needs to be represented digitally, in a 3D model format. In...</p>
+        <p>Oftentimes physical and functional essence of any construction project needs to be represented digitally, in
+          a 3D model format. In...</p>
       </div>
       <div class="items">
         <a href="#" class="container-icons">
           <i aria-hidden="true" class="fab fa-codepen"></i>
         </a>
         <h3>CONSTRUCTION SERVICES</h3>
-        <p>Our customers love the pace/quality tempo that we show during each of the principal construction processes! We're comfortable with any...</p>
+        <p>Our customers love the pace/quality tempo that we show during each of the principal construction processes!
+          We're comfortable with any...</p>
       </div>
       <div class="items">
         <a href="#" class="container-icons">
           <i aria-hidden="true" class="fas fa-th"></i>
         </a>
         <h3>PRE-CONSTRUCTION SERVICES</h3>
-        <p>We take our time on initial planning before any construction begins, to balance all the financial and efficiency issues beforehand.This...</p>
+        <p>We take our time on initial planning before any construction begins, to balance all the financial and
+          efficiency issues beforehand.This...</p>
       </div>
       <div class="items">
         <a href="#" class="container-icons">
           <i aria-hidden="true" class="fas fa-edit"></i>
         </a>
         <h3>DESIGN-BUILD</h3>
-        <p>If a project is not too complex, we may hire a designer-builder type of contractor, to make the longevity of...</p>
+        <p>If a project is not too complex, we may hire a designer-builder type of contractor, to make the longevity
+          of...</p>
       </div>
       <div class="items">
         <a href="#" class="container-icons">
           <i aria-hidden="true" class="far fa-building"></i>
         </a>
         <h3>CONSTRUCTION MANAGEMENT</h3>
-        <p>Construction project management is essential. We're using the most time and iterations efficient life cycles for that.As you may know,...</p>
+        <p>Construction project management is essential. We're using the most time and iterations efficient life cycles
+          for that.As you may know,...</p>
       </div>
       <div class="items">
         <a href="#" class="container-icons">
           <i aria-hidden="true" class="far fa-address-book"></i>
         </a>
         <h3>GENERAL CONTRACTING</h3>
-        <p>We have a long list of professional contractors, whom our engineers and architects enjoy to work with on a majority...</p>
+        <p>We have a long list of professional contractors, whom our engineers and architects enjoy to work with on a
+          majority...</p>
       </div>
     </div>
   </div>
   <div class="history">
     <div class="history-txt history-wrap">
       <h2>OUR HISTORY</h2>
-      <h3>OUR CONSTRUCTION COMPANY HAS BEEN FOUNDED 10 YEARS AGO, AT THE VERY PEAK OF THE BUILDING FRENZY IN THE US…</h3>
-      <p>Since then we’ve built hundreds of commercial, government and private buildings and facilities. It may not sound like a lot, but if you estimate the manpower, working hours, materials, planning and correlating that were all involved in completing each separate project, then our productivity is immense!</p>
+      <h3>OUR CONSTRUCTION COMPANY HAS BEEN FOUNDED 10 YEARS AGO, AT THE VERY PEAK OF THE BUILDING FRENZY IN THE US…
+      </h3>
+      <p>Since then we’ve built hundreds of commercial, government and private buildings and facilities. It may not
+        sound like a lot, but if you estimate the manpower, working hours, materials, planning and correlating that were
+        all involved in completing each separate project, then our productivity is immense!</p>
       <div class="history-btn">
         <a href="#" class="read-move">READ MOVE</a>
       </div>
-      
+
     </div>
     <div class="history-pic history-wrap">
       <img src="MANUFAX-PIC/index-2.png" alt="MANUFAX">
@@ -325,8 +394,43 @@
       <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
   </div>
+  <div class="news">
+    <h2>RECENT NEWS</h2>
+    <div class="news-container">
+    <div class="news-items">
+      <img src="MANUFAX-PIC/blog-26.jpg" alt="recent news">
+      <h3>FUTURE PROOFING HOSPITALS</h3>
+      <span>Posted by
+      <a href="#">admin
+      <time datetime="2018-12-07T11:51:24+00:00" title="2018-12-07T11:51:24+00:00">December 7, 2018</time>
+      </a>
+      </span>
+      <p>By improving the physical layout of hospitals and medical facilities, we can enhance and increase safety mechanisms, improve care, and…</p>
+    </div>
+    <div class="news-items">
+      <img src="MANUFAX-PIC/blog-27.jpg" alt="recent news">
+      <h3>BIKE PARTS WAREHOUSE, DE</h3>
+      <span>Posted by
+      <a href="#">admin
+      <time datetime="2018-12-07T11:51:24+00:00" title="2018-12-07T11:51:24+00:00">December 7, 2018</time>
+      </a>
+    </span>
+      <p>Delaware proved to be a very friendly place to work at… While invited there for completing a mid-sized warehouse for…</p>
+    </div>
+    <div class="news-items">
+      <img src="MANUFAX-PIC/blog-28.jpg" alt="recent news">
+      <h3>JOY HOTEL & CASINO</h3>
+      <span>Posted by
+      <a href="#">admin
+      <time datetime="2018-12-07T11:51:24+00:00" title="2018-12-07T11:51:24+00:00">December 7, 2018</time>
+      </a>
+    </span>
+      <p>This hotel & casino complex is our most recent completed building… The whole structure that took us 6 months to…</p>
+    </div>
+    </div>
+  </div>
   <footer>
-    
+
   </footer>
 </body>
 
