@@ -1,0 +1,63 @@
+
+    .showcase .items {
+      text-align: center;
+    }
+    .follow-us-background {
+      background-color: #e7f5f7;
+    }
+
+    .google-map-row .embed-responsive {
+      height: 300px;
+      width: 100%;
+    }
+
+    footer {
+      background-color: #181a1f;
+    }
+
+    .banner .banner-txt-h3 h3{
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1rem;
+      letter-spacing: 0.04rem;
+      color: white;
+      margin: 15px 0;
+      text-transform: uppercase;
+      text-align: start;
+    }
+
+    .banner .banner-row{
+      position: relative;
+    }
+    .banner-row .banner-txt-h3{
+      position: absolute;
+      top: 0;
+      left: 4%;
+    }
+    .banner-row .banner-txt-p{
+      position: absolute;
+      bottom: 0;
+      left: 4%;
+    }
+    .banner-row .banner-btn{
+      font-size: 14px;
+      padding: 10px 16px;
+      background-color: #ffffff;
+      color: #181a1f;
+      position: absolute;
+    }
+
+    .browse {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .products-col{
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .block-title{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
