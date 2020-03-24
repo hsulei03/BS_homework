@@ -9,7 +9,10 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+  <link href="https://fonts.googleapis.com/css?family=Lato|Six+Caps|Work+Sans&display=swap" rel="stylesheet">
+  <!-- font-family: 'Six Caps', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  font-family: 'Lato', sans-serif; -->
   <title>美髮小舖，讓你錢不見！</title>
   <style>
     * {
@@ -116,58 +119,50 @@
 
 
     <!--美女主圖-->
-
-  <header class="banner">    
-    <div class="container-fulid">
-      <div class="row banner-row"> 
-          <img src="style_factory/20200320_200320_0026.jpg" alt="" class="d-block w-100">
-        <div class="col-12 banner-txt-h3">
-          <div class="items">
-            <h3>
-              join our <strong>Discount</strong> Club & <strong>save 25%</strong> on everything!
-            </h3>
-          </div>
-        </div>
-        <div class="col-12 banner-txt-p d-none d-md-block">
-          <div class="items">
-            <p>We offer a broad assortment of the best and latest styles from the finest brands. Only at Style Factory, you
-              will find so many exclusive images, videos, customer reviews and expert tips to help you choose the perfect
-              styles and colors.</p> 
-          </div>
-        </div>
-        <div class="join now">
-          <a href="#" class="btn banner-btn">join now</a>
-        </div>
-      </div>
-
+  <header class="banner">
+    <img src="style_factory/20200320_200320_0026.jpg" class="d-block w-100" alt="...">
+<!-- 
+    <div class="banner-txt-h3">
+      <h3>
+        join our <strong>Discount</strong> Club & <strong>save 25%</strong> on everything!
+      </h3>
     </div>
+    <div class="items banner-txt-p d-none d-md-block">
+      <p>We offer a broad assortment of the best and latest styles from the finest brands. Only at Style Factory, you
+        will find so many exclusive images, videos, customer reviews and expert tips to help you choose the perfect
+        styles and colors.</p> 
+    </div>
+    <div class="items banner-btn">
+      <a href="#" class="btn-secondary">JION NOW </a>
+    </div> -->
   </header>
+
   <!--美女主圖-->
 
   <!-- 三欄+長髮女鬼 -->
   <section class="container showcase">
     <div class="row showcase-row justify-content-md-between">
-      <div class="col-12 col-md-3">
-        <div class="items">
+      <div class="col-12 col-md-4 showcase-col">
+        <div class="items showcase-txt">
           <a href="#">
             <h3>new arrivals</h3>
             <p>see our latest must-haves</p>
           </a>
         </div>
       </div>
-      <div class="col-12 col-md-3">
-        <div class="items">
+      <div class="col-12 col-md-4 showcase-col">
+        <div class="items showcase-txt">
           <a href="#">
-            <h3>new arrivals</h3>
-            <p>see our latest must-haves</p>
+            <h3>WE LOVE</h3>
+            <p>check out stylish favorites</p>
           </a>
         </div>
       </div>
-      <div class="col-12 col-md-3">
-        <div class="items">
+      <div class="col-12 col-md-4 showcase-col">
+        <div class="items showcase-txt">
           <a href="#">
-            <h3>new arrivals</h3>
-            <p>see our latest must-haves</p>
+            <h3>free shipping</h3>
+            <p>on all 2016 collection</p>
           </a>
         </div>
       </div>
@@ -179,7 +174,7 @@
         </div>
         <div class="items extensions-txt">
           <h2>Hair</h2>
-          <h3>Extensions</h3>
+          <h3>EXTENSIONS</h3>
           <h4>add length &amp; volume in seconds</h4>
           <a href="#" class="btn">Read More</a>
         </div>
@@ -191,14 +186,13 @@
 
   <!--各種方塊區-->
   <div class="container grid-block">
-
     <!--1 2 4欄方塊區-->
     <section class="row categories-row">
       <div class="col-12 block-title">
         <h2><strong>BROWSE</strong>OUR CATEGORIES</h2>
       </div>
       <div class="col-12 col-md-6 col-lg-3 border browse">
-        <div class="items">
+        <div class="items text-center">
           <a href="">
             <img src="style_factory/20200320_200320_0016.jpg" alt="Men's hair care" class="d-block w-100">
             <h4>MEN'S HAIR CARE</h4>
@@ -207,7 +201,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3 border browse">
-        <div class="items">
+        <div class="items text-center">
           <a href="">
             <img src="style_factory/20200320_200320_0015.jpg" alt="Hair styling" class="d-block w-100">
             <h4>HAIR STYLING</h4>
@@ -216,7 +210,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3 border browse">
-        <div class="items">
+        <div class="items text-center">
           <a href="">
             <img src="style_factory/20200320_200320_0014.jpg" alt="Hair health treatment" class="d-block w-100">
             <h4>HAIR HEALTH TREATMENT</h4>
@@ -225,11 +219,13 @@
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3 border browse">
-        <div class="items">
+        <div class="items text-center flex-column">
           <a href="">
             <img src="style_factory/20200320_200320_0013.jpg" alt="Hair care for kids" class="d-block w-100">
+            <div>
             <h4>HAIR CARE FOR KIDS</h4>
             <p>7 products</p>
+          </div>
           </a>
         </div>
       </div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,iBAAiB,CAAC,gBAAgB,CAAC;IACjC,eAAe,EAAE,MAAM;GACxB",
+    "sources": [
+        "hairstyling.scss"
+    ],
+    "names": [],
+    "file": "hairstyling.css"
+}

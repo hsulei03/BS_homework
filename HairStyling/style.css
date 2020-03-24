@@ -15,40 +15,17 @@
       background-color: #181a1f;
     }
 
-    .banner .banner-txt-h3 h3{
+    /* .banner .banner-txt-h3 h3{
       font-size: 18px;
       font-weight: 300;
       line-height: 1rem;
       letter-spacing: 0.04rem;
-      color: white;
+      color: black;
       margin: 15px 0;
       text-transform: uppercase;
       text-align: start;
-    }
+    } */
 
-    .banner .banner-row{
-      position: relative;
-    }
-    .banner-row .banner-txt-h3{
-      position: absolute;
-      top: 1%;
-      left: 4%;
-    }
-    .banner-row .banner-txt-p{
-      position: absolute;
-      bottom: 0;
-      left: 4%;
-    }
-    .banner-row .banner-btn{
-      font-size: 14px;
-      padding: 10px 16px;
-      background-color: #ffffff;
-      color: #181a1f;
-      position: absolute;
-      bottom: 0;
-
-      margin: auto;
-    }
 
     .browse {
       padding-left: 0;
@@ -63,4 +40,114 @@
       margin-top: 30px;
       margin-bottom: 30px;
       text-align: center;
+      font-family: 'Work Sans', sans-serif;
     }
+    /*-- 三欄+長髮女鬼-- */
+    
+    .showcase .showcase-txt h3{
+      font-family: 'Six Caps', sans-serif;
+      font-size: 60px;
+      letter-spacing: 0.05em;
+      font-weight: normal;
+    }
+    .showcase .showcase-txt p{
+      font-family: 'Work Sans', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #181a1f;
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+      font-weight: 500;
+      color: #333439;
+    }
+    .showcase .items a{
+      display: block;
+      text-decoration: none;
+    }
+    .showcase .items a:hover{
+
+    }
+
+    .showcase .showcase-col{
+      margin: 15px 0;
+      box-sizing: border-box;
+    }
+
+    .showcase-row .showcase-col p{
+      border-bottom: 1px solid darkgrey;
+      margin-bottom: 15px;
+    }
+    .showcase-row .showcase-col:nth-child(1) h3{
+      color: #7dd0dc;
+      border-top: 1px solid #7dd0dc;
+      position: relative;
+    }
+    .showcase-row .showcase-col:nth-child(1) h3::after{
+      content: '';
+      width: 50px;
+      border-top: 4px solid #7dd0dc;
+      position: absolute;
+      left:0;
+      right: 0;
+      margin: auto;
+    }
+    .showcase-row .showcase-col:nth-child(2) h3{
+      color: #d4bcb5;
+      border-top: 1px solid#d4bcb5;
+      position: relative;
+    }
+    .showcase-row .showcase-col:nth-child(2) h3::after{
+      content: '';
+      width: 50px;
+      border-top: 4px solid #d4bcb5;
+      position: absolute;
+      left:0;
+      right: 0;
+      margin: auto;
+    }
+    .showcase-row .showcase-col:nth-child(3) h3{
+      color: #ffa396;
+      border-top: 1px solid #ffa396;
+      position: relative;
+    }
+    .showcase-row .showcase-col:nth-child(3) h3::after{
+      content: '';
+      width: 50px;
+      border-top: 4px solid #ffa396;
+      position: absolute;
+      left:0;
+      right: 0;
+      margin: auto;
+    }
+        /*-- 三欄+長髮女鬼-- */
+
+      /*--各種方塊區--*/
+      .grid-block .browse h4{
+        font-size: 20px;
+        font-family: 'Work Sans', sans-serif;
+        font-weight: bold;
+        color: #181a1f;
+        text-transform: uppercase;
+        letter-spacing: 0.04px;
+        padding: 24px 0 4px;
+        margin: 15px 0;
+      }
+
+
+
+      .grid-block .browse p{
+        display: inline;
+        padding: 7px 19px;
+        background: transparent;
+        border: 1px solid #181a1f;
+        font-size: 15px;
+        color: #181a1f;
+        font-family: 'Lato', sans-serif;
+      }
+
+
+
+
+
+
+    
