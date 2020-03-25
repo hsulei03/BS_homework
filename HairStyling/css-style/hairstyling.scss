@@ -88,59 +88,34 @@
   }
 }
 
-.extensions-warp{
-  .items{
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px solid red;
-    border-bottom: 1px solid darkgray;
-  }
 
-
-  #pic-background{
-    width: 100%;
-    padding-bottom: 40%;
-    background:url(//hsulei.azurewebsites.net/HairStyling/style_factory/20200320_200320_0025.jpg);
-    background-position: center center;
-    background-size:cover;
-    position: relative;
-    background-color: red;
-
-    article.items{
-    height: 100%;
-    text-align: center;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    right: 0;
-    left: 0;
-    margin: auto;
-    }
-  }
-
-}
 
 .showcase{
-  .showcase-txt h3{
+  .showcase-col h3{
     text-align: center;
     font-family: 'Six Caps', sans-serif;
-    font-size: 60px;
+    font-size: 50px;
     letter-spacing: 0.05em;
+    padding-top: 15px;
     font-weight: normal;
   }
-  .showcase-txt p{
+  .showcase-col p{
     text-align: center;
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
     text-transform: uppercase;
     color: #181a1f;
-    margin-top: 4px;
+    margin-top: 15px;
     letter-spacing: 0.02em;
     font-weight: 500;
     color: #333439;
+    border-bottom: 1px solid darkgrey;
   }
-  .showcase-txt a{
+  p::after{
+    content:'>>';
+    margin-left: 7px;
+  }
+  .showcase-col a{
     display: block;
     text-decoration: none;
   }
@@ -149,13 +124,9 @@
 
 .showcase{
   .showcase-row{
+
     .showcase-col{
-      margin: 15px 0;
       box-sizing: border-box;
-    }
-    .showcase-col p{
-      border-bottom: 1px solid darkgrey;
-      margin-bottom: 15px;
     }
     .showcase-col:nth-child(1){
       h3{
@@ -170,6 +141,7 @@
         position: absolute;
         left:0;
         right: 0;
+        top: 0;
         margin: auto;
       }
       
@@ -178,6 +150,7 @@
       h3{
         color:  #d4bcb5;
         border-top: 1px solid #d4bcb5;
+        // margin-top: 15px;
         position: relative;
       }
       h3::after{
@@ -187,6 +160,7 @@
         position: absolute;
         left:0;
         right: 0;
+        top: 0;
         margin: auto;
       }
       
@@ -204,11 +178,111 @@
         position: absolute;
         left:0;
         right: 0;
+        top: 0;
         margin: auto;
       }
       
     }
   }
+}
+
+.extensions-pic{
+  background-image: url('/style_factory/20200320_200320_0025.jpg');
+  background-position: center center;
+  background-size: cover;
+  height: 345px;
+  article{
+    padding: 15px;
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+    h2{
+      font-size: 56px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: white;
+      font-weight: 900;
+    }
+    h3{
+      font-size:22px;
+    }
+  }
+}
+
+.block-title{
+  font-size: 26px;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  white-space: nowrap;
+  h2{
+    margin: 30px 0;
+  }
+}
+
+.categories-row{
+  .text-center{
+    h5{
+      font-size: 20px;
+      font-family: 'Work Sans', sans-serif;
+      color: black;
+      padding-top:24px;
+    }
+    a:hover .card-body{
+      background-color:#feede9;
+      border-top: 1px solid #181a1f;
+      position: relative;
+      .btn{
+        color: white;
+        background-color: #181a1f;
+      }
+    }
+    
+    a:hover .card-body::after{
+      content: '';
+      width: 60px;
+      border-bottom: 2px solid #181a1f;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}
+.products-on-sall-row{
+  .products-col{
+    .items{
+      .products-info{
+        a{
+          text-decoration: none;
+          color: #181a1f;
+        }
+        h4{
+
+          font-size: 26px;
+        }
+        span{
+          font-weight: 500;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+
+
+.google-map-row{
+  .embed-responsive{
+    height: 300px;
+    width: 100%;
+  }
+}
+
+
+.footer-row{
+  background-color: #181a1f;
 }
 
 
@@ -223,7 +297,7 @@
     padding-top:20px ;
     border-top:1px solid white;
     position: relative;
-  }
+    }
   
     h3:after{
     content: '';
@@ -232,8 +306,7 @@
     position: absolute;
     top:  0;
     left:  0;
-  }
-
+    }
   }
 }
 
