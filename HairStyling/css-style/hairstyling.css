@@ -236,17 +236,80 @@
   margin: auto;
 }
 
+.products-featured-row .products-col,
+.products-on-sall-row .products-col {
+  padding-top: 20px;
+  border: 1px solid #181a1f;
+}
+
+.products-featured-row .products-col .items .products-info a,
 .products-on-sall-row .products-col .items .products-info a {
   text-decoration: none;
   color: #181a1f;
 }
 
+.products-featured-row .products-col .items .products-info h4,
 .products-on-sall-row .products-col .items .products-info h4 {
   font-size: 26px;
 }
 
+.products-featured-row .products-col .items .products-info span,
 .products-on-sall-row .products-col .items .products-info span {
   font-weight: 500;
+}
+
+.products-featured-row .products-col .items .products-pic,
+.products-on-sall-row .products-col .items .products-pic {
+  position: relative;
+}
+
+.products-featured-row .products-col .items .products-pic::after,
+.products-on-sall-row .products-col .items .products-pic::after {
+  content: 'NEW';
+  background-color: #ffa396;
+  color: white;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: bolder;
+  position: absolute;
+  top: -10px;
+  left: 0;
+}
+
+.products-featured-row .products-col .items .products-pic::before,
+.products-on-sall-row .products-col .items .products-pic::before {
+  content: '-10%';
+  background-color: #7DD0D7;
+  color: white;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: bolder;
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+
+.blog-row .items span, .blog-row .items p, .blog-row .items h3 {
+  font-family: 'Work Sans', sans-serif;
+  color: #181a1f;
+}
+
+.follow-us-row {
+  background-color: #e7f5f7;
+}
+
+.follow-us-row .text-center {
+  font-size: 30px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.follow-us-row .text-center .nav-link {
+  margin: 1rem;
+  color: #181a1f;
+  border: 2px solid #181a1f;
+  border-radius: 50%;
 }
 
 .google-map-row .embed-responsive {
@@ -256,6 +319,18 @@
 
 .footer-row {
   background-color: #181a1f;
+  color: white;
+}
+
+.footer-row a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-row .footer-list li {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: start;
 }
 
 @media screen and (min-width: 768px) {
