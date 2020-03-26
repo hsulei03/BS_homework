@@ -163,6 +163,9 @@
         top: 0;
         margin: auto;
       }
+      .showcase-col:hover{
+        display: none;
+      }
       
     }
     .showcase-col:nth-child(3){
@@ -187,23 +190,32 @@
 }
 
 .extensions-pic{
-  background-image: url('style_factory/20200320_200320_0025.jpg');
+  background: url('https://hsulei.azurewebsites.net/HairStyling/style_factory/20200320_200320_0025.jpg');
   background-position: center center;
   background-size: cover;
   height: 345px;
+  position: relative;
   article{
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Work Sans', sans-serif;
-    text-align: center;
+    text-transform: uppercase;
     h2{
       font-size: 56px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: white;
       font-weight: 900;
+      margin: 10px 0;
     }
     h3{
-      font-size:22px;
+      font-size:38px;
+      margin: 20px 0;
+    }
+    h4{
+      font-size: 20px;
+      margin: 20px 0;
     }
   }
 }
@@ -261,7 +273,6 @@
           color: #181a1f;
         }
         h4{
-
           font-size: 26px;
         }
         span{
@@ -302,7 +313,6 @@
 
 
 .blog-row{
-
   .items{
     text-align: center;
     line-height: 30px;
@@ -329,13 +339,10 @@
     right: 0;
     margin: auto;
   }
-
-
-
-    .btn:hover{
-      color: white;
-      background-color: #181a1f;
-    }
+  .btn:hover{
+    color: white;
+    background-color: #181a1f;
+  }
 }
 
 
@@ -350,6 +357,10 @@
       color: #181a1f;
       border: 2px solid #181a1f;
       border-radius: 50%;
+    }
+    .nav-link:hover{
+      color:white;
+      background-color: #181a1f;
     }
   }
 }
@@ -402,6 +413,24 @@
     left:  0;
     }
   }
+  .extensions-pic{
+    article{
+      display: block;
+      text-align: start;
+      padding-left: 45%;
+      h2{
+        font-size: 66px;
+      }
+      h3{
+        font-size:56px;
+        margin: 20px 0;
+      }
+      h4{
+        font-size: 20px;
+        margin: 20px 0;
+      }
+    }
+  }
 }
 
 @media screen and (min-width:992px) {
@@ -422,6 +451,25 @@
         top: 0;
         left: 0;
         color: #afafaf;
+      }
+    }
+  }
+  .extensions-pic{
+    article{
+      display: block;
+      text-align: start;
+      padding-left: 55%;
+      h2{
+        font-size: 86px;
+        margin-top: 0;
+      }
+      h3{
+        font-size:66px;
+        margin: -10px 0 10px;
+      }
+      h4{
+        font-size: 24px;
+        margin: 15px 0;
       }
     }
   }
