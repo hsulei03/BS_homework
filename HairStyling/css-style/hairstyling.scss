@@ -301,13 +301,42 @@
 
 
 .blog-row{
+
   .items{
-    span,p,h3{
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+
+    span,p,h3,a{
+      line-height: 30px;
       font-family: 'Work Sans', sans-serif;
-      color: #181a1f;
+      color: #181a1f;      
+    }
+
+    .btn{
+      border: 2px solid #181a1f;
+      border-radius: 0;
     }
   }
+  .items::after{
+    content: '';
+    width: 50px;
+    border: 2px solid #181a1f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+
+
+    .btn:hover{
+      color: white;
+      background-color: #181a1f;
+    }
 }
+
 
 
 .follow-us-row{
@@ -316,7 +345,7 @@
     font-size: 30px;
     font-family: 'Work Sans', sans-serif;
     .nav-link{
-      margin: 1rem;
+      margin: .5rem;
       color: #181a1f;
       border: 2px solid #181a1f;
       border-radius: 50%;
