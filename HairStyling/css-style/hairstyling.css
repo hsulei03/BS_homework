@@ -257,10 +257,17 @@
   margin: auto;
 }
 
+.products-featured-row,
+.products-on-sall-row {
+  padding: 0;
+}
+
 .products-featured-row .products-col,
 .products-on-sall-row .products-col {
   padding-top: 20px;
   border: 1px solid #181a1f;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .products-featured-row .products-col .items .products-info a,

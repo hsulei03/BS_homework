@@ -263,9 +263,11 @@
 
 .products-featured-row,
 .products-on-sall-row{
+  padding: 0;
   .products-col{
     padding-top: 20px;
     border: 1px solid #181a1f;
+    box-sizing: border-box;
     .items{
       .products-info{
         a{
