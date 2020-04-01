@@ -58,18 +58,23 @@
 
 
   <script>
+    var answer = document.getElementById('answer');
+
     var txt = document.getElementById('txt-box');
     var btns = document.querySelectorAll('div .bg-primary');
 
-
+    
     //產生亂數
     var randomNumber = document.getElementById('random');
     randomNumber.addEventListener('click', getNumber)
 
+    
     function getNumber() {
       randomNumber = Math.floor((Math.random() * 100)+1);
       answer.innerHTML = '0~100';
       txt.value='';
+      mintmp = 0;
+      maxtmp = 100;
     }
 
     //把所有btn加入事件，對每一個按鈕監聽事件'click'，當click時，跑function
@@ -92,13 +97,12 @@
     }
 
     var confirm = document.getElementById('confirm');
-    var answer = document.getElementById('answer')
     var mintmp = 0;
     var maxtmp = 100;
     confirm.onclick = function(){
-
       if(txt.value >= maxtmp || txt.value <= mintmp){
         alert('你來亂的嗎？')
+        answer.innerHTML = mintmp + '~' + maxtmp;
         txt.value ='';
       }
       else if (txt.value > randomNumber && txt.value < maxtmp ){
@@ -115,7 +119,7 @@
         alert('答對了，答案是：' + randomNumber)
       }
     }
-
+    window.onload=getNumber();
 
   </script>
 
