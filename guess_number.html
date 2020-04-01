@@ -67,8 +67,9 @@
     randomNumber.addEventListener('click', getNumber)
 
     function getNumber() {
-      randomNumber = Math.floor(Math.random() * 100);
+      randomNumber = Math.floor((Math.random() * 100)+1);
       answer.innerHTML = '0~100';
+      txt.value='';
     }
 
     //把所有btn加入事件，對每一個按鈕監聽事件'click'，當click時，跑function
@@ -96,7 +97,7 @@
     var maxtmp = 100;
     confirm.onclick = function(){
 
-      if(txt.value > maxtmp){
+      if(txt.value >= maxtmp || txt.value <= mintmp){
         alert('你來亂的嗎？')
         txt.value ='';
       }
