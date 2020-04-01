@@ -73,10 +73,9 @@
 
     
     //產生亂數
-    var randomNumber = document.getElementById('random');
-    randomNumber.addEventListener('click', getNumber)
-
-    
+    var randomNumber;
+    var createNum = document.getElementById('random');
+    createNum.addEventListener('click', getNumber)
     function getNumber() {
       randomNumber = Math.floor((Math.random() * 100)+1);
       answer.innerHTML = '0~100';
@@ -108,17 +107,18 @@
     var mintmp = 0;
     var maxtmp = 100;
     confirm.onclick = function(){
-      if(txt.value >= maxtmp || txt.value <= mintmp){
+      let inputNumber = Number(txt.value);
+      if(inputNumber >= maxtmp || inputNumber <= mintmp){
         alert('你來亂的嗎？')
         answer.innerHTML = mintmp + '~' + maxtmp;
         txt.value ='';
       }
-      else if (txt.value > randomNumber && txt.value < maxtmp ){
+      else if (inputNumber > randomNumber && inputNumber < maxtmp ){
         maxtmp = txt.value;
         answer.innerHTML = mintmp + '~' + maxtmp;
         txt.value ='';
       }
-      else if (txt.value < randomNumber && txt.value > mintmp){
+      else if (inputNumber < randomNumber && inputNumber > mintmp){
         mintmp = txt.value;
         answer.innerHTML = mintmp + '~' + maxtmp;
         txt.value='';
