@@ -12,8 +12,16 @@
 
   <title>終極密碼</title>
   <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
     div .bg-primary {
       color: white;
+    }
+    #answer{
+      font-size: 80px;
     }
   </style>
 </head>
@@ -27,7 +35,7 @@
           <label for="" class="my-5" id="answer">0~100</label>
         </div>
         <div>
-          <button class="my-2" id="random">產生數字</button>
+          <button class="my-2 bg-warning border-dark" id="random">產生新數字</button>
         </div>
         <div>
           <input type="text" class="my-1" id="txt-box">
