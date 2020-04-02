@@ -149,8 +149,21 @@
     }
 
     function Get_A_B() {
-      if (userGuess.value == '') return;
+      console.log(Number(userGuess.value));
+      if (userGuess.value == '' ||isNaN(Number(userGuess.value)) == true) return;
       let guessArray = Array.from(userGuess.value);
+
+      let distinct = (value,index,self) =>{
+        return self.indexOf(value) === index;
+      }
+
+      let distinctNum =  guessArray.filter(distinct);
+      if(distinctNum.length<4){
+        msg.innerText = '數字不能重覆啦！豬哦！'
+        $('#show').modal('show')
+        return;
+      }
+      
       let intersect = GetIntersect(answer, guessArray);
       let _A = 0,
         _B = 0;
