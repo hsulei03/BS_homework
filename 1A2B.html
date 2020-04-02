@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>1A2B猜數字</title>
+  <style>
+    .col-md-6 > *{
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="btn-group btn-group d-flex justify-content-center">
+          <button id="start" type="button" class="btn btn-primary border mx-auto">開始</button>
+          <button id="restart" type="button" class="btn btn-primary border mx-auto" disabled>放棄重來</button>
+          <button id="cheat" type="button" class="btn btn-primary border mx-auto" disabled>看答案</button>
+        </div>
+        <div class="input-group border border-dark">
+          <span class="input-group-addon form-text" id="sizing-addon1">猜答案：</span>
+          <input id="userGuess" type="text" name="" class="form-control border-0" required="required" maxlength="4" placeholder="請輸入四個不相同的數字" readonly>
+          <span class="input-group-btn">
+            <a id="guess" type="button" class="btn btn-default bg-warning rounded-0">猜!</a>
+          </span>
+        </div>
+        <ul id="guessResults" class="list-group border text-center border-dark">
+          <!-- <li class="list-group-item">
+            <span class="badge badge-danger">1A0B</span>
+            1234
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- alert box  -->
+  <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">神仙顯靈跟你說答案</h5>
+        </div>
+        <div class="modal-body">
+          <p id="showMsg"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    //全域DOM變數宣告：
+    var start = document.getElementById('start'); // 開始
+    var msg = document.getElementById('showMsg'); // 
+    var cheat = document.getElementById('cheat'); // 看答案
+    var restart = document.getElementById('restart'); //放棄重來
+    var ul = document.getElementById('guessResults');
+    var guess = document.getElementById('guess'); // 猜
+    var userGuess = document.getElementById('userGuess'); //使用者輸入
+
+    //全域變數宣告
+    var answer = [];
+
+    //物件監聽式：
+    start.addEventListener('click', CreateNumArry);
+    guess.addEventListener('click', Get_A_B);
+
+    //看答案
+    cheat.onclick = function () {
+      let answerJoin = answer.join('');
+      if (answerJoin == '') return;
+      msg.innerText = answerJoin;
+      $('#show').modal('show')
+    }
+
+    //放棄重來
+    restart.onclick = function () {
+      ul.innerHTML = '';
+      userGuess.value ='';
+      msg.innerText = "豬一樣的大腦，只想著放棄！";
+      $('#show').modal('show')
+      CreateNumArry();
+    }
+
+    //方法區：
+    function CreateNumArry() {
+      answer=[];
+      while (answer.length < 4) {
+        let NumArray = Math.floor(Math.random() * 10);
+        if (!answer.includes(NumArray.toString())) {
+          answer.push(NumArray.toString());
+          restart.removeAttribute('disabled');
+          cheat.removeAttribute('disabled');
+          start.setAttribute('disabled',true); //完整的寫法
+          userGuess.removeAttribute('readonly');
+        }
+      }
+    }
+    //交集
+    function GetIntersect(array1, array2) {
+      let result = array1.filter((item) => {
+        return array2.indexOf(item) > -1
+      })
+      return result;
+    }
+
+    function AddLi(group) {
+      let li = document.createElement('li');
+      li.classList.add('list-group-item');
+
+      let spanAns = document.createElement('span');
+      let spanInput =document.createElement('span');
+
+      spanAns.innerText = `${group.A}A${group.B}B`;
+      spanInput.innerText = group.GuessNow;
+      spanAns.classList.add('badge');
+      spanInput.classList.add('mx-2');
+      if( group.A == 4) {
+        spanAns.classList.add('badge-success');
+      }
+      else{
+        spanAns.classList.add('badge-danger');
+      }
+
+      li.appendChild(spanAns);
+      li.appendChild(spanInput);
+      ul.appendChild(li);
+    }
+
+    function check(group) {
+      if (group.A == 4) {
+        msg.innerText = '恭喜你，答對了哦！'
+        $('#show').modal('show')
+      }
+    }
+
+    function Get_A_B() {
+      if (userGuess.value == '') return;
+      let guessArray = Array.from(userGuess.value);
+      let intersect = GetIntersect(answer, guessArray);
+      let _A = 0,
+        _B = 0;
+      // console.log(intersect);
+      intersect.forEach((element) => {
+        if (answer.indexOf(element) == guessArray.indexOf(element)) {
+          _A++;
+        }
+      });
+      _B = intersect.length - _A;
+      let ansGroup = {
+        A: _A,
+        B: _B,
+        GuessNow: guessArray.join('')
+      };
+      AddLi(ansGroup);
+      userGuess.value = '';
+      check(ansGroup);
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+
+
+
+
+</body>
+
+</html>
