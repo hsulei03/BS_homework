@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/44b0cfe14b.js" crossorigin="anonymous"></script>
-  
+
   <title>Apple</title>
   <style>
     * {
@@ -17,16 +17,17 @@
       padding: 0;
       list-style: none;
     }
-    .home-btn a{
+
+    .home-btn a {
       position: fixed;
-      right:3%;
-      top:90%;
+      right: 3%;
+      top: 90%;
       font-size: 40px;
       text-decoration: none;
       color: rgba(0, 0, 0, .2);
       z-index: 9;
     }
-    
+
 
     .title {
       width: 100%;
@@ -39,7 +40,7 @@
       width: 48%;
       margin: 1% 1%;
       border: 1px solid rgba(0, 0, 0, .3);
-      box-sizing: border-box;
+      /* box-sizing: border-box; */
     }
 
     .btn-capacity .btn {
@@ -64,27 +65,40 @@
       margin: auto;
     }
 
-    .btn-color .btn:nth-child(1)::after {
+    .btn-color .btn-iPhone:nth-child(1)::after {
       background-color: white;
     }
 
-    .btn-color .btn:nth-child(2)::after {
+    .btn-color .btn-iPad:nth-child(1)::after {
+      background-color: #9f9fa3;
+    }
+
+
+    .btn-color .btn-iPhone:nth-child(2)::after {
       background-color: black;
     }
 
-    .btn-color .btn:nth-child(3)::after {
-      background-color: rgba(38, 218, 149, 0.897);
+    .btn-color .btn-iPad:nth-child(2)::after {
+      background-color: #f3f4f7
     }
 
-    .btn-color .btn:nth-child(4)::after {
+    .btn-color .btn-iPhone:nth-child(3)::after {
+      background-color: #4ec7c4
+    }
+
+    .btn-color .btn-iPad:nth-child(3)::after {
+      background-color: #f7c8c9
+    }
+
+    .btn-color .btn-iPhone:nth-child(4)::after {
       background-color: yellow;
     }
 
-    .btn-color .btn:nth-child(5)::after {
+    .btn-color .btn-iPhone:nth-child(5)::after {
       background-color: plum;
     }
 
-    .btn-color .btn:nth-child(6)::after {
+    .btn-color .btn-iPhone:nth-child(6)::after {
       background-color: red;
     }
   </style>
@@ -94,26 +108,48 @@
 
   <div class="container">
     <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"><i class="fa fa-apple" aria-hidden="true"></i></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">iPhone 11</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="ipad">iPad</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mac</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="row">
       <div class="col-12 col-md-6 pic">
-        <div class="pic-iphone">
-          <img src="./Apple_iPhone11/iphone11-black-select-2019.png" alt="" class="w-100 d-block">
+        <div class="pic-appleProducts">
+          <img src="./apple-pic/iphone11-green-select-2019.png" alt="" class="w-100 d-block">
         </div>
       </div>
       <div class="col-12 col-md-6 d-flex flex-column justify-content-around" id="btn-group">
-        <div class="btn-color h-100 d-flex flex-wrap justify-content-center">
+        <div class="btn-color h-100 d-flex flex-column">
           <div class="title">
             <h2 class="">Choose your finish.</h2>
           </div>
           <div class="group d-flex flex-wrap">
-            <button class="btn">White</button>
-            <button class="btn">Black</button>
-            <button class="btn">Green</button>
-            <button class="btn">Yellow</button>
-            <button class="btn">Purple</button>
-            <button class="btn">Red</button>
+            <button class="btn btn-iPhone">White</button>
+            <button class="btn btn-iPhone">Black</button>
+            <button class="btn btn-iPhone">Green</button>
+            <button class="btn btn-iPhone">Yellow</button>
+            <button class="btn btn-iPhone">Purple</button>
+            <button class="btn btn-iPhone">Red</button>
           </div>
         </div>
-        <div class="btn-capacity h-100  d-flex flex-wrap justify-content-center">
+        <div class="btn-capacity h-100  d-flex flex-column">
           <div class="title">
             <h2>Choose your capacity.</h2>
           </div>
@@ -127,8 +163,10 @@
     </div>
     <div class="row">
       <div class="col-12 info text-right pr-5">
-        <h2 id="price">$ 25600</h2>
-        <a href="" class="btn border bg-primary" desabled>Add to cart</a>
+        <h2 id="price">$ 0</h2>
+        <a href="" class="btn border bg-primary" desabled>
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          Add to cart</a>
       </div>
     </div>
   </div>
@@ -143,14 +181,13 @@
         iPhone11: {
           Colors:
             [
-              { color: "White", url: './Apple_iPhone11/iphone11-white-select-2019.png' },
-              { color: "Black", url: './Apple_iPhone11/iphone11-black-select-2019.png' },
-              { color: "Green", url: './Apple_iPhone11/iphone11-green-select-2019.png' },
-              { color: "Yellow", url: './Apple_iPhone11/iphone11-yellow-select-2019.png' },
-              { color: "Purple", url: './Apple_iPhone11/iphone11-purple-select-2019.png' },
-              { color: "Red", url: './Apple_iPhone11/iphone11-red-select-2019.png' }
-            ]
-          ,
+              { color: "White", url: './apple-pic/iphone11-white-select-2019.png' },
+              { color: "Black", url: './apple-pic/iphone11-black-select-2019.png' },
+              { color: "Green", url: './apple-pic/iphone11-green-select-2019.png' },
+              { color: "Yellow", url: './apple-pic/iphone11-yellow-select-2019.png' },
+              { color: "Purple", url: './apple-pic/iphone11-purple-select-2019.png' },
+              { color: "Red", url: './apple-pic/iphone11-red-select-2019.png' },
+            ],
           Capacity:
             [
               { memory: "64GB", price: 24900 },
@@ -158,34 +195,52 @@
               { memory: "256GB", price: 30400 },
             ]
         },
-        iPad: {},
+        iPad: {
+          Colors:
+            [
+              { color: "SpaceGray", url: './apple-pic/ipad-wifi-select-space-201909_GEO_TW.png' },
+              { color: "Silver", url: './apple-pic/ipad-wifi-select-silver-201909_GEO_TW.png' },
+              { color: "Gold", url: './apple-pic/ipad-wifi-select-gold-201909_GEO_TW.png' }
+            ],
+          Capacity:
+            [
+              { memory: "32GB", price: 10900 },
+              { memory: "128GB", price: 13900 },
+            ]
+        },
         Mac: {},
       }
     };
     //宣告
     var btnColor = document.querySelectorAll('.btn-color .btn');
     var btnCapacity = document.querySelectorAll('.btn-capacity .btn');
+    var btnGruopColor = document.querySelectorAll('.btn-color .group')[0];
+    var btnGruopCapacity = document.querySelectorAll('.btn-capacity .group')[0];
 
+    var iPad = document.getElementById('ipad');
+    iPad.addEventListener('click', GetiPadInfo);
 
     btnColor.forEach((item) => {
-      item.addEventListener('click', ChangeColor);
+      item.addEventListener('click', ChangeColor_iPhone);
     });
 
     btnCapacity.forEach((item) => {
-      item.addEventListener('click', ChangeCapacity);
+      item.addEventListener('click', ChangeCapacity_iPhone);
     });
 
-    function ChangeColor() {
-      let img = document.querySelector('.pic-iphone img');
-      img.setAttribute('src', GetColorURL(this.innerHTML));
+    // --------------iphone---------------------------------------------------------
+    function ChangeColor_iPhone() {
+      let img = document.querySelector('.pic-appleProducts img');
+      img.setAttribute('src', Get_iPhoneColorURL(this.innerHTML));
     }
 
-    function ChangeCapacity() {
+    function ChangeCapacity_iPhone() {
       let price = document.querySelector('.info h2');
-      price.innerText = `$ ${GetPrice(this.innerHTML)}`;
+      price.innerText = `$ ${Get_iPhonePrice(this.innerHTML)}`;
     }
 
-    function GetPrice(key) {
+
+    function Get_iPhonePrice(key) {
       let result;
       AppleProducts.ProductsName.iPhone11.Capacity.forEach((item) => {
         if (item.memory == key) result = item.price;
@@ -193,15 +248,102 @@
       return result;
     }
 
-    function GetColorURL(key) {
+    function Get_iPhoneColorURL(key) {
       let result;
       AppleProducts.ProductsName.iPhone11.Colors.forEach((item) => {
         if (item.color == key) result = item.url;
       });
       return result;
     }
+    // --------------iphone---------------------------------------------------------
 
+
+    // --------------ipad---------------------------------------------------------
+    function ChangeColor_iPad() {
+      let img = document.querySelector('.pic-appleProducts img');
+      img.setAttribute('src', Get_iPadColorURL(this.innerHTML));
+    }
+
+    function ChangeCapacity_iPad() {
+      let price = document.querySelector('.info h2');
+      price.innerText = `$ ${Get_iPadPrice(this.innerHTML)}`;
+    }
+
+    function Get_iPadPrice(key) {
+      let result;
+      AppleProducts.ProductsName.iPad.Capacity.forEach((item) => {
+        if (item.memory == key) result = item.price;
+      });
+      return result;
+    }
+
+    function Get_iPadColorURL(key) {
+      let result;
+      AppleProducts.ProductsName.iPad.Colors.forEach((item) => {
+        if (item.color == key) result = item.url;
+      });
+      return result;
+    }
+    // --------------ipad---------------------------------------------------------
+
+
+    function GetiPadInfo() {
+      let iPadimg = document.querySelector('.pic-appleProducts img');
+      let SpaceGray = document.createElement('button');
+      let Silver = document.createElement('button');
+      let Gold = document.createElement('button');
+      let GB32 = document.createElement('button');
+      let GB128 = document.createElement('button');
+      btnGruopColor.innerHTML = '';
+      btnGruopCapacity.innerHTML = '';
+      btnGruopColor.classList.add('iPad');
+
+      iPadimg.setAttribute('src', "./apple-pic/ipad-wifi-select-gold-201909_GEO_TW.png");
+      SpaceGray.classList.add('btn');
+      SpaceGray.classList.add('btn-iPad');
+      SpaceGray.innerText = 'SpaceGray';
+
+      Silver.classList.add('btn');
+      Silver.classList.add('btn-iPad');
+      Silver.innerText = 'Silver';
+
+      Gold.classList.add('btn');
+      Gold.classList.add('btn-iPad');
+      Gold.innerText = 'Gold';
+
+      GB32.classList.add('btn');
+      GB32.classList.add('btn-iPad');
+      GB32.innerText = '32GB';
+
+      GB128.classList.add('btn');
+      GB128.classList.add('btn-iPad');
+      GB128.innerText = '128GB';
+
+      btnGruopColor.appendChild(SpaceGray);
+      btnGruopColor.appendChild(Silver);
+      btnGruopColor.appendChild(Gold);
+
+      btnGruopCapacity.appendChild(GB32);
+      btnGruopCapacity.appendChild(GB128);
+      For_iPad();
+    }
+
+    function For_iPad() {
+      var btnColoriPad = document.querySelectorAll('.btn-color .btn-iPad');
+      btnCapacity = document.querySelectorAll('.btn-capacity .btn-iPad');
+      btnGruopColor = document.querySelectorAll('.btn-color .group')[0];
+      btnGruopCapacity = document.querySelectorAll('.btn-capacity .group')[0];
+
+      btnColoriPad.forEach((item) => {
+        item.addEventListener('click', ChangeColor_iPad);
+      });
+
+      btnCapacity.forEach((item) => {
+        item.addEventListener('click', ChangeCapacity_iPad);
+      });
+    }
   </script>
+
 
 
 
