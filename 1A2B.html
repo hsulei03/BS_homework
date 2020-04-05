@@ -173,10 +173,9 @@
       let distinct = (value, index, self) => {
         return self.indexOf(value) === index;
       }
-
       let distinctNum = guessArray.filter(distinct);
       if (distinctNum.length < 4) {
-        msg.innerText = '數字不能重覆啦！豬哦！'
+        msg.innerText = '數字不能重覆或小於4個啦！豬哦！'
         $('#show').modal('show')
         return;
       }
