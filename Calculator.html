@@ -21,10 +21,11 @@
 </head>
 
 <body>
-
+  
   <div class="container my-5">
     <div class="row">
       <div class="calculator col-12">
+        <div class="title"><h3>暫時沒有括號功能，浮點數運算還是怪怪的</h3></div>
         <div class="output d-flex flex-column border text-right">
           <span id="history">history</span>
           <span id="showText">0</span>
@@ -106,20 +107,18 @@
     }
 
     function GetOperator(){
-      
       resultArray.push(showText.innerText);
       resultArray.push(this.getAttribute('value'));
-
       historyArray.push(showText.innerText);
       historyArray.push(this.innerText);
 
       showText.innerText='0';
       tmp='';
-      
       historyText.innerText = historyArray.join(''); 
     }
 
     function OutResult(){
+      if(resultArray.length > 0){
       resultArray.push(showText.innerText);
       let result = 0;
       result = eval(resultArray.join(''));
@@ -128,6 +127,7 @@
       resultArray=[];
       historyArray=[];
       tmp='';
+      } return;
     }
 
     function Clear(){ 
