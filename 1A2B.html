@@ -13,15 +13,15 @@
 
   <title>1A2B猜數字</title>
   <style>
-    .col-md-6 > *{
+    .col-md-6>* {
       margin: 20px 0;
     }
 
 
-    .home-btn a{
+    .home-btn a {
       position: fixed;
-      right:3%;
-      top:90%;
+      right: 3%;
+      top: 90%;
       font-size: 40px;
       text-decoration: none;
       color: rgba(0, 0, 0, .2);
@@ -37,12 +37,13 @@
       <div class="col-md-6">
         <div class="btn-group btn-group d-flex justify-content-center">
           <button id="start" type="button" class="btn btn-primary border mx-auto">開始</button>
-          <button id="restart" type="button" class="btn btn-primary border mx-auto" disabled>放棄重來</button>
+          <button id="restart" type="button" class="btn btn-primary border mx-auto" disabled>放棄 / 重來</button>
           <button id="cheat" type="button" class="btn btn-primary border mx-auto" disabled>看答案</button>
         </div>
         <div class="input-group border border-dark">
           <span class="input-group-addon form-text" id="sizing-addon1">猜答案：</span>
-          <input id="userGuess" type="text" name="" class="form-control border-0" required="required" maxlength="4" placeholder="請輸入四個不相同的數字" readonly>
+          <input id="userGuess" type="text" name="" class="form-control border-0" required="required" maxlength="4"
+            placeholder="請輸入四個不相同的數字" readonly>
           <span class="input-group-btn">
             <a id="guess" type="button" class="btn btn-default bg-warning rounded-0">猜!</a>
           </span>
@@ -86,6 +87,7 @@
 
     //全域變數宣告
     var answer = [];
+    var giveUP = '';
 
     //物件監聽式：
     start.addEventListener('click', CreateNumArry);
@@ -102,22 +104,25 @@
     //放棄重來
     restart.onclick = function () {
       ul.innerHTML = '';
-      userGuess.value ='';
-      msg.innerText = "豬一樣的大腦，只想著放棄！";
-      $('#show').modal('show')
+      userGuess.value = '';
+      if (giveUP.A != 4) {
+        msg.innerText = "豬一樣的大腦，只想著放棄！";
+        $('#show').modal('show');
+      }
+
       CreateNumArry();
     }
 
     //方法區：
     function CreateNumArry() {
-      answer=[];
+      answer = [];
       while (answer.length < 4) {
         let NumArray = Math.floor(Math.random() * 10);
         if (!answer.includes(NumArray.toString())) {
           answer.push(NumArray.toString());
           restart.removeAttribute('disabled');
           cheat.removeAttribute('disabled');
-          start.setAttribute('disabled',true); //完整的寫法
+          start.setAttribute('disabled', true); //完整的寫法
           userGuess.removeAttribute('readonly');
         }
       }
@@ -135,16 +140,16 @@
       li.classList.add('list-group-item');
 
       let spanAns = document.createElement('span');
-      let spanInput =document.createElement('span');
+      let spanInput = document.createElement('span');
 
       spanAns.innerText = `${group.A}A${group.B}B`;
       spanInput.innerText = group.GuessNow;
       spanAns.classList.add('badge');
       spanInput.classList.add('mx-2');
-      if( group.A == 4) {
+      if (group.A == 4) {
         spanAns.classList.add('badge-success');
       }
-      else{
+      else {
         spanAns.classList.add('badge-danger');
       }
 
@@ -161,21 +166,21 @@
     }
 
     function Get_A_B() {
-      console.log(Number(userGuess.value));
-      if (userGuess.value == '' ||isNaN(Number(userGuess.value)) == true) return;
+      // console.log(Number(userGuess.value));
+      if (userGuess.value == '' || isNaN(Number(userGuess.value)) == true) return;
       let guessArray = Array.from(userGuess.value);
 
-      let distinct = (value,index,self) =>{
+      let distinct = (value, index, self) => {
         return self.indexOf(value) === index;
       }
 
-      let distinctNum =  guessArray.filter(distinct);
-      if(distinctNum.length<4){
+      let distinctNum = guessArray.filter(distinct);
+      if (distinctNum.length < 4) {
         msg.innerText = '數字不能重覆啦！豬哦！'
         $('#show').modal('show')
         return;
       }
-      
+
       let intersect = GetIntersect(answer, guessArray);
       let _A = 0, _B = 0;
       // console.log(intersect);
@@ -193,6 +198,7 @@
       AddLi(ansGroup);
       userGuess.value = '';
       check(ansGroup);
+      giveUP = ansGroup;
     }
   </script>
 
@@ -210,19 +216,19 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-  </script>
+    </script>
 
 
 
-<div class="home-btn">
-  <a href="https://hsulei.azurewebsites.net/"><i class="fas fa-home"></i></a>
-</div>
+  <div class="home-btn">
+    <a href="https://hsulei.azurewebsites.net/"><i class="fas fa-home"></i></a>
+  </div>
 
 </body>
 
