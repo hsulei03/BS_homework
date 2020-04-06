@@ -4,11 +4,21 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  >
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/44b0cfe14b.js" crossorigin="anonymous"></script>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  >
+  <script
+    src="https://kit.fontawesome.com/44b0cfe14b.js"
+    crossorigin="anonymous"
+  ></script>
 
   <title>Apple</title>
   <style>
@@ -109,18 +119,45 @@
   <div class="container">
     <div class="row">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><i class="fa fa-apple" aria-hidden="true"></i></a>
-        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa fa-list" aria-hidden="true"></i>
+        <a
+          class="navbar-brand"
+          href="#"
+        ><i
+            class="fa fa-apple"
+            aria-hidden="true"
+          ></i></a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i
+            class="fa fa-list"
+            aria-hidden="true"
+          ></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNav"
+        >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">iPhone 11</a>
+              <a
+                class="nav-link"
+                href="#"
+                id="iphone"
+              >iPhone 11</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="ipad">iPad</a>
+              <a
+                class="nav-link"
+                href="#"
+                id="ipad"
+              >iPad</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Mac</a>
@@ -132,10 +169,17 @@
     <div class="row">
       <div class="col-12 col-md-6 pic">
         <div class="pic-appleProducts">
-          <img src="./apple-pic/iphone11-green-select-2019.png" alt="" class="w-100 d-block">
+          <img
+            src="./apple-pic/iphone11-green-select-2019.png"
+            alt=""
+            class="w-100 d-block"
+          >
         </div>
       </div>
-      <div class="col-12 col-md-6 d-flex flex-column justify-content-around" id="btn-group">
+      <div
+        class="col-12 col-md-6 d-flex flex-column justify-content-around"
+        id="btn-group"
+      >
         <div class="btn-color h-100 d-flex flex-column">
           <div class="title">
             <h2 class="">Choose your finish.</h2>
@@ -164,8 +208,15 @@
     <div class="row">
       <div class="col-12 col-md-6 info text-right pr-5">
         <h2 id="price">$ 0</h2>
-        <a href="" class="btn border bg-primary" desabled>
-          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <a
+          href=""
+          class="btn border bg-primary"
+          desabled
+        >
+          <i
+            class="fa fa-shopping-cart"
+            aria-hidden="true"
+          ></i>
           Add to cart</a>
       </div>
     </div>
@@ -211,43 +262,28 @@
         Mac: {},
       }
     };
-    //宣告
+    //宣告按鈕變數
     var btnColor = document.querySelectorAll('.btn-color .btn');
     var btnCapacity = document.querySelectorAll('.btn-capacity .btn');
     var btnGruopColor = document.querySelectorAll('.btn-color .group')[0];
     var btnGruopCapacity = document.querySelectorAll('.btn-capacity .group')[0];
 
+    //導覽列按鈕+事件
     var iPad = document.getElementById('ipad');
+    var iPhone = document.getElementById('iphone');
+    iPhone.addEventListener('click', GetiPhoneInfo);
     iPad.addEventListener('click', GetiPadInfo);
 
-    btnColor.forEach((item) => {
-      item.addEventListener('click', ChangeColor_iPhone);
-    });
+    //預先載入iphone畫面的功能
+    window.onload =  AddEven_iPhone();
 
-    btnCapacity.forEach((item) => {
-      item.addEventListener('click', ChangeCapacity_iPhone);
-    });
 
-    // --------------iphone---------------------------------------------------------
+    //-------------------以下是iPhone的--------------------------------------------//
+    //改變圖片顏色
     function ChangeColor_iPhone() {
       let img = document.querySelector('.pic-appleProducts img');
       img.setAttribute('src', Get_iPhoneColorURL(this.innerHTML));
     }
-
-    function ChangeCapacity_iPhone() {
-      let price = document.querySelector('.info h2');
-      price.innerText = `$ ${Get_iPhonePrice(this.innerHTML)}`;
-    }
-
-
-    function Get_iPhonePrice(key) {
-      let result;
-      AppleProducts.ProductsName.iPhone11.Capacity.forEach((item) => {
-        if (item.memory == key) result = item.price;
-      });
-      return result;
-    }
-
     function Get_iPhoneColorURL(key) {
       let result;
       AppleProducts.ProductsName.iPhone11.Colors.forEach((item) => {
@@ -255,10 +291,32 @@
       });
       return result;
     }
-    // --------------iphone---------------------------------------------------------
+    //改變顯示的價格
+    function ChangeCapacity_iPhone() {
+      let price = document.querySelector('.info h2');
+      price.innerText = `$ ${Get_iPhonePrice(this.innerHTML)}`;
+    }
+    function Get_iPhonePrice(key) {
+      let result;
+      AppleProducts.ProductsName.iPhone11.Capacity.forEach((item) => {
+        if (item.memory == key) result = item.price;
+      });
+      return result;
+    }
+    //加入按鈕的click事件
+    function AddEven_iPhone(){
+      btnColor.forEach((item) => {
+      item.addEventListener('click', ChangeColor_iPhone);
+    });
+    btnCapacity.forEach((item) => {
+      item.addEventListener('click', ChangeCapacity_iPhone);
+    });
+    }
+    
+    //-------------------以上是iPhone的--------------------------------------------//
 
 
-    // --------------ipad---------------------------------------------------------
+    //-------------------以下是iPad的 --------------------------------------------//
     function ChangeColor_iPad() {
       let img = document.querySelector('.pic-appleProducts img');
       img.setAttribute('src', Get_iPadColorURL(this.innerHTML));
@@ -284,65 +342,91 @@
       });
       return result;
     }
-    // --------------ipad---------------------------------------------------------
 
-
-    function GetiPadInfo() {
-      let iPadimg = document.querySelector('.pic-appleProducts img');
-      let SpaceGray = document.createElement('button');
-      let Silver = document.createElement('button');
-      let Gold = document.createElement('button');
-      let GB32 = document.createElement('button');
-      let GB128 = document.createElement('button');
-      btnGruopColor.innerHTML = '';
-      btnGruopCapacity.innerHTML = '';
-      btnGruopColor.classList.add('iPad');
-
-      iPadimg.setAttribute('src', "./apple-pic/ipad-wifi-select-gold-201909_GEO_TW.png");
-      SpaceGray.classList.add('btn');
-      SpaceGray.classList.add('btn-iPad');
-      SpaceGray.innerText = 'SpaceGray';
-
-      Silver.classList.add('btn');
-      Silver.classList.add('btn-iPad');
-      Silver.innerText = 'Silver';
-
-      Gold.classList.add('btn');
-      Gold.classList.add('btn-iPad');
-      Gold.innerText = 'Gold';
-
-      GB32.classList.add('btn');
-      GB32.classList.add('btn-iPad');
-      GB32.innerText = '32GB';
-
-      GB128.classList.add('btn');
-      GB128.classList.add('btn-iPad');
-      GB128.innerText = '128GB';
-
-      btnGruopColor.appendChild(SpaceGray);
-      btnGruopColor.appendChild(Silver);
-      btnGruopColor.appendChild(Gold);
-
-      btnGruopCapacity.appendChild(GB32);
-      btnGruopCapacity.appendChild(GB128);
-      For_iPad();
-    }
-
-
-    function For_iPad() {
-      var btnColoriPad = document.querySelectorAll('.btn-color .btn-iPad');
-      btnCapacity = document.querySelectorAll('.btn-capacity .btn-iPad');
-      btnGruopColor = document.querySelectorAll('.btn-color .group')[0];
-      btnGruopCapacity = document.querySelectorAll('.btn-capacity .group')[0];
-
-      btnColoriPad.forEach((item) => {
+    //加入按鈕的click事件
+    function AddEven_iPad(){
+      btnColor.forEach((item) => {
         item.addEventListener('click', ChangeColor_iPad);
       });
-
       btnCapacity.forEach((item) => {
         item.addEventListener('click', ChangeCapacity_iPad);
       });
     }
+    //-------------------以上是iPad的 --------------------------------------------//
+
+
+    //長出iPad的按鈕
+    function GetiPadInfo() {
+      let iPadimg = document.querySelector('.pic-appleProducts img');
+      let btnNameArray = AppleProducts.ProductsName.iPad.Colors;
+      let btnCapacityArray = AppleProducts.ProductsName.iPad.Capacity;
+      btnGruopColor.innerHTML = '';
+      btnGruopCapacity.innerHTML = '';
+      btnGruopColor.classList.add('iPad');
+
+      //設定圖片
+      iPadimg.setAttribute('src', "./apple-pic/ipad-wifi-select-gold-201909_GEO_TW.png");
+
+      //設定顏色按鈕
+      for (let i = 0; i < btnNameArray.length; i++) {
+        let iPhoneBtnColor = document.createElement('button');
+        iPhoneBtnColor.classList.add('btn');
+        iPhoneBtnColor.classList.add('btn-iPad');
+        iPhoneBtnColor.innerText = btnNameArray[i].color;
+        btnGruopColor.appendChild(iPhoneBtnColor);
+      }
+
+      //設定規格按鈕
+      for (let j = 0; j < btnCapacityArray.length; j++) {
+        let iPhoneBtnCapacity = document.createElement('button');
+        iPhoneBtnCapacity.classList.add('btn');
+        iPhoneBtnCapacity.classList.add('btn-iPad');
+        iPhoneBtnCapacity.innerText = btnCapacityArray[j].memory;
+        btnGruopCapacity.appendChild(iPhoneBtnCapacity);
+      }
+      ResetBtn();
+      AddEven_iPad();
+    }
+
+    function GetiPhoneInfo() {
+      let iPhoneImg = document.querySelector('.pic-appleProducts img');
+      let btnNameArray = AppleProducts.ProductsName.iPhone11.Colors;
+      let btnCapacityArray = AppleProducts.ProductsName.iPhone11.Capacity;
+      btnGruopColor.innerHTML = '';
+      btnGruopCapacity.innerHTML = '';
+      btnGruopColor.classList.add('iPhone');
+
+      //設定圖片
+      iPhoneImg.setAttribute('src', "./apple-pic/iphone11-green-select-2019.png");
+
+      //設定顏色按鈕
+      for (let i = 0; i < btnNameArray.length; i++) {
+        let iPhoneBtnColor = document.createElement('button');
+        iPhoneBtnColor.classList.add('btn');
+        iPhoneBtnColor.classList.add('btn-iPhone');
+        iPhoneBtnColor.innerText = btnNameArray[i].color;
+        btnGruopColor.appendChild(iPhoneBtnColor);
+      }
+
+      //設定規格按鈕
+      for (let j = 0; j < btnCapacityArray.length; j++) {
+        let iPhoneBtnCapacity = document.createElement('button');
+        iPhoneBtnCapacity.classList.add('btn');
+        iPhoneBtnCapacity.classList.add('btn-iPhone');
+        iPhoneBtnCapacity.innerText = btnCapacityArray[j].memory;
+        btnGruopCapacity.appendChild(iPhoneBtnCapacity);
+      }
+      ResetBtn();
+      AddEven_iPhone();
+    }
+
+    function ResetBtn(){
+      btnColor = document.querySelectorAll('.btn-color .btn');
+      btnCapacity = document.querySelectorAll('.btn-capacity .btn');
+      btnGruopColor = document.querySelectorAll('.btn-color .group')[0];
+      btnGruopCapacity = document.querySelectorAll('.btn-capacity .group')[0];
+    }
+
   </script>
 
 
@@ -359,15 +443,21 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"
+  ></script>
 
 
 
