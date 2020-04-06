@@ -83,11 +83,15 @@
       background-color: #9f9fa3;
     }
 
+    .btn-color .btn-iPhonePro:nth-child(1)::after {
+      background-color: #9f9fa3;
+    }
 
     .btn-color .btn-iPhone:nth-child(2)::after {
       background-color: black;
     }
 
+    .btn-color .btn-iPhonePro:nth-child(2)::after,
     .btn-color .btn-iPad:nth-child(2)::after {
       background-color: #f3f4f7
     }
@@ -96,12 +100,17 @@
       background-color: #4ec7c4
     }
 
+    .btn-color .btn-iPhonePro:nth-child(3)::after,
     .btn-color .btn-iPad:nth-child(3)::after {
       background-color: #f7c8c9
     }
 
     .btn-color .btn-iPhone:nth-child(4)::after {
       background-color: yellow;
+    }
+
+    .btn-color .btn-iPhonePro:nth-child(4)::after {
+      background-color: #444444;
     }
 
     .btn-color .btn-iPhone:nth-child(5)::after {
@@ -149,19 +158,22 @@
               <a
                 class="nav-link"
                 href="#"
-                id="iphone"
+                id="iPhone"
               >iPhone 11</a>
+            </li>
+            <li class="nav-item">
+              <a 
+              class="nav-link" 
+              href="#" 
+              id="iPhonePro">iPhone Pro</a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="#"
-                id="ipad"
+                id="iPad"
               >iPad</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Mac</a>
-            </li> -->
           </ul>
         </div>
       </nav>
@@ -225,7 +237,10 @@
   <div class="home-btn">
     <a href="https://hsulei.azurewebsites.net/"><i class="fas fa-home"></i></a>
   </div>
-
+  <!-- <img src="./apple-pic/iphone-11-pro-space-select-2019.png" alt="">
+  <img src="./apple-pic/iphone-11-pro-silver-select-2019.png" alt="">
+  <img src="./apple-pic/iphone-11-pro-gold-select-2019.png" alt="">
+  <img src="./apple-pic/iphone-11-pro-midnight-green-select-2019.png" alt=""> -->
   <script>
     var AppleProducts = {
       ProductsName: {
@@ -259,7 +274,22 @@
               { memory: "128GB", price: 13900 },
             ]
         },
-        Mac: {},
+        iPhonePro: {
+          Colors:
+            [
+              { color: "SpaceGray", url: './apple-pic/iphone-11-pro-space-select-2019.png' },
+              { color: "Silver", url: './apple-pic/iphone-11-pro-silver-select-2019.png' },
+              { color: "Gold", url: './apple-pic/iphone-11-pro-gold-select-2019.png' },
+              { color: "MidnightGreen", url: './apple-pic/iphone-11-pro-midnight-green-select-2019.png' }
+            ],
+          Capacity:
+            [
+              { memory: "64GB", price: 35900 },
+              { memory: "256GB", price: 41400 },
+              { memory: "512GB", price: 48400 },
+            ]
+
+        },
       }
     };
     //宣告按鈕變數
@@ -269,14 +299,15 @@
     var btnGruopCapacity = document.querySelectorAll('.btn-capacity .group')[0];
 
     //導覽列按鈕+事件
-    var iPad = document.getElementById('ipad');
-    var iPhone = document.getElementById('iphone');
+    var iPad = document.getElementById('iPad');
+    var iPhone = document.getElementById('iPhone');
+    var iPhonePro = document.getElementById('iPhonePro');
     iPhone.addEventListener('click', GetiPhoneInfo);
     iPad.addEventListener('click', GetiPadInfo);
+    iPhonePro.addEventListener('click', GetiPhoneProInfo);
 
     //預先載入iphone畫面的功能
     window.onload =  AddEven_iPhone();
-
 
     //-------------------以下是iPhone的--------------------------------------------//
     //改變圖片顏色
@@ -354,6 +385,43 @@
     }
     //-------------------以上是iPad的 --------------------------------------------//
 
+    //-------------------以下是iPhonePro的 --------------------------------------------//
+    function ChangeColor_iPhonePro() {
+      let img = document.querySelector('.pic-appleProducts img');
+      img.setAttribute('src', Get_iPhoneProColorURL(this.innerHTML));
+    }
+
+    function ChangeCapacity_iPhonePro() {
+      let price = document.querySelector('.info h2');
+      price.innerText = `$ ${Get_iPhoneProPrice(this.innerHTML)}`;
+    }
+
+    function Get_iPhoneProPrice(key) {
+      let result;
+      AppleProducts.ProductsName.iPhonePro.Capacity.forEach((item) => {
+        if (item.memory == key) result = item.price;
+      });
+      return result;
+    }
+
+    function Get_iPhoneProColorURL(key) {
+      let result;
+      AppleProducts.ProductsName.iPhonePro.Colors.forEach((item) => {
+        if (item.color == key) result = item.url;
+      });
+      return result;
+    }
+
+    //加入按鈕的click事件
+    function AddEven_iPhonePro(){
+      btnColor.forEach((item) => {
+        item.addEventListener('click', ChangeColor_iPhonePro);
+      });
+      btnCapacity.forEach((item) => {
+        item.addEventListener('click', ChangeCapacity_iPhonePro);
+      });
+    }
+    //-------------------以上是iPhonePro的 --------------------------------------------//
 
     //長出iPad的按鈕
     function GetiPadInfo() {
@@ -388,6 +456,7 @@
       AddEven_iPad();
     }
 
+    //長出iPhone的按鈕
     function GetiPhoneInfo() {
       let iPhoneImg = document.querySelector('.pic-appleProducts img');
       let btnNameArray = AppleProducts.ProductsName.iPhone11.Colors;
@@ -418,6 +487,39 @@
       }
       ResetBtn();
       AddEven_iPhone();
+    }
+
+     //長出iPhonePro的按鈕
+    function GetiPhoneProInfo() {
+      let iPhoneProImg = document.querySelector('.pic-appleProducts img');
+      let btnNameArray = AppleProducts.ProductsName.iPhonePro.Colors;
+      let btnCapacityArray = AppleProducts.ProductsName.iPhonePro.Capacity;
+      btnGruopColor.innerHTML = '';
+      btnGruopCapacity.innerHTML = '';
+      btnGruopColor.classList.add('iPhonePro');
+
+      //設定圖片
+      iPhoneProImg.setAttribute('src', "./apple-pic/iphone-11-pro-midnight-green-select-2019.png");
+
+      //設定顏色按鈕(應該要重寫成一個方法)
+      for (let i = 0; i < btnNameArray.length; i++) {
+        let iPhoneProBtnColor = document.createElement('button');
+        iPhoneProBtnColor.classList.add('btn');
+        iPhoneProBtnColor.classList.add('btn-iPhonePro');
+        iPhoneProBtnColor.innerText = btnNameArray[i].color;
+        btnGruopColor.appendChild(iPhoneProBtnColor);
+      }
+
+      //設定規格按鈕(應該要重寫成一個方法)
+      for (let j = 0; j < btnCapacityArray.length; j++) {
+        let iPhoneProBtnCapacity = document.createElement('button');
+        iPhoneProBtnCapacity.classList.add('btn');
+        iPhoneProBtnCapacity.classList.add('btn-iPhonePro');
+        iPhoneProBtnCapacity.innerText = btnCapacityArray[j].memory;
+        btnGruopCapacity.appendChild(iPhoneProBtnCapacity);
+      }
+      ResetBtn();
+      AddEven_iPhonePro();
     }
 
     function ResetBtn(){
