@@ -21,45 +21,48 @@
 </head>
 
 <body>
-  
+
   <div class="container my-5">
     <div class="row">
       <div class="calculator col-12">
-        <div class="title"><h3>暫時沒有括號功能，浮點數運算還是怪怪的</h3></div>
+        <div class="title">
+          <h3>浮點數運算還是怪怪的</h3>
+        </div>
         <div class="output d-flex flex-column border text-right">
           <span id="history">history</span>
           <span id="showText">0</span>
         </div>
         <div class="btnwrap d-flex flex-column">
           <div class="btn-row d-flex justify-content-around">
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value="(" disabled>(</button>
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value=")" disabled>)</button>
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value="%" title="MOD">%</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='num' value="(">(</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='num' value=")">)</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='operator' value="%"
+              title="MOD">%</button>
             <button class="btn border btn-secondary w-25 btn-reset" data-type="reset">AC</button>
           </div>
           <div class="btn-row d-flex justify-content-around">
             <button class="btn border btn-outline-info w-25" data-type='num'>7</button>
             <button class="btn border btn-outline-info w-25" data-type='num'>8</button>
             <button class="btn border btn-outline-info w-25" data-type='num'>9</button>
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value="/">÷</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='operator' value="/">÷</button>
           </div>
           <div class="btn-row d-flex justify-content-around">
             <button class="btn border btn-outline-info w-25" data-type='num'>4</button>
             <button class="btn border btn-outline-info w-25" data-type='num'>5</button>
             <button class="btn border btn-outline-info w-25" data-type='num'>6</button>
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value="*">×</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='operator' value="*">×</button>
           </div>
           <div class="btn-row d-flex justify-content-around">
             <button class="btn border btn-outline-info w-25" data-type='num'>1</button>
             <button class="btn border btn-outline-info w-25" data-type='num'>2</button>
             <button class="btn border btn-outline-info w-25" data-type='num'>3</button>
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value="-">-</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='operator' value="-">-</button>
           </div>
           <div class="btn-row d-flex justify-content-around">
             <button class="btn border btn-outline-info w-25" data-type='num'>0</button>
             <button class="btn border btn-outline-info w-25" data-type='nan'>.</button>
             <button class="btn border btn-primary w-25 btn-result" data-type='equal'>=</button>
-            <button class="btn border btn-secondary w-25 btn-operator" data-type='operator' value="+">+</button>
+            <button class="btn border btn-secondary w-25 btn-operator" type="button" data-type='operator' value="+">+</button>
           </div>
         </div>
       </div>
@@ -73,70 +76,76 @@
     var showText = document.getElementById('showText');
     var historyArray = [];
     var resultArray = [];
-    var tmp='';
+    var tmp = '';
+    var buttonType ='';
     btnNum.forEach((e) => {
       if (e.getAttribute('data-type') == 'num') e.addEventListener('click', GetInputNumber)
       if (e.getAttribute('data-type') == 'nan') e.addEventListener('click', AddPoint)
       if (e.getAttribute('data-type') == 'operator') e.addEventListener('click', GetOperator)
+      if (e.getAttribute('data-type') == 'brackets') e.addEventListener('click', GetBrackets)
       if (e.getAttribute('data-type') == 'equal') e.addEventListener('click', OutResult)
-      if (e.getAttribute('data-type') =='reset') e.addEventListener('click', Clear)
+      if (e.getAttribute('data-type') == 'reset') e.addEventListener('click', Clear)
     });
 
-    function AddPoint(){
-      if(showText.innerText =='0') {
-        showText.innerText='0.';
+    function AddPoint() {
+      if (showText.innerText == '0') {
+        showText.innerText = '0.';
       }
-      if(!showText.innerText.includes('.')) {
+      if (!showText.innerText.includes('.')) {
         showText.innerText += this.innerText
-        };
+      };
     }
 
     function GetInputNumber() {
-      if (showText.innerText == '0' && this.innerText =='0') {
+      if (showText.innerText == '0' && this.innerText == '0') {
         showText.innerText = '0';
-      }
-      else if(showText.innerText.includes('.')){
+      } else if (showText.innerText.includes('.')) {
         showText.innerText += this.innerText;
-      }
-      else {
-        showText.innerText='';
+      } else {
+        showText.innerText = '';
         tmp += this.innerText;
         showText.innerText = tmp;
       }
-      historyText.innerText = historyArray.join('')+showText.innerText;
+      historyText.innerText = historyArray.join('') + showText.innerText;
     }
 
-    function GetOperator(){
+    function GetOperator() {
       resultArray.push(showText.innerText);
       resultArray.push(this.getAttribute('value'));
       historyArray.push(showText.innerText);
       historyArray.push(this.innerText);
-
-      showText.innerText='0';
-      tmp='';
-      historyText.innerText = historyArray.join(''); 
+      showText.innerText = '0';
+      tmp = '';
+      historyText.innerText = historyArray.join('');
+      target =  resultArray[resultArray.length -1];
     }
 
-    function OutResult(){
-      if(resultArray.length > 0){
-      resultArray.push(showText.innerText);
-      let result = 0;
-      result = eval(resultArray.join(''));
-      showText.innerText = result;
-      historyText.innerText += "=" + result;
-      resultArray=[];
-      historyArray=[];
-      tmp='';
-      } return;
+    function GetBrackets() {
     }
 
-    function Clear(){ 
-      showText.innerText ='0';
-      tmp='';
-      historyText.innerText='history';
-      historyArray=[];
-      resultArray =[];
+    function OutResult() {
+      if (resultArray.length > 0) {
+        resultArray.push(showText.innerText);
+        let result = 0;
+        result = eval(resultArray.join(''));
+        showText.innerText = result;
+        historyText.innerText += "=" + result;
+        resultArray = [];
+        historyArray = [];
+        tmp = '';
+      }
+      return;
     }
+
+    function Clear() {
+      showText.innerText = '0';
+      tmp = '';
+      historyText.innerText = 'history';
+      historyArray = [];
+      resultArray = [];
+    }
+
+    var target ='';
 
   </script>
 
@@ -150,14 +159,14 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
 
 
 
