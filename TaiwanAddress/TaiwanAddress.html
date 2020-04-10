@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>TaiwanAddress</title>
+  <script src="../Modules/MyHelper.js"></script>
+</head>
+
+<body>
+  <h1>TaiwanAddress</h1>
+  <div id="msg"></div>
+  <button class="btn btn-dark border-dark">取得資料</button>
+  <table class="table table-bordered w-50">
+    <thead class="thead-dark"></thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- **** -->
+  <template id="templatetitle">
+    <tr>
+      <th>City</th>
+      <th>District</th>
+      <th>ZipCode</th>
+    </tr>
+  </template>
+
+  <template id="templateRow">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </template>
+
+  <script>
+    let btn = $g('button');
+    let msg = $g('msg');
+    let thead = $g('thead');
+    let tbody = $g('tbody');
+    let zipcodeArray = '';
+    let newZipCode =[];
+    window.onload = function requestJson(){
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        if(xhr.readyState == 4 && xhr.status ==200){
+          zipcodeArray = JSON.parse(this.responseText);
+          zipcodeArray.forEach((item) => {
+            //利用陣列的特性，做forEach, 把每一個元素拿出來
+            let newObj = { City:item.CityName, Districts:[] }; //要對資料做整理後的新格式
+            item.AreaList.forEach((element) => {
+              newObj.Districts.push({District:element.AreaName,ZipCode:element.ZipCode})
+            })
+            newZipCode.push(newObj);
+          })
+        }
+        else{
+          msg.textContent = '發生錯誤，http response代碼:'+xhr.status;  
+        }
+      }
+      xhr.open('GET','http://127.0.0.1:5500/TaiwanAddress/TaiwanAddress.json');
+      xhr.send();
+    }
+    btn.onclick = function(){
+      thead.innerHTML='';
+      tbody.innerHTML='';
+      AddThead();
+      AddTbody(newZipCode);
+    }
+    function AddThead(){
+      let templateTitle = $g('#templatetitle');
+      let cloneContent = templateTitle.content.cloneNode(true);
+      thead.appendChild(cloneContent);
+    }
+    function AddTbody(inputArray){
+      if(Array.isArray(inputArray)){
+        let templateRow = $g('#templateRow');
+        for(let i = 0 ; i < inputArray.length ; i++){
+          for(let j = 0; j < inputArray[i]["Districts"].length ; j++){
+            console.log(inputArray[i]["Districts"].length);
+            let cloneContent = templateRow.content.cloneNode(true);
+            let tds = cloneContent.querySelectorAll('td');
+            tds[0].textContent = inputArray[i]["City"];
+            tds[1].textContent = inputArray[i]["Districts"][j].District;
+            tds[2].textContent = inputArray[i]["Districts"][j].ZipCode;
+            tbody.appendChild(cloneContent);
+          }
+        }
+      }
+    }
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+
+
+
+</body>
+
+</html>

@@ -54,7 +54,7 @@
 </head>
 
 <body>
-  <header class="container-fluid p-0">
+  <header class="container">
     <div class="row">
       <div class="col-12">
         <nav class="navbar navbar-ligh">
@@ -102,14 +102,23 @@
       </div>
     </section>
     <section class="row datarow">
-
+      <!-- template add block-->
+      <div class="col-12 col-md-6 col-lg-3 my-3">
+        <div class="card">
+          <img src="https://picsum.photos/300/300/?random=11" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <a href="#" class="btn btn-primary">Link</a>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 
   <template id="templateCard">
-    <div class="col-12 col-lg-3 my-3">
+    <div class="col-12 col-md-6 col-lg-3 my-3">
       <div class="card">
-        <img src="..." class="card-img-top" alt="">
+        <img src="https://picsum.photos/300/300/?random=12" class="card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <a href="#" class="btn btn-primary">Link</a>
@@ -129,8 +138,7 @@
     
     xhr.onload = function () {
       msg =JSON.parse(this.responseText);
-      target = msg["feed"].entry;
-      target.forEach((item)=>{
+      msg["feed"].entry.forEach((item)=>{
       data.push({name:item.gsx$name.$t, url:item.gsx$url.$t, img:item.gsx$img.$t, type:item.gsx$type.$t});
       })
       CreateCard(data);
