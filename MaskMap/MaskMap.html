@@ -79,7 +79,7 @@
           let marker = new google.maps.Marker({
             position: pos,
             map: map,
-            title: 'Hello World!'
+            title: 'You Are Here'
           });
 
           //debugger;
@@ -97,8 +97,8 @@
 
       $.ajax({
         type: "GET",
-        // url: "http://127.0.0.1:5500/MaskData.json",
-        url: "https://findmasks.herokuapp.com/places",
+        url: "MaskData.json",
+        // url: "https://findmasks.herokuapp.com/places",
         success: function (response) {
           maskData =response;
           maskData["features"].forEach((item) => {
