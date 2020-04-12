@@ -152,9 +152,10 @@
     xhr.send();
   }
   function CreateCard(input){
-    let templateCard = document.querySelector('#templateCard');
+    let templateCard = document.querySelector('#templateCard');//抓到模版
+
     input.forEach((item) =>{
-      let cloneContent = templateCard.content.cloneNode(true); 
+      let cloneContent = templateCard.content.cloneNode(true); //copy
       let img = cloneContent.querySelector('.card-img-top');
       let cardTitle = cloneContent.querySelector('.card-title');
       let aLink = cloneContent.querySelector('a');

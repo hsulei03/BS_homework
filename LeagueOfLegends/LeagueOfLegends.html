@@ -11,19 +11,59 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <title>Hero Informations</title>
+  <style>
+    .card .pic{
+      position: relative;
+    }
+    .name{
+      position: absolute;
+      color: white;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin:auto;
+      font-weight: bold;
+      font-size: 30px;
+      background-color: rgb(6, 28, 37);
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-6 col-md-3 col-lg-3">
         <div class="card">
-          <img src="https://picsum.photos/300/300/?random=15" class="b-block w-100">
-          <img src="..." class="card-img-top" alt="">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="pic">
+            <img src="
+            https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt570145160dd39dca/5db05fa8347d1c6baa57be25/RiotX_ChampionList_aatrox.jpg?quality=90&width=250" class="b-block w-100">
+            <div class="name text-center">
+              <span id="RoleName">AATROX</span>
+            </div>
           </div>
+          <div class="card-body border border-danger p-1">
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- alert box  -->
+  <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">TEST</h5>
+        </div>
+        <div class="modal-body">
+          <p id="showMsg"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
         </div>
       </div>
     </div>
