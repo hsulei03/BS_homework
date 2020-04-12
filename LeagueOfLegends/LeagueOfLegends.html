@@ -5,51 +5,103 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <title>Hero Informations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
   <style>
-    .card .pic{
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: 'Long Cang', cursive;
+    }
+    body{
+      background-color: rgba(6, 28, 37);
+    }
+
+    .card .pic {
       position: relative;
     }
-    .name{
+
+
+    .name {
       position: absolute;
       color: white;
       bottom: 0;
       left: 0;
       right: 0;
-      margin:auto;
+      margin: auto;
       font-weight: bold;
-      font-size: 30px;
-      background-color: rgb(6, 28, 37);
+      font-size: 20px;
+      background-color: rgba(6, 28, 37,.8);
+      opacity: 0;
+      transform: scale(0);
     }
+
+    .someinfo {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+    }
+
+    .someinfo::after{
+      content: '';
+      width: 100%;
+      border: .5px solid rgba(141, 139, 139, 0.8);
+      position:absolute;
+      top: 0;
+      left: 0;
+      margin: auto;
+    }
+
+    .card .pic:hover .name {
+      opacity: 1;
+      transition: .8s;
+      transform: scale(1);
+    }
+
+
   </style>
 </head>
 
 <body>
 
   <div class="container">
-    <div class="row">
-      <div class="col-6 col-md-3 col-lg-3">
-        <div class="card">
-          <div class="pic">
-            <img src="
-            https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt570145160dd39dca/5db05fa8347d1c6baa57be25/RiotX_ChampionList_aatrox.jpg?quality=90&width=250" class="b-block w-100">
-            <div class="name text-center">
-              <span id="RoleName">AATROX</span>
-            </div>
-          </div>
-          <div class="card-body border border-danger p-1">
-
-          </div>
-          
-        </div>
-      </div>
+    <div class="row dataRow no-gutters">
     </div>
   </div>
+
+
+
+  <template id="templateCard">
+  <div class="col-6 col-md-4 col-lg-2">
+    <div class="card">
+      <a href="#" class="link">
+        <div class="pic">
+          <img
+            src="..."
+            class="b-block w-100 main-pic card-img-top" title="name">
+          <div class="name text-center">
+            <span id="RoleName">name</span>
+            <div class="card-body p-0 someinfo">
+              <div class="px-2 item">
+                <img src="./pic/1482951.png" alt="" class="b-bock pr-2"><span class="price-p">555</span>
+              </div>
+              <div class="px-2 item">
+                <img src="./pic/1482952.png" alt="" class="b-bock pr-2"><span class="price-m">666</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  </template>
 
 
   <!-- alert box  -->
@@ -57,7 +109,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">TEST</h5>
+          <h5 class="modal-title" id="exampleModalLabel">英雄資訊</h5>
         </div>
         <div class="modal-body">
           <p id="showMsg"></p>
@@ -71,17 +123,67 @@
 
 
 
+  <!-- https://docs.google.com/spreadsheets/d/1gDbnJS_p6YEHMLrzmjiDxxUhnK8Hjdm0f_CJXKf0LTc/edit?usp=sharing -->
 
+  <script>
+    let data = '';
+    let dataRow = document.querySelector('.dataRow');
+    var alink =[];
+    var msg = document.getElementById('showMsg');
+    $.ajax({
+      type: "GET",
+      url: "https://spreadsheets.google.com/feeds/list/1gDbnJS_p6YEHMLrzmjiDxxUhnK8Hjdm0f_CJXKf0LTc/od6/public/values?alt=json",
+      success: function (response) {
+        data = response;
+        CreateCard(data["feed"]["entry"]);
+        // debugger;
+        alink = document.querySelectorAll('.card .link .pic .main-pic');
+        alink.forEach((element) => {
+          element.addEventListener('click',ShowInfor);
+        })
+      }
+    });
 
+    
+    
+    function CreateCard(input) {
+      let templateCard = document.querySelector('#templateCard'); //抓到模版
+      input.forEach((item) => {
+        let cloneContent = templateCard.content.cloneNode(true); //copy
+        let img = cloneContent.querySelector('.main-pic');
+        let roleName = cloneContent.querySelector('#RoleName');
+        let priceP = cloneContent.querySelector('.price-p');
+        let priceM = cloneContent.querySelector('.price-m');
+        img.setAttribute('src',item.gsx$img.$t);
+        img.setAttribute('title',item.gsx$name.$t);
+        roleName.innerText = item.gsx$name.$t;
+        priceP.innerText = item.gsx$price.$t;
+        priceM.innerText = item.gsx$price.$t / 50;
+        dataRow.appendChild(cloneContent);
+      })
+    }
 
+    function ShowInfor(){
+      console.log(this.title)
+      data["feed"]["entry"].forEach((el) => {
+        if (el.gsx$name.$t == this.title){
+          msg.innerHTML = el["gsx$information"]["$t"]
+        } 
+      })
+
+      // data["feed"]["entry"].forEach(())
+      $('#show').modal('show');
+    }
+
+  </script>
 
 
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-  </script>
+  </script> -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
