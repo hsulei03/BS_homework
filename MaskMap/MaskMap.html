@@ -95,7 +95,7 @@
         // url: test1234,
         url: "https://findmasks.herokuapp.com/places",
         success: function (response) {
-          maskData = JSON.parse(response);
+          maskData = response;
           maskData["features"].forEach((item) => {
             maskDataArray.push({
               id: item.properties.id,
