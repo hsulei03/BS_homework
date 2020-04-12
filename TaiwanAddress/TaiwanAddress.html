@@ -65,7 +65,7 @@
           msg.textContent = '發生錯誤，http response代碼:'+xhr.status;  
         }
       }
-      xhr.open('GET','TaiwanAddress.json');
+      xhr.open('GET','https://raw.githubusercontent.com/hsulei03/BS_homework/master/TaiwanAddress/TaiwanAddress.json');
       xhr.send();
     }
     btn.onclick = function(){
