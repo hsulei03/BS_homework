@@ -100,7 +100,7 @@
         url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
         // url: "https://findmasks.herokuapp.com/places",
         success: function (response) {
-          maskData =response;
+          maskData =JSON.parse(response);
           maskData["features"].forEach((item) => {
             maskDataArray.push([
               item.properties.name,
@@ -163,8 +163,6 @@
       `);
       markerInfoWindow.open(map, this);
     }
-
-
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(pos);
