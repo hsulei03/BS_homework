@@ -91,9 +91,9 @@
       // let test1234 = "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json"
       $.ajax({
         type: "GET",
-        url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
+        // url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
         // url: test1234,
-        // url: "https://findmasks.herokuapp.com/places",
+        url: "https://findmasks.herokuapp.com/places",
         success: function (response) {
           maskData = JSON.parse(response);
           maskData["features"].forEach((item) => {
