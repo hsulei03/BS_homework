@@ -17,7 +17,7 @@
          * element that contains the map. */
     #map {
       margin: auto;
-      height: 50%;
+      height: 80%;
       width: 80%;
     }
 
@@ -49,10 +49,11 @@
 
   <script>
     var map;
-    let maskData = ''
+    let maskData = '';
     var maskDataArray = [];
     var infoWindow;
     var markerInfoWindow;
+    var detail ='';
 
     function initMap() { //程式一開始的入口
       let chu = {
@@ -74,19 +75,13 @@
           };
           map = new google.maps.Map(document.getElementById('map'), {
             center: pos,
-            zoom: 12
+            zoom: 15
           });
           let marker = new google.maps.Marker({
             position: pos,
             map: map,
             title: 'You Are Here'
           });
-
-          //debugger;
-          // infoWindow.setPosition(pos);
-          // infoWindow.setContent('Location found.');
-          // infoWindow.open(map);
-          // map.setCenter(pos);
         }, function () {
           handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -94,21 +89,23 @@
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-
+      // let test1234 = "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json"
       $.ajax({
         type: "GET",
         url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
+        // url: test1234,
         // url: "https://findmasks.herokuapp.com/places",
         success: function (response) {
-          maskData =JSON.parse(response);
+          maskData = JSON.parse(response);
           maskData["features"].forEach((item) => {
-            maskDataArray.push([
-              item.properties.name,
-              item.geometry.coordinates[1],
-              item.geometry.coordinates[0],
-              item.properties.masksLeft,
-              item.properties.childMasksLeft
-            ])
+            maskDataArray.push({
+              id: item.properties.id,
+              name: item.properties.name,
+              lat: item.geometry.coordinates[1],
+              lng: item.geometry.coordinates[0],
+              masksLeft: item.properties.masksLeft,
+              childMasksLeft: item.properties.childMasksLeft
+            })
           });
           setMarkers(map);
         }
@@ -136,31 +133,45 @@
         anchor: new google.maps.Point(0, 32)
       };
 
-      for (let i = 0; i < maskDataArray.length; i++) {
-        let mArray = maskDataArray[i];
+      maskDataArray.forEach((item) => {
         let marker = new google.maps.Marker({
-          position: {
-            lat: mArray[1],
-            lng: mArray[2]
-          },
+          position: { lat: item.lat, lng: item.lng },
           map: map,
-          icon: mArray[3] + mArray[4] == 0 ? image_x : image_o,
-          title: `${mArray[0]}_成人:${mArray[3]}，兒童:${mArray[4]}`,
-          customerProp: mArray
-  
-        });
+          icon: item.masksLeft + item.childMasksLeft == 0 ? image_x : image_o,
+          title: `${item.name}目前：成人有${item.masksLeft}，兒童有${item.childMasksLeft}`,
+          customerProp: item
+        })
         marker.addListener('click', Getinfor);
-      }
+      })
     }
 
     function Getinfor() {
       console.log(this);
-      markerInfoWindow.setContent(`
-      <div>
-        <h3>${this.customerProp[0]}</h3>
-        <p>成人口罩：${this.customerProp[3]}, 兒童口罩：${this.customerProp[4]}</p>
-      </div>
-      `);
+      let idNum = this.customerProp.id;
+      let urlbyid = `https://findmasks.herokuapp.com/places/${idNum}`
+      console.log(urlbyid);
+      
+      $.ajax({
+        type: "GET",
+        url: urlbyid,
+        success: function (response) {
+          detail = response;
+
+          markerInfoWindow.setContent(`
+          <div>
+            <h5>${detail.properties.name}</h5> 
+            <p>最後更新時間：<time>${detail.properties.updatedAt}</time></p>
+          </div>
+          <div>
+            <p>成人口罩：${detail.properties.masksLeft}, 兒童口罩：${detail.properties.childMasksLeft}</p>
+            <p>地址：${detail.properties.address}</p>
+            <p>電話：${detail.properties.phone}</p>
+            <small>${detail.properties.note}</small>
+          </div>
+          `);
+          
+        }
+      });
       markerInfoWindow.open(map, this);
     }
 
