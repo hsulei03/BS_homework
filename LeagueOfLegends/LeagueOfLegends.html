@@ -136,8 +136,8 @@
       success: function (response) {
         data = response;
         CreateCard(data["feed"]["entry"]);
-        // debugger;
-        alink = document.querySelectorAll('.card .link .pic .main-pic');
+        // debugger; .link .pic .main-pic
+        alink = document.querySelectorAll('.card');
         alink.forEach((element) => {
           element.addEventListener('click',ShowInfor);
         })
@@ -164,9 +164,10 @@
     }
 
     function ShowInfor(){
-      console.log(this.title)
+      let target = this.querySelector('.main-pic');
+      console.log(target.title);
       data["feed"]["entry"].forEach((el) => {
-        if (el.gsx$name.$t == this.title){
+        if (el.gsx$name.$t == target.title){
           msg.innerHTML = el["gsx$information"]["$t"]
         } 
       })
