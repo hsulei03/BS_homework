@@ -39,10 +39,10 @@
       color: rgb(87, 78, 78);
     }
 
-    .container .datarow{
+    .container .datarow {
       font-family: "微軟正黑體";
     }
-    
+
 
     @media screen and (min-width:768px) {
       .banner-txt {
@@ -106,58 +106,65 @@
         </nav>
       </div>
     </section>
-    <section class="row datarow">
+    <section class="row card-deck h-100 datarow">
       <!-- template add block-->
     </section>
   </div>
 
   <template id="templateCard">
-    <div class="col-6 col-md-3 col-lg-2 my-3">
-      <div class="card">
-        <img src="https://picsum.photos/300/300/?random=12" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <a href="#" class="btn btn-primary">Link</a>
+    <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
+        <div class="card">
+          <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <a href="#" class="btn btn-primary">Link</a>
+          </div>
         </div>
-      </div>
     </div>
   </template>
 
   <script>
     // let data = document.getElementById('data');
     let dataRow = document.querySelector('.container .datarow');
-    let msg = '';//JSON檔
-    let target ='';//取出要的資料
-    let data =[];//轉成需要使用的資料
+    let msg = ''; //JSON檔
+    let target = ''; //取出要的資料
+    let data = []; //轉成需要使用的資料
     window.onload = function requestJSON() {
-    let xhr = new XMLHttpRequest();
-    
-    xhr.onload = function () {
-      msg =JSON.parse(this.responseText);
-      msg["feed"].entry.forEach((item)=>{
-      data.push({name:item.gsx$name.$t, url:item.gsx$url.$t, img:item.gsx$img.$t, type:item.gsx$type.$t});
-      })
-      CreateCard(data);
+      let xhr = new XMLHttpRequest();
+
+      xhr.onload = function () {
+        msg = JSON.parse(this.responseText);
+        msg["feed"].entry.forEach((item) => {
+          data.push({
+            name: item.gsx$name.$t,
+            url: item.gsx$url.$t,
+            img: item.gsx$img.$t,
+            type: item.gsx$type.$t
+          });
+        })
+        CreateCard(data);
+      }
+      xhr.open("GET",
+        'https://spreadsheets.google.com/feeds/list/1wxJwyfqO_XiL9q8Wao23oRkrJ5lcMGtr8wPTSO6VlGI/od6/public/values?alt=json'
+        );
+      xhr.send();
     }
-    xhr.open("GET", 'https://spreadsheets.google.com/feeds/list/1wxJwyfqO_XiL9q8Wao23oRkrJ5lcMGtr8wPTSO6VlGI/od6/public/values?alt=json');
-    xhr.send();
-  }
-  function CreateCard(input){
-    let templateCard = document.querySelector('#templateCard');//抓到模版
 
-    input.forEach((item) =>{
-      let cloneContent = templateCard.content.cloneNode(true); //copy
-      let img = cloneContent.querySelector('.card-img-top');
-      let cardTitle = cloneContent.querySelector('.card-title');
-      let aLink = cloneContent.querySelector('a');
-      img.setAttribute('src','https://picsum.photos/300/300/?random=15');
-      cardTitle.innerText = item.name;
-      aLink.setAttribute('href',item.url);
-      dataRow.appendChild(cloneContent);
-    })
-  } 
+    function CreateCard(input) {
+      let templateCard = document.querySelector('#templateCard'); //抓到模版
 
-</script>
+      input.forEach((item) => {
+        let cloneContent = templateCard.content.cloneNode(true); //copy
+        let img = cloneContent.querySelector('.card-img-top');
+        let cardTitle = cloneContent.querySelector('.card-title');
+        let aLink = cloneContent.querySelector('a');
+        img.setAttribute('src', 'https://picsum.photos/300/300/?random=15');
+        cardTitle.innerText = item.name;
+        aLink.setAttribute('href', item.url);
+        dataRow.appendChild(cloneContent);
+      })
+    }
+  </script>
 
 
 
