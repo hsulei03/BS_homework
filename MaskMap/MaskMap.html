@@ -335,14 +335,14 @@
     function GetDataInfo() {
       $.ajax({
         type: "GET",
-        url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
+        // url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
         // url: test1234,
-        // url: "https://findmasks.herokuapp.com/places",
+        url: "https://findmasks.herokuapp.com/places",
         async: false,
         success: function (response) {
-          console.log("65598555")
-          // maskData = response;
-          maskData = JSON.parse(response);
+          // console.log("65598555")
+          maskData = response;
+          // maskData = JSON.parse(response);
           maskData["features"].forEach((item) => {
             maskDataArray.push({
               id: item.properties.id,
