@@ -84,7 +84,7 @@
         let templateRow = $g('#templateRow');
         for(let i = 0 ; i < inputArray.length ; i++){
           for(let j = 0; j < inputArray[i]["Districts"].length ; j++){
-            console.log(inputArray[i]["Districts"].length);
+            // console.log(inputArray[i]["Districts"].length);
             let cloneContent = templateRow.content.cloneNode(true);
             let tds = cloneContent.querySelectorAll('td');
             tds[0].textContent = inputArray[i]["City"];

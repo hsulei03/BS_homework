@@ -13,12 +13,17 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <title>MaskMap</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
     /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
     #map {
       margin: auto;
-      height: 80%;
-      width: 80%;
+      height: 720px;
     }
 
     /* Optional: Makes the sample page fill the window. */
@@ -28,22 +33,111 @@
       margin: 0;
       padding: 0;
     }
+
+    /* .table td,
+    .table th {
+      padding: 10px;
+      text-align: center;
+    } */
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <nav>
-          <button class="btn"></button>
+
+  <div class="container-fluid">
+    <div class="row m-auto no-gutters">
+      <div class="col-12 col-lg-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">區域</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li>
+                <button class="btn border">臺北市</button>
+              </li>
+              <li>
+                <button class="btn border">新北市</button>
+              </li>
+              <li>
+                <button class="btn border">宜蘭縣</button>
+              </li>
+              <li>
+                <button class="btn border">新竹市</button>
+              </li>
+              <li>
+                <button class="btn border">新竹縣</button>
+              </li>
+              <li>
+                <button class="btn border">桃園市</button>
+              </li>
+              <li>
+                <button class="btn border">苗栗縣</button>
+              </li>
+              <li>
+                <button class="btn border">台中市</button>
+              </li>
+              <li>
+                <button class="btn border">南投縣</button>
+              </li>
+              <li>
+                <button class="btn border">嘉義市</button>
+              </li>
+              <li>
+                <button class="btn border">嘉義縣</button>
+              </li>
+              <li>
+                <button class="btn border">雲林縣</button>
+              </li>
+              <li>
+                <button class="btn border">臺南市</button>
+              </li>
+              <li>
+                <button class="btn border">高雄市</button>
+              </li>
+              <li>
+                <button class="btn border">連江縣</button>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
+      <div class="col-12 col-lg-11 " id="map">
+      </div>
     </div>
+
+    <div class="row covid-19">
+      <div class="col-12 m-auto">
+        <h3>國內目前確診數 + 確診數破萬的國家</h3>
+        <table class="covid-19-table border table table-bordere">
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Cases(>10000)</th>
+              <th>Deaths</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <template id="templateTbody">
+        <tbody id="covid-19-Tbody">
+          <tr>
+            <td id="country">Taiwan</td>
+            <td id="cases">252</td>
+            <td id="deaths">33</td>
+          </tr>
+        </tbody>
+      </template>
+    </div>
+
   </div>
 
-  <div id="map"></div>
+
+
+
 
 
 
@@ -53,17 +147,166 @@
     var maskDataArray = [];
     var infoWindow;
     var markerInfoWindow;
-    var detail ='';
+    var detail = '';
+    var covid19 = document.querySelector('.covid-19-table');
+    var cities = document.querySelectorAll('ul>li .btn');
+    var city = [{
+      name: "臺北市",
+      latlng: {
+        lat: 25.0375465,
+        lng: 121.562244
+      }
+    },
+    {
+      name: "新北市",
+      latlng: {
+        lat: 25.0123073,
+        lng: 121.4632665
+      }
+    },
+    {
+      name: "連江縣",
+      latlng: {
+        lat: 26.1572524,
+        lng: 119.9482926
+      }
+    },
+    {
+      name: "宜蘭縣",
+      latlng: {
+        lat: 24.7305437,
+        lng: 121.7619899
+      }
+    },
+    {
+      name: "新竹市",
+      latlng: {
+        lat: 24.7929419,
+        lng: 120.9493054
+      }
+    },
+    {
+      name: "新竹縣",
+      latlng: {
+        lat: 24.8268841,
+        lng: 121.010715
+      }
+    },
+    {
+      name: "桃園市",
+      latlng: {
+        lat: 24.9931617,
+        lng: 121.2988176
+      }
+    },
+    {
+      name: "苗栗縣",
+      latlng: {
+        lat: 24.5648599,
+        lng: 120.8185503
+      }
+    },
+    {
+      name: "台中市",//24.1892645,120.6090681
+      latlng: {
+        lat: 25.0375465,
+        lng: 121.562244
+      }
+    },
+    {
+      name: "南投縣",//23.9026841,120.6883151
+      latlng: {
+        lat: 25.0375465,
+        lng: 121.562244
+      }
+    },
+    {
+      name: "嘉義市",//23.4812545,120.4514023
+      latlng: {
+        lat: 23.4812545,
+        lng: 120.4514023
+      }
+    },
+    {
+      name: "嘉義縣",//23.4586677,120.2907749
+      latlng: {
+        lat: 23.4586677,
+        lng: 120.2907749
+      }
+    },
+    {
+      name: "雲林縣",//23.6992351,120.5241337
+      latlng: {
+        lat: 23.6992351,
+        lng: 120.5241337
+      }
+    },
+    {
+      name: "臺南市",//23.1522385,120.101018
+      latlng: {
+        lat: 23.1522385,
+        lng: 120.101018
+      }
+    },
+    {
+      name: "高雄市",//23.152746,120.1003309
+      latlng: {
+        lat: 23.152746,
+        lng: 120.1003309
+      }
+    },
+    {
+      name: "澎湖縣",//23.6125491,119.5563255
+      latlng: {
+        lat: 23.6125491,
+        lng: 119.5563255
+      }
+    },
+    {
+      name: "金門縣",//24.4371954,118.3171488
+      latlng: {
+        lat: 24.4371954,
+        lng: 118.3171488
+      }
+    },
+    {
+      name: "屏東縣",//22.6830408,120.4857744
+      latlng: {
+        lat: 22.6830408,
+        lng: 120.4857744
+      }
+    },
+    {
+      name: "臺東縣",//22.7539301,121.1429397
+      latlng: {
+        lat: 22.7539301,
+        lng: 121.1429397
+      }
+    },
+    {
+      name: "花蓮縣",//23.9848788,121.5721311
+      latlng: {
+        lat: 23.9848788,
+        lng: 121.5721311
+      }
+    }
+    ];
+
+    Getgeojson();
+    cities.forEach((item) => {
+      item.addEventListener('click', changeMap)
+    })
 
     function initMap() { //程式一開始的入口
-      // let chu = {
-      //   lat: 24.7576312,
-      //   lng: 120.951257
-      // };
-      // map = new google.maps.Map(document.getElementById('map'), {
-      //   center: chu,
-      //   zoom: 12
-      // });
+      let taipei = {
+        lat: 25.0375465,
+        lng: 121.562244
+      };
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: taipei,
+        zoom: 15
+      });
+
       markerInfoWindow = new google.maps.InfoWindow;
       infoWindow = new google.maps.InfoWindow;
       if (navigator.geolocation) {
@@ -72,10 +315,8 @@
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: pos,
-            zoom: 15
-          });
+          map.setCenter(pos);
+
           let marker = new google.maps.Marker({
             position: pos,
             map: map,
@@ -88,14 +329,20 @@
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-      // let test1234 = "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json"
+      GetDataInfo();
+    }
+
+    function GetDataInfo() {
       $.ajax({
         type: "GET",
-        // url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
+        url: "https://raw.githubusercontent.com/hsulei03/BS_homework/master/MaskMap/MaskData.json",
         // url: test1234,
-        url: "https://findmasks.herokuapp.com/places",
+        // url: "https://findmasks.herokuapp.com/places",
+        async: false,
         success: function (response) {
-          maskData = response;
+          console.log("65598555")
+          // maskData = response;
+          maskData = JSON.parse(response);
           maskData["features"].forEach((item) => {
             maskDataArray.push({
               id: item.properties.id,
@@ -109,9 +356,11 @@
           setMarkers(map);
         }
       });
+
     }
 
     function setMarkers(map) {
+      console.log(maskData);
       var image_o = {
         url: 'https://maps.google.com/mapfiles/kml/pal3/icon63.png',
         // This marker is 20 pixels wide by 32 pixels high.
@@ -134,28 +383,30 @@
 
       maskDataArray.forEach((item) => {
         let marker = new google.maps.Marker({
-          position: { lat: item.lat, lng: item.lng },
+          position: {
+            lat: item.lat,
+            lng: item.lng
+          },
           map: map,
           icon: item.masksLeft + item.childMasksLeft == 0 ? image_x : image_o,
           title: `${item.name}目前：成人有${item.masksLeft}，兒童有${item.childMasksLeft}`,
           customerProp: item
         })
-        marker.addListener('click', Getinfor);
+        marker.addListener('click', GetDetailInfor);
       })
     }
 
-    function Getinfor() {
+    function GetDetailInfor() {
       console.log(this);
       let idNum = this.customerProp.id;
       let urlbyid = `https://findmasks.herokuapp.com/places/${idNum}`
       console.log(urlbyid);
-      
+
       $.ajax({
         type: "GET",
         url: urlbyid,
         success: function (response) {
           detail = response;
-
           markerInfoWindow.setContent(`
           <div>
             <h5>${detail.properties.name}</h5> 
@@ -168,7 +419,7 @@
             <small>${detail.properties.note}</small>
           </div>
           `);
-          
+
         }
       });
       markerInfoWindow.open(map, this);
@@ -182,12 +433,51 @@
       infoWindow.open(map);
     }
 
+    function changeMap() {
+      city.forEach((item) => {
+        if (item.name == this.innerText)
+          map.setCenter(item.latlng);
+      })
+    }
+
+    var geojson = '';
+
+    function Getgeojson() {
+      console.log('555')
+      $.ajax({
+        type: "get",
+        url: "https://covid19dashboard.cdc.gov.tw/dash1",
+        async: true,
+        success: function (response) {
+          response["features"].sort(function (a,b) {
+        console.log(a["properties"]["cases"],b["properties"]["cases"]);
+        return b["properties"]["cases"] - a["properties"]["cases"]
+        })
+          CreateTable(response["features"]);
+        }
+      });
+    }
+
+    function CreateTable(input) {
+      let templateTbody = document.querySelector('#templateTbody'); //抓到模版
+      input.forEach((item) => {
+        if (item["properties"]["cases"] >= 10000 || item["properties"]["name"] == "Taiwan") {
+          let cloneContent = templateTbody.content.cloneNode(true); //copy
+          let country = cloneContent.querySelector('#country');
+          let cases = cloneContent.querySelector('#cases');
+          let deaths = cloneContent.querySelector('#deaths');
+          country.innerText = item["properties"]["name"];
+          cases.innerText = item["properties"]["cases"];
+          deaths.innerText = item["properties"]["deaths"]
+          covid19.appendChild(cloneContent);
+        }
+      })
+    }
 
 
 
 
-
-
+    
   </script>
 
 

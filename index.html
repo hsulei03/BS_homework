@@ -106,20 +106,44 @@
         </nav>
       </div>
     </section>
-    <section class="row card-deck h-100 datarow">
+    <section class="row datarow">
       <!-- template add block-->
-    </section>
-  </div>
-
-  <template id="templateCard">
-    <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
-        <div class="card">
-          <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+      <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
+        <div class="card h-100">
+          <div class="pic-card">
+            <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+          </div>
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <a href="#" class="btn btn-primary">Link</a>
           </div>
         </div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
+        <div class="card h-100">
+          <div class="pic-card">
+            <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut tenetur porro fugit veniam quia cupiditate rem cum, nisi explicabo sit possimus, cumque harum corporis quod. Beatae consequuntur perspiciatis debitis voluptate?</h5>
+            <a href="#" class="btn btn-primary">Link</a>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+
+  <template id="templateCard">
+    <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
+      <div class="card">
+        <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <a href="#" class="btn btn-primary">Link</a>
+        </div>
+      </div>
     </div>
   </template>
 
@@ -146,7 +170,7 @@
       }
       xhr.open("GET",
         'https://spreadsheets.google.com/feeds/list/1wxJwyfqO_XiL9q8Wao23oRkrJ5lcMGtr8wPTSO6VlGI/od6/public/values?alt=json'
-        );
+      );
       xhr.send();
     }
 
