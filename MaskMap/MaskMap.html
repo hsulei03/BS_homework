@@ -23,7 +23,7 @@
          * element that contains the map. */
     #map {
       margin: auto;
-      height: 720px;
+      height: 667px;
     }
 
     /* Optional: Makes the sample page fill the window. */
@@ -39,6 +39,11 @@
       padding: 10px;
       text-align: center;
     } */
+    .covid-19{
+      height: 200px;
+    }
+
+
   </style>
 </head>
 
@@ -46,6 +51,36 @@
 
 
   <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 text-center m-auto">
+        <h2>全球確診人數</h2>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Country</th>
+              <th scope="col">Cases</th>
+              <th scope="col">Deaths</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="row covid-19 overflow-auto">
+      <div class="col-6 text-center m-auto">
+        <table class="table covid-19-table table-sm">
+          <!-- Information -->
+          <template id="templateTbody">
+            <tbody id="covid-19-Tbody">
+              <tr>
+                <td id="country">Taiwan</td>
+                <td id="cases">252</td>
+                <td id="deaths">33</td>
+              </tr>
+            </tbody>
+          </template>
+        </table>
+      </div>
+    </div>
     <div class="row m-auto no-gutters">
       <div class="col-12 col-lg-12">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,22 +92,22 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li>
+                <button class="btn border">基隆市</button>
+              </li>
+              <li>
                 <button class="btn border">臺北市</button>
               </li>
               <li>
                 <button class="btn border">新北市</button>
               </li>
               <li>
-                <button class="btn border">宜蘭縣</button>
-              </li>
-              <li>
-                <button class="btn border">新竹市</button>
+                <button class="btn border">桃園市</button>
               </li>
               <li>
                 <button class="btn border">新竹縣</button>
               </li>
               <li>
-                <button class="btn border">桃園市</button>
+                <button class="btn border">新竹市</button>
               </li>
               <li>
                 <button class="btn border">苗栗縣</button>
@@ -99,6 +134,24 @@
                 <button class="btn border">高雄市</button>
               </li>
               <li>
+                <button class="btn border">屏東縣</button>
+              </li>
+              <li>
+                <button class="btn border">臺東縣</button>
+              </li>
+              <li>
+                <button class="btn border">花蓮縣</button>
+              </li>
+              <li>
+                <button class="btn border">宜蘭縣</button>
+              </li>
+              <li>
+                <button class="btn border">澎湖縣</button>
+              </li>
+              <li>
+                <button class="btn border">金門縣</button>
+              </li>
+              <li>
                 <button class="btn border">連江縣</button>
               </li>
             </ul>
@@ -108,37 +161,6 @@
       <div class="col-12 col-lg-11 " id="map">
       </div>
     </div>
-
-    <div class="row covid-19">
-      <div class="col-12 m-auto">
-        <h3>國內目前確診數 + 確診數破萬的國家</h3>
-        <table class="covid-19-table border table table-bordere">
-          <thead>
-            <tr>
-              <th>Country</th>
-              <th>Cases(>10000)</th>
-              <th>Deaths</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-      <template id="templateTbody">
-        <tbody id="covid-19-Tbody">
-          <tr>
-            <td id="country">Taiwan</td>
-            <td id="cases">252</td>
-            <td id="deaths">33</td>
-          </tr>
-        </tbody>
-      </template>
-    </div>
-
-  </div>
-
-
-
-
-
 
 
   <script>
@@ -151,6 +173,12 @@
     var covid19 = document.querySelector('.covid-19-table');
     var cities = document.querySelectorAll('ul>li .btn');
     var city = [{
+      name:"基隆市",
+      latlng:{lat:25.1303462,
+              lng:121.7439138
+      }
+    },
+      {
       name: "臺北市",
       latlng: {
         lat: 25.0375465,
@@ -216,8 +244,8 @@
     {
       name: "南投縣",//23.9026841,120.6883151
       latlng: {
-        lat: 25.0375465,
-        lng: 121.562244
+        lat: 23.9026841,
+        lng: 120.6883151
       }
     },
     {
@@ -242,24 +270,24 @@
       }
     },
     {
-      name: "臺南市",//23.1522385,120.101018
+      name: "臺南市",//22.9922336,120.18299
       latlng: {
-        lat: 23.1522385,
-        lng: 120.101018
+        lat: 22.9922336,
+        lng: 120.18299
       }
     },
     {
-      name: "高雄市",//23.152746,120.1003309
+      name: "高雄市",//22.62025,120.3069565
       latlng: {
-        lat: 23.152746,
-        lng: 120.1003309
+        lat: 22.62025,
+        lng: 120.3069565
       }
     },
     {
-      name: "澎湖縣",//23.6125491,119.5563255
+      name: "澎湖縣",//23.568495,119.5668485
       latlng: {
-        lat: 23.6125491,
-        lng: 119.5563255
+        lat: 23.568495,
+        lng: 119.5668485
       }
     },
     {
@@ -394,14 +422,13 @@
         })
         marker.addListener('click', GetDetailInfor);
       })
+
+
     }
 
     function GetDetailInfor() {
-      console.log(this);
       let idNum = this.customerProp.id;
       let urlbyid = `https://findmasks.herokuapp.com/places/${idNum}`
-      console.log(urlbyid);
-
       $.ajax({
         type: "GET",
         url: urlbyid,
@@ -409,7 +436,7 @@
           detail = response;
           markerInfoWindow.setContent(`
           <div>
-            <h5>${detail.properties.name}</h5> 
+            <h5>${detail.properties.name}</h5>
             <p>最後更新時間：<time>${detail.properties.updatedAt}</time></p>
           </div>
           <div>
@@ -419,7 +446,6 @@
             <small>${detail.properties.note}</small>
           </div>
           `);
-
         }
       });
       markerInfoWindow.open(map, this);
@@ -440,8 +466,6 @@
       })
     }
 
-    var geojson = '';
-
     function Getgeojson() {
       console.log('555')
       $.ajax({
@@ -450,7 +474,7 @@
         async: true,
         success: function (response) {
           response["features"].sort(function (a,b) {
-        console.log(a["properties"]["cases"],b["properties"]["cases"]);
+        // console.log(a["properties"]["cases"],b["properties"]["cases"]);
         return b["properties"]["cases"] - a["properties"]["cases"]
         })
           CreateTable(response["features"]);
@@ -461,7 +485,6 @@
     function CreateTable(input) {
       let templateTbody = document.querySelector('#templateTbody'); //抓到模版
       input.forEach((item) => {
-        if (item["properties"]["cases"] >= 10000 || item["properties"]["name"] == "Taiwan") {
           let cloneContent = templateTbody.content.cloneNode(true); //copy
           let country = cloneContent.querySelector('#country');
           let cases = cloneContent.querySelector('#cases');
@@ -469,11 +492,21 @@
           country.innerText = item["properties"]["name"];
           cases.innerText = item["properties"]["cases"];
           deaths.innerText = item["properties"]["deaths"]
+          if (item["properties"]["name"] == "Taiwan"){
+            country.classList.add('table-success')
+            cases.classList.add('table-success')
+            deaths.classList.add('table-success')
+          }
+          if (item["properties"]["cases"] >= 10000){
+            country.classList.add('table-danger')
+            cases.classList.add('table-danger')
+            deaths.classList.add('table-danger')
+          }
           covid19.appendChild(cloneContent);
-        }
       })
     }
 
+    // function CreateNearby
 
 
 
