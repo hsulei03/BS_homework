@@ -39,18 +39,16 @@
       padding: 10px;
       text-align: center;
     } */
-    .covid-19{
+    .covid-19 {
       height: 200px;
     }
-
-
   </style>
 </head>
 
 <body>
 
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-6 text-center m-auto">
         <h2>全球確診人數</h2>
@@ -81,7 +79,7 @@
         </table>
       </div>
     </div>
-    <div class="row m-auto no-gutters">
+    <div class="row m-auto">
       <div class="col-12 col-lg-12">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="#">區域</a>
@@ -161,6 +159,7 @@
       <div class="col-12 col-lg-11 " id="map">
       </div>
     </div>
+  </div>
 
 
   <script>
@@ -173,151 +172,152 @@
     var covid19 = document.querySelector('.covid-19-table');
     var cities = document.querySelectorAll('ul>li .btn');
     var city = [{
-      name:"基隆市",
-      latlng:{lat:25.1303462,
-              lng:121.7439138
-      }
-    },
+        name: "基隆市",
+        latlng: {
+          lat: 25.1303462,
+          lng: 121.7439138
+        }
+      },
       {
-      name: "臺北市",
-      latlng: {
-        lat: 25.0375465,
-        lng: 121.562244
+        name: "臺北市",
+        latlng: {
+          lat: 25.0375465,
+          lng: 121.562244
+        }
+      },
+      {
+        name: "新北市",
+        latlng: {
+          lat: 25.0123073,
+          lng: 121.4632665
+        }
+      },
+      {
+        name: "連江縣",
+        latlng: {
+          lat: 26.1572524,
+          lng: 119.9482926
+        }
+      },
+      {
+        name: "宜蘭縣",
+        latlng: {
+          lat: 24.7305437,
+          lng: 121.7619899
+        }
+      },
+      {
+        name: "新竹市",
+        latlng: {
+          lat: 24.7929419,
+          lng: 120.9493054
+        }
+      },
+      {
+        name: "新竹縣",
+        latlng: {
+          lat: 24.8268841,
+          lng: 121.010715
+        }
+      },
+      {
+        name: "桃園市",
+        latlng: {
+          lat: 24.9931617,
+          lng: 121.2988176
+        }
+      },
+      {
+        name: "苗栗縣",
+        latlng: {
+          lat: 24.5648599,
+          lng: 120.8185503
+        }
+      },
+      {
+        name: "台中市", //24.1892645,120.6090681
+        latlng: {
+          lat: 25.0375465,
+          lng: 121.562244
+        }
+      },
+      {
+        name: "南投縣", //23.9026841,120.6883151
+        latlng: {
+          lat: 23.9026841,
+          lng: 120.6883151
+        }
+      },
+      {
+        name: "嘉義市", //23.4812545,120.4514023
+        latlng: {
+          lat: 23.4812545,
+          lng: 120.4514023
+        }
+      },
+      {
+        name: "嘉義縣", //23.4586677,120.2907749
+        latlng: {
+          lat: 23.4586677,
+          lng: 120.2907749
+        }
+      },
+      {
+        name: "雲林縣", //23.6992351,120.5241337
+        latlng: {
+          lat: 23.6992351,
+          lng: 120.5241337
+        }
+      },
+      {
+        name: "臺南市", //22.9922336,120.18299
+        latlng: {
+          lat: 22.9922336,
+          lng: 120.18299
+        }
+      },
+      {
+        name: "高雄市", //22.62025,120.3069565
+        latlng: {
+          lat: 22.62025,
+          lng: 120.3069565
+        }
+      },
+      {
+        name: "澎湖縣", //23.568495,119.5668485
+        latlng: {
+          lat: 23.568495,
+          lng: 119.5668485
+        }
+      },
+      {
+        name: "金門縣", //24.4371954,118.3171488
+        latlng: {
+          lat: 24.4371954,
+          lng: 118.3171488
+        }
+      },
+      {
+        name: "屏東縣", //22.6830408,120.4857744
+        latlng: {
+          lat: 22.6830408,
+          lng: 120.4857744
+        }
+      },
+      {
+        name: "臺東縣", //22.7539301,121.1429397
+        latlng: {
+          lat: 22.7539301,
+          lng: 121.1429397
+        }
+      },
+      {
+        name: "花蓮縣", //23.9848788,121.5721311
+        latlng: {
+          lat: 23.9848788,
+          lng: 121.5721311
+        }
       }
-    },
-    {
-      name: "新北市",
-      latlng: {
-        lat: 25.0123073,
-        lng: 121.4632665
-      }
-    },
-    {
-      name: "連江縣",
-      latlng: {
-        lat: 26.1572524,
-        lng: 119.9482926
-      }
-    },
-    {
-      name: "宜蘭縣",
-      latlng: {
-        lat: 24.7305437,
-        lng: 121.7619899
-      }
-    },
-    {
-      name: "新竹市",
-      latlng: {
-        lat: 24.7929419,
-        lng: 120.9493054
-      }
-    },
-    {
-      name: "新竹縣",
-      latlng: {
-        lat: 24.8268841,
-        lng: 121.010715
-      }
-    },
-    {
-      name: "桃園市",
-      latlng: {
-        lat: 24.9931617,
-        lng: 121.2988176
-      }
-    },
-    {
-      name: "苗栗縣",
-      latlng: {
-        lat: 24.5648599,
-        lng: 120.8185503
-      }
-    },
-    {
-      name: "台中市",//24.1892645,120.6090681
-      latlng: {
-        lat: 25.0375465,
-        lng: 121.562244
-      }
-    },
-    {
-      name: "南投縣",//23.9026841,120.6883151
-      latlng: {
-        lat: 23.9026841,
-        lng: 120.6883151
-      }
-    },
-    {
-      name: "嘉義市",//23.4812545,120.4514023
-      latlng: {
-        lat: 23.4812545,
-        lng: 120.4514023
-      }
-    },
-    {
-      name: "嘉義縣",//23.4586677,120.2907749
-      latlng: {
-        lat: 23.4586677,
-        lng: 120.2907749
-      }
-    },
-    {
-      name: "雲林縣",//23.6992351,120.5241337
-      latlng: {
-        lat: 23.6992351,
-        lng: 120.5241337
-      }
-    },
-    {
-      name: "臺南市",//22.9922336,120.18299
-      latlng: {
-        lat: 22.9922336,
-        lng: 120.18299
-      }
-    },
-    {
-      name: "高雄市",//22.62025,120.3069565
-      latlng: {
-        lat: 22.62025,
-        lng: 120.3069565
-      }
-    },
-    {
-      name: "澎湖縣",//23.568495,119.5668485
-      latlng: {
-        lat: 23.568495,
-        lng: 119.5668485
-      }
-    },
-    {
-      name: "金門縣",//24.4371954,118.3171488
-      latlng: {
-        lat: 24.4371954,
-        lng: 118.3171488
-      }
-    },
-    {
-      name: "屏東縣",//22.6830408,120.4857744
-      latlng: {
-        lat: 22.6830408,
-        lng: 120.4857744
-      }
-    },
-    {
-      name: "臺東縣",//22.7539301,121.1429397
-      latlng: {
-        lat: 22.7539301,
-        lng: 121.1429397
-      }
-    },
-    {
-      name: "花蓮縣",//23.9848788,121.5721311
-      latlng: {
-        lat: 23.9848788,
-        lng: 121.5721311
-      }
-    }
     ];
 
     Getgeojson();
@@ -473,10 +473,10 @@
         url: "https://covid19dashboard.cdc.gov.tw/dash1",
         async: true,
         success: function (response) {
-          response["features"].sort(function (a,b) {
-        // console.log(a["properties"]["cases"],b["properties"]["cases"]);
-        return b["properties"]["cases"] - a["properties"]["cases"]
-        })
+          response["features"].sort(function (a, b) {
+            // console.log(a["properties"]["cases"],b["properties"]["cases"]);
+            return b["properties"]["cases"] - a["properties"]["cases"]
+          })
           CreateTable(response["features"]);
         }
       });
@@ -485,32 +485,28 @@
     function CreateTable(input) {
       let templateTbody = document.querySelector('#templateTbody'); //抓到模版
       input.forEach((item) => {
-          let cloneContent = templateTbody.content.cloneNode(true); //copy
-          let country = cloneContent.querySelector('#country');
-          let cases = cloneContent.querySelector('#cases');
-          let deaths = cloneContent.querySelector('#deaths');
-          country.innerText = item["properties"]["name"];
-          cases.innerText = item["properties"]["cases"];
-          deaths.innerText = item["properties"]["deaths"]
-          if (item["properties"]["name"] == "Taiwan"){
-            country.classList.add('table-success')
-            cases.classList.add('table-success')
-            deaths.classList.add('table-success')
-          }
-          if (item["properties"]["cases"] >= 10000){
-            country.classList.add('table-danger')
-            cases.classList.add('table-danger')
-            deaths.classList.add('table-danger')
-          }
-          covid19.appendChild(cloneContent);
+        let cloneContent = templateTbody.content.cloneNode(true); //copy
+        let country = cloneContent.querySelector('#country');
+        let cases = cloneContent.querySelector('#cases');
+        let deaths = cloneContent.querySelector('#deaths');
+        country.innerText = item["properties"]["name"];
+        cases.innerText = item["properties"]["cases"];
+        deaths.innerText = item["properties"]["deaths"]
+        if (item["properties"]["name"] == "Taiwan") {
+          country.classList.add('table-success')
+          cases.classList.add('table-success')
+          deaths.classList.add('table-success')
+        }
+        if (item["properties"]["cases"] >= 10000) {
+          country.classList.add('table-danger')
+          cases.classList.add('table-danger')
+          deaths.classList.add('table-danger')
+        }
+        covid19.appendChild(cloneContent);
       })
     }
 
     // function CreateNearby
-
-
-
-    
   </script>
 
 
@@ -531,10 +527,10 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+  </script>
 
 
 
