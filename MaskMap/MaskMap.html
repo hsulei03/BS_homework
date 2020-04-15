@@ -22,7 +22,7 @@
     /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
     #map {
-      margin: auto;
+      width: 100%;
       height: 667px;
     }
 
@@ -43,6 +43,20 @@
     .covid-19 {
       height: 200px;
     }
+
+    #legend {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid #000;
+      }
+      #legend h3 {
+        margin-top: 0;
+      }
+      #legend img {
+        vertical-align: middle;
+      }
   </style>
 </head>
 
@@ -80,9 +94,9 @@
         </table>
       </div>
     </div>
-    <div class="row m-auto">
+    <div class="row m-auto no-gutters">
       <div class="col-12 col-lg-12">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">區域</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,75 +105,81 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li>
-                <button type="button" class="btn btn-outline-primary">基隆市</button>
+                <button type="button" class="btn btn-outline-light">基隆市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">臺北市</button>
+                <button type="button" class="btn btn-outline-light">臺北市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">新北市</button>
+                <button type="button" class="btn btn-outline-light">新北市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">桃園市</button>
+                <button type="button" class="btn btn-outline-light">桃園市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">新竹縣</button>
+                <button type="button" class="btn btn-outline-light">新竹縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">新竹市</button>
+                <button type="button" class="btn btn-outline-light">新竹市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">苗栗縣</button>
+                <button type="button" class="btn btn-outline-light">苗栗縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">台中市</button>
+                <button type="button" class="btn btn-outline-light">台中市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">南投縣</button>
+                <button type="button" class="btn btn-outline-light">南投縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">嘉義市</button>
+                <button type="button" class="btn btn-outline-light">嘉義市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">嘉義縣</button>
+                <button type="button" class="btn btn-outline-light">嘉義縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">雲林縣</button>
+                <button type="button" class="btn btn-outline-light">雲林縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">臺南市</button>
+                <button type="button" class="btn btn-outline-light">臺南市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">高雄市</button>
+                <button type="button" class="btn btn-outline-light">高雄市</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">屏東縣</button>
+                <button type="button" class="btn btn-outline-light">屏東縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">臺東縣</button>
+                <button type="button" class="btn btn-outline-light">臺東縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">花蓮縣</button>
+                <button type="button" class="btn btn-outline-light">花蓮縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">宜蘭縣</button>
+                <button type="button" class="btn btn-outline-light">宜蘭縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">澎湖縣</button>
+                <button type="button" class="btn btn-outline-light">澎湖縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">金門縣</button>
+                <button type="button" class="btn btn-outline-light">金門縣</button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-primary">連江縣</button>
+                <button type="button" class="btn btn-outline-light">連江縣</button>
               </li>
             </ul>
           </div>
         </nav>
       </div>
-      <div class="col-12 col-lg-11 " id="map">
+      <div class="col-12 col-lg-12 " id="map">
+      
       </div>
     </div>
+  </div>
+
+
+  <div id="legend" class="b">
+    <h5>詳細資訊請點擊圖釘</h5>
   </div>
 
 
@@ -333,8 +353,90 @@
       };
       map = new google.maps.Map(document.getElementById('map'), {
         center: taipei,
-        zoom: 15
+        zoom: 15,
+        styles: [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ]
       });
+
+
 
       markerInfoWindow = new google.maps.InfoWindow;
       infoWindow = new google.maps.InfoWindow;
@@ -424,6 +526,14 @@
         marker.addListener('click', GetDetailInfor);
       })
 
+
+        var legend = document.getElementById('legend');
+        var div = document.createElement('div');
+        div.innerHTML = '<img src="https://maps.google.com/mapfiles/kml/pal3/icon63.png">尚有庫存' 
+                      + '<br>' 
+                      + '<img src="https://maps.google.com/mapfiles/kml/pal5/icon14.png">售罄';
+        legend.appendChild(div);
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 
     }
 
