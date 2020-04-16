@@ -32,55 +32,73 @@
       height: 100%;
       margin: 0;
       padding: 0;
-
     }
 
-    /* .table td,
-    .table th {
-      padding: 10px;
-      text-align: center;
+    /* .navbar-nav .btn p{
+      writing-mode: vertical-rl;
+      height: max-content;
+      margin-bottom: 0;
     } */
-    .covid-19 {
-      height: 200px;
+
+    .covid-19{
+      height: 647px;
+      position: relative;
+    }
+    .covid-19 table thead tr th{
+      background-color: white;
     }
 
     #legend {
-        font-family: Arial, sans-serif;
-        background: #fff;
-        padding: 10px;
-        margin: 10px;
-        border: 3px solid #000;
-      }
-      #legend h3 {
-        margin-top: 0;
-      }
-      #legend img {
-        vertical-align: middle;
-      }
+      font-family: Arial, sans-serif;
+      background: #fff;
+      padding: 10px;
+      margin: 10px;
+      border: 3px solid #000;
+    }
+
+    #legend h3 {
+      margin-top: 0;
+    }
+
+    #legend img {
+      vertical-align: middle;
+    }
+
+
+    @media screen and (min-width: 376px){
+    .navbar-nav .btn p{
+      writing-mode: vertical-rl;
+      height: max-content;
+      margin-bottom: 0;
+    }
+    .navbar{
+      height: 100px;
+    }
+
+    }
   </style>
+
 </head>
 
 <body>
 
 
-  <div class="container">
+  <div class="container-fluid">
+
     <div class="row">
-      <div class="col-6 text-center m-auto">
+      <div class="col-12 col-lg-3 text-center my-1">
         <h2>全球確診人數</h2>
-        <table class="table table-sm">
+        <h3 id="totaldata"></h3>
+        <div class="overflow-auto covid-19">
+        <table class="table covid-19-table table-sm position-relative">
           <thead>
             <tr>
-              <th scope="col">Country</th>
-              <th scope="col">Cases</th>
-              <th scope="col">Deaths</th>
+              <th class="sticky-top" scope="col">Country</th>
+              <th class="sticky-top" scope="col">Cases</th>
+              <th class="sticky-top" scope="col">Deaths</th>
             </tr>
           </thead>
-        </table>
-      </div>
-    </div>
-    <div class="row covid-19 overflow-auto">
-      <div class="col-6 text-center m-auto">
-        <table class="table covid-19-table table-sm">
+          
           <!-- Information -->
           <template id="templateTbody">
             <tbody id="covid-19-Tbody">
@@ -93,9 +111,12 @@
           </template>
         </table>
       </div>
-    </div>
-    <div class="row m-auto no-gutters">
-      <div class="col-12 col-lg-12">
+
+
+
+      </div>
+
+      <div class="col-12 col-lg-9">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">區域</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -103,84 +124,133 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav m-auto">
               <li>
-                <button type="button" class="btn btn-outline-light">基隆市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  基隆市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">臺北市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  臺北市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">新北市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  新北市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">桃園市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  桃園市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">新竹縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  新竹縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">新竹市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  新竹市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">苗栗縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  苗栗縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">台中市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  台中市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">南投縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  南投縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">嘉義市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  嘉義市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">嘉義縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  嘉義縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">雲林縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  雲林縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">臺南市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  臺南市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">高雄市</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  高雄市
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">屏東縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  屏東縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">臺東縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  臺東縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">花蓮縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  花蓮縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">宜蘭縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  宜蘭縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">澎湖縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  澎湖縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">金門縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  金門縣
+                </p></button>
               </li>
               <li>
-                <button type="button" class="btn btn-outline-light">連江縣</button>
+                <button type="button" class="btn btn-outline-light"><p>
+                  連江縣
+                </p></button>
               </li>
             </ul>
           </div>
         </nav>
+        <div id="map"></div>
       </div>
-      <div class="col-12 col-lg-12 " id="map">
+
       
-      </div>
+
+
     </div>
+
   </div>
+
+
 
 
   <div id="legend" class="b">
     <h5>詳細資訊請點擊圖釘</h5>
   </div>
+
+  
 
 
   <script>
@@ -354,86 +424,130 @@
       map = new google.maps.Map(document.getElementById('map'), {
         center: taipei,
         zoom: 15,
-        styles: [
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{color: '#263c3f'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#6b9a76'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#38414e'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#212a37'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#9ca5b3'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [{color: '#746855'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#1f2835'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#f3d19c'}]
-            },
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{color: '#2f3948'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{color: '#17263c'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#515c6d'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#17263c'}]
-            }
-          ]
+        styles: [{
+            elementType: 'geometry',
+            stylers: [{
+              color: '#242f3e'
+            }]
+          },
+          {
+            elementType: 'labels.text.stroke',
+            stylers: [{
+              color: '#242f3e'
+            }]
+          },
+          {
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#746855'
+            }]
+          },
+          {
+            featureType: 'administrative.locality',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#d59563'
+            }]
+          },
+          {
+            featureType: 'poi',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#d59563'
+            }]
+          },
+          {
+            featureType: 'poi.park',
+            elementType: 'geometry',
+            stylers: [{
+              color: '#263c3f'
+            }]
+          },
+          {
+            featureType: 'poi.park',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#6b9a76'
+            }]
+          },
+          {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [{
+              color: '#38414e'
+            }]
+          },
+          {
+            featureType: 'road',
+            elementType: 'geometry.stroke',
+            stylers: [{
+              color: '#212a37'
+            }]
+          },
+          {
+            featureType: 'road',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#9ca5b3'
+            }]
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'geometry',
+            stylers: [{
+              color: '#746855'
+            }]
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [{
+              color: '#1f2835'
+            }]
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#f3d19c'
+            }]
+          },
+          {
+            featureType: 'transit',
+            elementType: 'geometry',
+            stylers: [{
+              color: '#2f3948'
+            }]
+          },
+          {
+            featureType: 'transit.station',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#d59563'
+            }]
+          },
+          {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [{
+              color: '#17263c'
+            }]
+          },
+          {
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [{
+              color: '#515c6d'
+            }]
+          },
+          {
+            featureType: 'water',
+            elementType: 'labels.text.stroke',
+            stylers: [{
+              color: '#17263c'
+            }]
+          }
+        ]
       });
 
 
@@ -453,6 +567,7 @@
             map: map,
             title: 'You Are Here'
           });
+          // CreateNearby(pos);
         }, function () {
           handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -461,6 +576,7 @@
         handleLocationError(false, infoWindow, map.getCenter());
       }
       GetDataInfo();
+      
     }
 
     function GetDataInfo() {
@@ -527,13 +643,13 @@
       })
 
 
-        var legend = document.getElementById('legend');
-        var div = document.createElement('div');
-        div.innerHTML = '<img src="https://maps.google.com/mapfiles/kml/pal3/icon63.png">尚有庫存' 
-                      + '<br>' 
-                      + '<img src="https://maps.google.com/mapfiles/kml/pal5/icon14.png">售罄';
-        legend.appendChild(div);
-        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+      var legend = document.getElementById('legend');
+      var div = document.createElement('div');
+      div.innerHTML = '<img src="https://maps.google.com/mapfiles/kml/pal3/icon63.png">尚有庫存' +
+        '<br>' +
+        '<img src="https://maps.google.com/mapfiles/kml/pal5/icon14.png">售罄';
+      legend.appendChild(div);
+      map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 
     }
 
@@ -577,18 +693,22 @@
       })
     }
 
+    var covid19data =''
     function Getgeojson() {
       console.log('555')
       $.ajax({
         type: "get",
-        url: "https://covid19dashboard.cdc.gov.tw/dash1",
+        url: "https://api.covid19api.com/summary",
         async: true,
         success: function (response) {
-          response["features"].sort(function (a, b) {
-            // console.log(a["properties"]["cases"],b["properties"]["cases"]);
-            return b["properties"]["cases"] - a["properties"]["cases"]
+          covid19data = response;
+          CreateTotalData(covid19data);
+          // debugger;
+          covid19data["Countries"].sort(function (a, b) {
+            // console.log(a["TotalConfirmed"],b["TotalConfirmed"]);
+            return b["TotalConfirmed"] - a["TotalConfirmed"]
           })
-          CreateTable(response["features"]);
+          CreateTable(covid19data["Countries"]);
         }
       });
     }
@@ -600,15 +720,15 @@
         let country = cloneContent.querySelector('#country');
         let cases = cloneContent.querySelector('#cases');
         let deaths = cloneContent.querySelector('#deaths');
-        country.innerText = item["properties"]["name"];
-        cases.innerText = item["properties"]["cases"];
-        deaths.innerText = item["properties"]["deaths"]
-        if (item["properties"]["name"] == "Taiwan") {
+        country.innerText = item["Country"];
+        cases.innerText = item["TotalConfirmed"];
+        deaths.innerText = item["TotalDeaths"]
+        if (item["CountryCode"] == "TW") {
           country.classList.add('table-success')
           cases.classList.add('table-success')
           deaths.classList.add('table-success')
         }
-        if (item["properties"]["cases"] >= 10000) {
+        if (item["TotalConfirmed"] >= 10000) {
           country.classList.add('table-danger')
           cases.classList.add('table-danger')
           deaths.classList.add('table-danger')
@@ -617,7 +737,16 @@
       })
     }
 
-    // function CreateNearby
+    function CreateTotalData(data){
+      let totalData = document.querySelector('#totaldata');
+      totalData.innerText = `確診：${data["Global"]["TotalConfirmed"]},死亡：${data["Global"]["TotalDeaths"]},治癒：${data["Global"]["TotalRecovered"]}`
+    }
+    // function CreateNearby(data){
+    //   console.log(maskDataArray);
+    //   maskDataArray.forEach((item) => {
+    //     if(item["lat"] <= (data["lat"]- 0.02) || item["lat"] >= (data["lat"]- 0.02) )
+    //   })
+    // }
   </script>
 
 
