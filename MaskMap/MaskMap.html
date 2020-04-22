@@ -661,6 +661,7 @@
         url: urlbyid,
         success: function (response) {
           detail = response;
+          console.log(detail);
           markerInfoWindow.setContent(`
           <div>
             <h5>${detail.properties.name}</h5>

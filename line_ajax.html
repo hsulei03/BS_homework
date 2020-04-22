@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <title>網頁標題</title>
+  <style>
+
+    .container{
+      position: relative;
+    }
+    #spinner{
+      background-color: rgba(0,0,0,.3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      /* margin: auto; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #spinner>div{
+      height: 10rem;
+      width: 10rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <canvas id="lineChart" width="960" height="600"></canvas>
+    <div id="spinner">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var ctx = document.getElementById('lineChart');
+    var data = ''
+    var dataForlabls =[];
+    var chartData =[];
+    $.ajax({
+      type: "get",
+      url: "https://api.covid19api.com/summary",
+      success: function (response) {
+        console.log("in")
+        data =  response["Countries"].sort(function (a, b) {
+            // console.log(a["TotalConfirmed"],b["TotalConfirmed"]);
+            return b["TotalConfirmed"] - a["TotalConfirmed"]
+          });
+
+        data.forEach((item) =>{
+          if (item["TotalConfirmed"] >= 10000){
+            dataForlabls.push(item["CountryCode"]);
+            chartData.push(item["TotalConfirmed"]);
+          }
+        })
+
+          chart.data.labels = dataForlabls;
+          chart.data.datasets[0].data = chartData;
+          chart.update();
+          $('#spinner').css('display','none'); //跑完關掉
+        
+      }
+    });
+
+    var chart = new Chart(ctx, {
+      //屬性1
+      type: "bar",
+      //屬性2
+      data: {
+        //指定X軸 Label名稱
+        labels: [],
+        datasets: [{
+          label: 'TotalConfirmed > 10000',
+          data: [],
+          fill: false,
+          backgroundColor: 'rgba(255,165,0,.3)',
+          borderColor: 'rgb(255,165,0)',//線條顏色
+          pointStyle: "circle",
+          pointBackgroudColor: 'rgb(0,255,0)',
+          pointRadius: 5,
+          pointHoverRadius: 10,
+        }]
+      },
+      //屬性3
+      options: {
+        responsive: true,
+        title: {//title設定
+          display: true,
+          fontSize: 26,
+          text: 'Covid-19 全球確診統計(破萬)'
+        },
+        tooltips: {//tooltips設定
+          mode: 'point',
+          intersect: true,
+        },
+        legend: {//legend圖例設定
+          position: 'bottom',
+          labels: {
+            fontColor: 'black',
+          }
+        }
+      }
+    })
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+
+
+
+</body>
+
+</html>
