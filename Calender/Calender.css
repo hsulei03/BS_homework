@@ -1,0 +1,86 @@
+body{
+  background:linear-gradient(to right, #00c4ff,#00ff64e0);
+}
+.celendar{
+  width:960px;
+	height:960px;
+}
+.celendar .title-celendar{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.celendar .title-celendar h2{
+  font-size: 80px;
+  color: antiquewhite;
+  font-weight: bold;
+}
+.celendar .title-celendar h4{
+  font-size: 40px;
+  color: antiquewhite;
+  font-weight: 100;
+}
+
+.celendar .title-celendar .btn-left{
+  font-size: 25px;
+  color: antiquewhite;
+  position: absolute;
+  top:50%;
+  left: 0;
+}
+.celendar .title-celendar .btn-right{
+  font-size: 25px;
+  color: antiquewhite;
+  position: absolute;
+  top:50%;
+  right:0;
+}
+
+.celendar .body-celendar{
+  display: flex;
+  justify-content: center;
+}
+
+table{
+  width: 100%;
+  /* height: 80%; */
+}
+table thead tr{
+  width: 100%;
+}
+
+table thead tr>th{
+  width: 14.2857142857143%;
+  font-size: 35px;
+}
+
+table tbody tr>th{
+  width: 14.2857142857143%;
+ 
+}
+
+table tbody tr td{
+  height: 133px;
+  vertical-align: top;
+  text-align: center;
+  /* padding: 10px; */
+  font-size: 20px;
+  border: 1px solid antiquewhite;
+  overflow: hidden;
+}
+
+table tbody tr td ul li{
+  text-align: left;
+  font-size: 10px;
+}
+
+table tbody tr td:hover{
+  cursor: pointer;
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, .3)
+}
+
+
+

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://kit.fontawesome.com/44b0cfe14b.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Celendar</title>
+  <link rel="stylesheet" href="Calender.css">
+  <style>
+    *{
+      margin: 0;
+      font-family: 'Baloo Paaji 2', cursive;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 我難過，我不會寫程式 -->
+  <div class="container">
+    <div class="row justify-content-center">
+
+        <div class="celendar">
+
+          <div class="title-celendar">
+
+            <h2 id="month">Month</h2>
+            <h4 id="year">Year</h4>
+
+            <button class="btn btn-left" value="-1" onclick="ChangeMonth(this.value)">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-right" value="+1" onclick="ChangeMonth(this.value)">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
+
+
+          <div class="body-celendar h-100">
+
+            <table>
+              <thead class="week text-center">
+                <tr class="border">
+                  <th scope="col">Sum</th>
+                  <th scope="col">Mon</th>
+                  <th scope="col">Tue</th>
+                  <th scope="col">Wed</th>
+                  <th scope="col">Thu</th>
+                  <th scope="col">Fri</th>
+                  <th scope="col">Sat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="first">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+
+        </div>
+
+    </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="scheduleForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalCenterTitle">...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 my-1">
+              <input class="form-control border-0" type="text" placeholder="Add title and time" id="schedule">
+            </div>
+
+            <div class="col-6 my-1">
+              <label class="form-control border-0" for="startDT">
+                From:
+                <input class="border-0 mx-1" type="time" id="startDT">
+              </label>
+            </div>
+            <div class="col-6 my-1">
+              <label class="form-control border-0" for="endDT">
+                To:
+                <input class="border-0 mx-1" type="time" id="endDT">
+              </label>
+            </div>
+            <div class="col-4">
+              <label class="form-control border-0" for="remark">remark</label>
+            </div>
+            <div class="cole-4">
+              <select name="selectEvent" id="selectEvent" class="form border">
+                <option value="Event">
+                  <span>Event</span>
+                </option>
+                <option value="Task">
+                  <span>Task</span>
+                </option>
+                <option value="Reminder">
+                  <span>Reminder</span>
+                </option>
+              </select>
+            </div>
+            <div class="col-4">
+              <input type="color"class="form-control border-0" value="#6610f2" id="remarkColor">
+            </div>
+            <div class="col-12 my-1">
+              <input class="form-control border" type="text" id="remarkTxt">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="save" type="button" class="btn btn-primary" onclick="SaveSchedule()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal 2schedul-->
+<div class="modal fade" id="schduleDetail" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <ul id="schduleDetailWrap">
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="SwitchModal()">Add Schdule</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script src="./Calender.js"></script>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+
+
+
+</body>
+
+</html>
