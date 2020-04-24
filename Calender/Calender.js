@@ -93,6 +93,12 @@ function ClearBlock() {
   dayBlock.forEach((item) => {
     item.innerHTML = '';
   })
+  $('#schedule')[0].value ='';
+  $('#startDT')[0].value ='';
+  $('#endDT')[0].value = '';
+  $('#selectEvent')[0].value = '';
+  $('#remarkColor')[0].value ='#6610f2';
+  $('#remarkTxt')[0].value = '';
 }
 
 //顯示行程
@@ -122,16 +128,31 @@ function ShowAllSchedule(el) {
       let edit = document.createElement('button');
       let del = document.createElement('button');
 
-      items.classList.add('item','border');
+      items.classList.add('item','border','my-2');
       edit.classList.add('btn','btn-outline-info');
       del.classList.add('btn','btn-outline-danger');
-
-      title.innerText = item.title;
+      spanTxt.setAttribute('style','word-break: break-all');
+      edit.setAttribute('pk',`${titleDay}`);
+      edit.setAttribute('indexKey',`${index}`);
+      del.setAttribute('pk',`${titleDay}`);
+      del.setAttribute('indexKey',`${index}`);
+      
+      title.innerText = `#${index +1}: ${item.title}`;
       spanDT.innerText = `時間：${item.startDT}~${item.endDT}`;
       lable.innerText = item.remark;
       spanTxt.innerText = item.remarkTxt
       edit.innerText = 'Edit';
       del.innerText = 'Del';
+
+      del.addEventListener('click',(e) => {
+        DelSchedule(event);
+        e.stopPropagation();
+      });
+
+      edit.addEventListener('click',(e) =>{
+        EditSchedule(event);
+        e.stopPropagation;
+      })
 
       items.appendChild(title);
       items.appendChild(spanDT);
@@ -146,24 +167,23 @@ function ShowAllSchedule(el) {
 
 function SaveSchedule() {
   let primaryKey = $('#staticBackdropLabel')[0].attributes.targetdate.value;
-  let scheduleValue =
-  {
+  let scheduleValue = {
     title: `${$('#schedule')[0].value}`,
     startDT: `${$('#startDT')[0].value}`,
     endDT: `${$('#endDT')[0].value}`,
     remark: `${$('#selectEvent')[0].value}`,
     color: `${$('#remarkColor')[0].value}`,
     remarkTxt: `${$('#remarkTxt')[0].value}`
-  }
-    ;
+  };
+
   if (localStorage.getItem(primaryKey) == null) {
     let schduleObj = [];
     schduleObj.push(scheduleValue);
-    SaveToStorage(primaryKey, JSON.stringify(schduleObj));
+    SaveToStorage(primaryKey, schduleObj);
   } else {
     let schduleObj = JSON.parse(localStorage.getItem(primaryKey));
     schduleObj.push(scheduleValue);
-    SaveToStorage(primaryKey, JSON.stringify(schduleObj))
+    SaveToStorage(primaryKey, schduleObj)
   }
   $('#scheduleForm').modal('hide');
   ClearBlock();
@@ -171,7 +191,7 @@ function SaveSchedule() {
 }
 
 function SaveToStorage(key, value) {
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 function AddBlockList() {
@@ -210,5 +230,35 @@ function SwitchModal(){
 }
 
 //往前進一點比停在原地好...寫吧做吧~~我就爛！
+
+function EditSchedule(event){
+  let PK = (event.target.getAttribute('pk'));
+  let indexKey = (event.target.getAttribute('indexKey'));
+  let schduleObj = JSON.parse(localStorage.getItem(PK));
+  let centerTitle = $('#ModalCenterTitle')[0];
+  centerTitle.innerText = `${monthName[PK.split(',')[1]]} ${PK.split(',')[2]}`;
+  let editData = schduleObj[indexKey];
+  $('#schedule')[0].value = editData.title;
+  $('#startDT')[0].value = editData.startDT;
+  $('#endDT')[0].value = editData.endDT;
+  $('#selectEvent')[0].value = editData.remark;
+  $('#remarkColor')[0].value = editData.color;
+  $('#remarkTxt')[0].value = editData.remarkTxt;
+  schduleObj.splice(indexKey,1);
+  SaveToStorage(PK,schduleObj);
+  $('#schduleDetail').modal('hide');
+  $('#scheduleForm').modal('show');
+}
+
+function DelSchedule(event){
+  let PK = (event.target.getAttribute('pk'));
+  let indexKey = (event.target.getAttribute('indexKey'));
+  let schduleObj = JSON.parse(localStorage.getItem(PK));
+  schduleObj.splice(indexKey,1);
+  SaveToStorage(PK,schduleObj);
+  $('#schduleDetail').modal('hide');
+  ClearBlock();
+  SetEveryDays(curYear, curMonth);
+}
 
 window.onload = SetEveryDays(curYear, curMonth);

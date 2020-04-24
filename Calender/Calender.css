@@ -54,6 +54,7 @@ table thead tr{
 table thead tr>th{
   width: 14.2857142857143%;
   font-size: 35px;
+  border: 1px solid antiquewhite;
 }
 
 table tbody tr>th{
