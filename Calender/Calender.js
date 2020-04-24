@@ -25,31 +25,25 @@ function CelendarYearMonth(year, month) {
 
 function ChangeMonth(input) {
   console.log(input);
-  curMonth = eval(`${curMonth}${input}`);
+  CalculatorMonthAndYear(input);
+  printMonth.innerText = monthName[curMonth];
+  printYear.innerText = curYear;
+  ClearBlock();
+  SetEveryDays(curYear, curMonth);
+}
+
+function CalculatorMonthAndYear(operator){
+  curMonth = eval(`${curMonth}${operator}`); 
   if (curMonth < 0) {
     curMonth = 11;
-    printMonth.innerText = monthName[curMonth];
     curYear = curYear - 1;
-    printYear.innerText = curYear;
-    ClearBlock();
-    SetEveryDays(curYear, curMonth);
-    AddBlockList();
   }
   if (curMonth > 11) {
     curMonth = 0;
-    printMonth.innerText = monthName[curMonth];
     curYear = curYear + 1;
-    printYear.innerText = curYear;
-    ClearBlock();
-    SetEveryDays(curYear, curMonth);
-    AddBlockList();
   }
-  printMonth.innerText = monthName[curMonth];
-  ClearBlock();
-  SetEveryDays(curYear, curMonth);
-  AddBlockList();
-}
 
+}
 
 function FirstDayOfWeekOnMonth(year, month) {
   var tmpDate = new Date(year, month, 1);
@@ -72,17 +66,28 @@ function SetEveryDays(year, month) {
   //上個月最後幾天
   for (let j = 0; j < startIndex; j++) {
     dayBlock[j].setAttribute('style', 'color : #1d6ab7');
+
+    if(month - 1 < 0){
+      dayBlock[j].setAttribute('targetDate', `${year-1},${11},${lastMonthDays - (startIndex - 1) + j}`);
+    }
+    else {
+    dayBlock[j].setAttribute('targetDate', `${year},${month-1},${lastMonthDays - (startIndex - 1) + j}`);
+    }
     dayBlock[j].innerText = lastMonthDays - (startIndex - 1) + j;
   }
   //下個月前幾天
   for (let k = 0; k < (dayBlock.length - thisMonthDays - startIndex); k++) {
     dayBlock[startIndex + thisMonthDays + k].setAttribute('style', 'color : #1d6ab7');
+    if(month + 1 > 11){
+      dayBlock[startIndex + thisMonthDays + k].setAttribute('targetDate', `${year+1},${0},${k + 1}`);
+    }
+    else{
+      dayBlock[startIndex + thisMonthDays + k].setAttribute('targetDate', `${year},${month+1},${k + 1}`);
+    }
     dayBlock[startIndex + thisMonthDays + k].innerText = k + 1;
   }
   AddBlockList();
 }
-
-
 
 function ClearBlock() {
   dayBlock.forEach((item) => {
@@ -90,53 +95,53 @@ function ClearBlock() {
   })
 }
 
-function ShowAllSchedule9888(){
-  let titleDay = (el.getAttributeNode('targetDate').value);//把變數拿出來
-  let centerTitle = $('#ModalCenterTitle')[0];
-  centerTitle.innerText = `${monthName[titleDay.split(',')[1]]} ${titleDay.split(',')[2]}`
-  centerTitle.setAttribute('targetDate', titleDay)//把變數藏到這裡
-  $('#scheduleForm').modal('show');
-}
-
 //顯示行程
 function ShowAllSchedule(el) {
   let titleDay = (el.getAttributeNode('targetDate').value);//把變數拿出來
+  alert(titleDay);
   let centerTitle = $('#staticBackdropLabel')[0];
   centerTitle.innerText = `${monthName[titleDay.split(',')[1]]} ${titleDay.split(',')[2]}`
   centerTitle.setAttribute('targetDate', titleDay)//把變數藏到這裡
 
+  let schduleDetailWrap = document.getElementById('schduleDetailWrap');
+  schduleDetailWrap.innerHTML='';
   if (localStorage.getItem(titleDay) == null) {
     $('#schduleDetail').modal('show');
     return
   } else {
+    $('#schduleDetail').modal('show');
     let schduleObj = JSON.parse(localStorage.getItem(titleDay));
-    let ulList = document.getElementById('schduleDetailWrap');
-    ulList.innerHTML='';
-    schduleObj.forEach((item) => {
-      let li = document.createElement('li');
-      let div = document.createElement('div');
-      let spanTitle = document.createElement('span');
-      let spanDT =  document.createElement('span');
-      let spanContent = document.createElement('span');
+    console.log(schduleObj);
+    schduleObj.forEach((item,index) => {
+      console.log(item);
+      let items = document.createElement('div');
+      let title = document.createElement('h5');
+      let spanDT =  document.createElement('p');
       let lable = document.createElement('lable');
-      let spanTxt =  document.createElement('span');
-      div.classList.add('d-flex','flex-column');
+      let spanTxt = document.createElement('p');
+      let edit = document.createElement('button');
+      let del = document.createElement('button');
 
-      spanTitle.innerText = item.title;
+      items.classList.add('item','border');
+      edit.classList.add('btn','btn-outline-info');
+      del.classList.add('btn','btn-outline-danger');
+
+      title.innerText = item.title;
       spanDT.innerText = `時間：${item.startDT}~${item.endDT}`;
-      lable.innerText = '內容：';
-      spanTxt.innerText = item.remarkTxt;
+      lable.innerText = item.remark;
+      spanTxt.innerText = item.remarkTxt
+      edit.innerText = 'Edit';
+      del.innerText = 'Del';
 
-      spanContent.appendChild(lable);
-      spanContent.appendChild(spanTxt);
-      div.appendChild(spanTitle);
-      div.appendChild(spanDT);
-      div.appendChild(spanContent);
-      li.appendChild(div);
-      ulList.appendChild(li);
+      items.appendChild(title);
+      items.appendChild(spanDT);
+      items.appendChild(lable);
+      items.appendChild(spanTxt);
+      items.appendChild(del);
+      items.appendChild(edit);
+      schduleDetailWrap.appendChild(items);
     })
   }
-  $('#schduleDetail').modal('show');
 }
 
 function SaveSchedule() {
@@ -174,12 +179,13 @@ function AddBlockList() {
     let keyName = element.getAttribute('targetdate');
     let stroageData = localStorage.getItem(keyName);
     let ul = document.createElement('ul');
-    console.log(stroageData);
+    // console.log(stroageData);
     if (stroageData != null) {
       let stroageArray = JSON.parse(stroageData)
       for(let index in stroageArray){
         let subItem = document.createElement('li');
-        if(index < 4){
+        subItem.setAttribute('style',`color:${stroageArray[index].color}`)
+        if(index < 3){
           subItem.innerHTML = `<span>${stroageArray[index].title}</span>`;
           ul.appendChild(subItem)
           element.appendChild(ul);
@@ -203,6 +209,6 @@ function SwitchModal(){
   $('#scheduleForm').modal('show');
 }
 
-
+//往前進一點比停在原地好...寫吧做吧~~我就爛！
 
 window.onload = SetEveryDays(curYear, curMonth);

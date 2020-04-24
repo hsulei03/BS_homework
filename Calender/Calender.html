@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <!-- 我難過，我不會寫程式 -->
+  <!-- 我不會寫程式...囧 -->
   <div class="container">
     <div class="row justify-content-center">
 
@@ -188,11 +188,9 @@
 </div>
 
 
-
-
-<!-- Modal 2schedul-->
-<div class="modal fade" id="schduleDetail" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" id="schduleDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
@@ -201,17 +199,25 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
-            <ul id="schduleDetailWrap">
-            </ul>
+            <div id="schduleDetailWrap" class="col-12">
+
+              <!-- <div class="item border">
+                <h5>8978855454</h5>
+                <p>時間5555555555555</p>
+                <labl>event</labl>
+                <p>Lorem ipsum dolor sit amet consectetur  Ratione qui quidem unde perferendis reiciendis.</p>
+                <button class="btn btn-outline-danger">xx</button>
+                <button class="btn btn-outline-info ml-auto">x</button>
+              </div> 這裡有bug，唉...-->
+            </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="SwitchModal()">Add Schdule</button>
+        <button type="button" class="btn btn-primary"onclick="SwitchModal()">Add Schdule</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
       </div>
     </div>
   </div>

@@ -72,8 +72,14 @@ table tbody tr td{
 }
 
 table tbody tr td ul li{
+  list-style-type: square;
   text-align: left;
+  font-size: 20px;
+}
+table tbody tr td ul li span{
   font-size: 10px;
+  vertical-align: middle;
+  color: white;
 }
 
 table tbody tr td:hover{
