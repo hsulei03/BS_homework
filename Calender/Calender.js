@@ -47,7 +47,6 @@ function CalculatorMonthAndYear(operator){
 
 function FirstDayOfWeekOnMonth(year, month) {
   var tmpDate = new Date(year, month, 1);
-  console.log(tmpDate);
   return (tmpDate.getDay());
 }
 
@@ -55,11 +54,14 @@ function FirstDayOfWeekOnMonth(year, month) {
 function SetEveryDays(year, month) {
   let startIndex = FirstDayOfWeekOnMonth(year, month);
   let thisMonthDays = new Date(year, month + 1, 0).getDate();
-  let lastMonthDays = new Date(year, month, 0).getDate();
-
+  let lastMonthDays = new Date(year, month, 0).getDate();  
   //長當月份的日子
   for (let i = 0; i < thisMonthDays; i++) {
-    dayBlock[startIndex + i].setAttribute('style', 'color : #343a40');
+    if ( celender.getMonth() == curMonth && celender.getFullYear() == curYear && i + 1 == celender.getDate()){ 
+      dayBlock[startIndex + i].setAttribute('style', 'background-color: rgba(147, 175, 240, .5) ; color : #343a40');
+    }else{
+      dayBlock[startIndex + i].setAttribute('style', 'color : #343a40');
+    }
     dayBlock[startIndex + i].setAttribute('targetDate', `${year},${month},${i + 1}`);
     dayBlock[startIndex + i].innerText = i + 1;
   }
@@ -104,7 +106,6 @@ function ClearBlock() {
 //顯示行程
 function ShowAllSchedule(el) {
   let titleDay = (el.getAttributeNode('targetDate').value);//把變數拿出來
-  alert(titleDay);
   let centerTitle = $('#staticBackdropLabel')[0];
   centerTitle.innerText = `${monthName[titleDay.split(',')[1]]} ${titleDay.split(',')[2]}`
   centerTitle.setAttribute('targetDate', titleDay)//把變數藏到這裡
@@ -125,11 +126,13 @@ function ShowAllSchedule(el) {
       let spanDT =  document.createElement('p');
       let lable = document.createElement('lable');
       let spanTxt = document.createElement('p');
+      let btns = document.createElement('div');
       let edit = document.createElement('button');
       let del = document.createElement('button');
 
-      items.classList.add('item','border','my-2');
-      edit.classList.add('btn','btn-outline-info');
+      items.classList.add('item', 'border', 'my-2', 'p-2');
+      btns.classList.add('d-flex','p-1');
+      edit.classList.add('btn','btn-outline-info', 'ml-auto', 'mr-2');
       del.classList.add('btn','btn-outline-danger');
       spanTxt.setAttribute('style','word-break: break-all');
       edit.setAttribute('pk',`${titleDay}`);
@@ -158,8 +161,9 @@ function ShowAllSchedule(el) {
       items.appendChild(spanDT);
       items.appendChild(lable);
       items.appendChild(spanTxt);
-      items.appendChild(del);
-      items.appendChild(edit);
+      items.appendChild(btns);
+      btns.appendChild(edit);
+      btns.appendChild(del);
       schduleDetailWrap.appendChild(items);
     })
   }
@@ -210,7 +214,7 @@ function AddBlockList() {
           ul.appendChild(subItem)
           element.appendChild(ul);
         }else{
-          subItem.innerHTML = `<span>...</span>`;
+          subItem.innerHTML = `<span>More...</span>`;
           ul.appendChild(subItem)
           element.appendChild(ul);
           break;
@@ -229,7 +233,7 @@ function SwitchModal(){
   $('#scheduleForm').modal('show');
 }
 
-//往前進一點比停在原地好...寫吧做吧~~我就爛！
+//往前進一點比停在原地好...寫吧
 
 function EditSchedule(event){
   let PK = (event.target.getAttribute('pk'));
