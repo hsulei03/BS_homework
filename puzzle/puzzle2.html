@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <title>網頁標題</title>
+  <title>N_Puzzle</title>
   <style>
     * {
       margin: 0;
@@ -25,19 +25,20 @@
       width: 630px;
       text-align: center;
       position: relative;
+    
     }
     .items{
-      height: 630px;
-      width: 630px;
+      height: 400px;
+      width: 400px;
     }
 
     .puzzleArea canvas {
-      box-sizing: border-box;
       vertical-align: top;
       position: absolute;
+      border: 1px solid darkgrey;
     }
-    .puzzleArea canvas:hover{
-      border: 1px solid red;
+    body{
+      background:linear-gradient(to bottom, #00c4ff,#00ff64e0);
     }
   </style>
 </head>
@@ -45,26 +46,27 @@
 <body>
   <!-- 加油!你行滴 -->
   <!-- 4/29 初版完成 -->
+  <!-- 5/1 堅持下去，你看，做出來了吧 -->
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-6 d-flex justify-content-center m-1"> 
-        <div class="items d-flex flex-column">
+      <div class="col-12 col-lg-6 d-flex justify-content-center my-5"> 
+        <div class="items d-flex flex-column my-5">
           <div class="pic" id="main-pic">
           </div>
-          <div class="item-body">
-            <select name="spec" id="puzzleSpec">
+          <div class="item-body my-5 btn-group mr-2">
+            <select name="spec" id="puzzleSpec" class="btn-secondary">
               <option value="3">3 x 3</option>
               <option value="4">4 x 4</option>
               <option value="5">5 x 5</option>
             </select>
-            <button id="start">打亂</button>
-            <button id="create">切圖</button>
-            <button id="automation">自動</button>
+            <button class="btn btn-secondary" id="create">切圖</button>
+            <button class="btn btn-secondary" id="start">打亂</button>
+            <button class="btn btn-secondary" id="automation" onclick='GoBack()'>自動</button>
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-6">
-        <div class="puzzleArea">
+      <div class="col-12 col-lg-6 my-5">
+        <div class="puzzleArea my-5">
         </div>
       </div>
     </div>
