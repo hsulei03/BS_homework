@@ -1,4 +1,3 @@
-let puzzleTarget = new Image();//
 let puzzleSpec = document.getElementById('puzzleSpec').value;
 let puzzleCanvases = document.querySelectorAll('.puzzleArea canvas');
 let puzzleArea = document.getElementsByClassName('puzzleArea')[0];
@@ -7,16 +6,20 @@ let record = [];
 let puzzleArray = [];
 let canvasWidth = '';
 let canvasHeight = '';
+let puzzleTarget = new Image();
 
-$('#puzzleSpec').change(function () {
-  puzzleSpec = document.getElementById('puzzleSpec').value;
-})
 
 puzzleTarget.src = 'https://picsum.photos/480/480/?random=15';
 puzzleTarget.classList.add('d-block', 'w-100');
 $('.pic').append(puzzleTarget);
 
+$('#changePic').click(function(){
 
+});
+
+$('#puzzleSpec').change(function () {
+  puzzleSpec = document.getElementById('puzzleSpec').value;
+})
 
 $('#create').click(function () {
   canvasWidth = puzzleTarget.naturalWidth / puzzleSpec;
@@ -28,14 +31,13 @@ $('#create').click(function () {
 });
 
 $('#start').click(function () {
-  // record.splice(0,record.length);
-  let gogogo = 0;
-  while (gogogo < 50) {
+  GoBack();
+  while(record.length != 50){
     let random = Math.floor(Math.random() * puzzleArray.length);
     ChangePosition(puzzleArray[random]);
-    gogogo++;
   };
-})
+
+});
 
 function GoBack() {
   let copyRecord = record.slice();
@@ -83,9 +85,9 @@ function RemoveOnePiece() {
     };
     element.addEventListener('click', function () {
       ChangePosition(this);
-      setTimeout(function(){
+      setTimeout(function () {
         Checker(puzzleArray)
-      },15);
+      }, 15);
     });
   });
 }
@@ -96,49 +98,56 @@ function ChangePosition(oneBlock) {
   let toBeIndex = puzzleArray.findIndex((item) => { return item.className == 'white'; })
   let top = oneBlock.offsetTop;
   let left = oneBlock.offsetLeft;
+  console.log('top:'+top + "," +"left:"+left)
   let targetTop = puzzleArray[toBeIndex].offsetTop;
   let targetLeft = puzzleArray[toBeIndex].offsetLeft;
   let moveing = IsMoveable(top, left, targetTop, targetLeft);
-  
+
   if (moveing) {
     record.push(asIsIndex);
     let tempX = oneBlock.style.left;
     let tempY = oneBlock.style.top;
-
-    // if (targetTop - top != 0) {
-    //   //動畫分解動在這...
-    //   for (let m = 1; m <= 10; m++) {
-    //     setTimeout(function () {
-    //       let move = (targetTop - top) / 10;
-    //       puzzleArray[asIsIndex].style.top = `${top + move * m}px`;
-          
-    //     }, 10*m)
-    //   }
-    // }
-    // else {
-    //   //動畫分解動在這...
-    //   for (let m = 1; m <= 10; m++) {
-    //     setTimeout(function () {
-    //       let move = (targetLeft - left) / 10;
-    //       puzzleArray[asIsIndex].style.left = `${left + move * m}px`;
-    //     }, 10*m)
-    //   }
-    // }
     puzzleArray[asIsIndex].style.left = puzzleArray[toBeIndex].style.left;
     puzzleArray[asIsIndex].style.top = puzzleArray[toBeIndex].style.top;
     puzzleArray[toBeIndex].style.left = tempX;
     puzzleArray[toBeIndex].style.top = tempY;
+    // if (targetTop - top != 0) {
+    //   //動畫分解動在這...
+    //   let move = (targetTop - top) / 10;
+    //   let times = 0;
+    //   let nTop = top;
+
+    //   walk();
+      
+    //   function walk()
+    //   {
+    //     if(times >= 10) return;
+    //     times++;
+    //     puzzleArray[asIsIndex].style.top = `${nTop + move}px`;
+    //     nTop = nTop + move;
+    //     setTimeout(walk, 10);
+    //   }
+    // }
+    // else {
+    //   //動畫分解動在這...
+    //   let move = (targetLeft - left) / 10;
+    //   let times = 0;
+    //   let nLeft = left;
+
+    //   walk();
+      
+    //   function walk()
+    //   {
+    //     if(times >= 10) return;
+    //     times++;
+    //     puzzleArray[asIsIndex].style.left = `${nLeft + move}px`;
+    //     nLeft = nLeft + move;
+    //     setTimeout(walk, 10);
+    //   }
+    // }
+
   }
 }
-
-function Check(arr) {
-  let curArray = [];
-  arr.forEach((e) => {
-    curArray.push(e.attributes.record.value);
-  })
-  return curArray;
-}
-
 
 function IsMoveable(top, left, targetTop, targetLeft) {
 
