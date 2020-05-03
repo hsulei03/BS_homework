@@ -6,16 +6,24 @@ let record = [];
 let puzzleArray = [];
 let canvasWidth = '';
 let canvasHeight = '';
+let count = 0;
 let puzzleTarget = new Image();
 
-
-puzzleTarget.src = 'https://picsum.photos/480/480/?random=15';
+puzzleTarget.src = 'https://picsum.photos/300/300/?random=15';
 puzzleTarget.classList.add('d-block', 'w-100');
+
 $('.pic').append(puzzleTarget);
 
 $('#changePic').click(function(){
 
 });
+function GetImg(){
+}
+
+function init(){
+  let imgTarget = new Image();
+  imgTarget.src = 'https://picsum.photos/300/300/?random=15';
+}
 
 $('#puzzleSpec').change(function () {
   puzzleSpec = document.getElementById('puzzleSpec').value;
@@ -28,6 +36,8 @@ $('#create').click(function () {
   CreatePuzzle(canvasWidth, canvasHeight);
   record.splice(0, record.length);
   answer.splice(0, record.answer);
+  count = 0;
+  $('#count-times').html(`共移動_次`);
 });
 
 $('#start').click(function () {
@@ -36,6 +46,8 @@ $('#start').click(function () {
     let random = Math.floor(Math.random() * puzzleArray.length);
     ChangePosition(puzzleArray[random]);
   };
+  count = 0;
+  $('#count-times').html(`共移動_次`);
 
 });
 
@@ -46,6 +58,8 @@ function GoBack() {
     ChangePosition(puzzleArray[auto]);
   }
   record.splice(0, record.length);
+  count = 0;
+  $('#count-times').html(`共移動_次`);
 }
 
 
@@ -85,9 +99,7 @@ function RemoveOnePiece() {
     };
     element.addEventListener('click', function () {
       ChangePosition(this);
-      setTimeout(function () {
-        Checker(puzzleArray)
-      }, 15);
+      setTimeout( function() { Checker(puzzleArray)}, 15);
     });
   });
 }
@@ -98,12 +110,13 @@ function ChangePosition(oneBlock) {
   let toBeIndex = puzzleArray.findIndex((item) => { return item.className == 'white'; })
   let top = oneBlock.offsetTop;
   let left = oneBlock.offsetLeft;
-  console.log('top:'+top + "," +"left:"+left)
   let targetTop = puzzleArray[toBeIndex].offsetTop;
   let targetLeft = puzzleArray[toBeIndex].offsetLeft;
   let moveing = IsMoveable(top, left, targetTop, targetLeft);
-
+  
   if (moveing) {
+    count++;
+    $('#count-times').html(`共移動${count}次`);
     record.push(asIsIndex);
     let tempX = oneBlock.style.left;
     let tempY = oneBlock.style.top;
@@ -111,8 +124,10 @@ function ChangePosition(oneBlock) {
     puzzleArray[asIsIndex].style.top = puzzleArray[toBeIndex].style.top;
     puzzleArray[toBeIndex].style.left = tempX;
     puzzleArray[toBeIndex].style.top = tempY;
+
+
+
     // if (targetTop - top != 0) {
-    //   //動畫分解動在這...
     //   let move = (targetTop - top) / 10;
     //   let times = 0;
     //   let nTop = top;
@@ -129,7 +144,6 @@ function ChangePosition(oneBlock) {
     //   }
     // }
     // else {
-    //   //動畫分解動在這...
     //   let move = (targetLeft - left) / 10;
     //   let times = 0;
     //   let nLeft = left;
@@ -145,45 +159,30 @@ function ChangePosition(oneBlock) {
     //     setTimeout(walk, 10);
     //   }
     // }
-
   }
 }
 
+// function Change(current,goal,times, puzzle) {
+//   let move = (goal - current) / 10;
+//   for ( let m = 1; m <= times; m++){
+//     puzzle
+//   }
+  
+
+//   }
+
 function IsMoveable(top, left, targetTop, targetLeft) {
-
-  let result = false;
-  //上
-  if (top > 0) {
-    let newtop = top - canvasHeight;
-    if (newtop == targetTop && left == targetLeft) {
-      result = true;
-    }
+  //可否上下移動？
+  if (Math.abs(top - targetTop) == 0 && Math.abs(left - targetLeft) == canvasHeight){
+    return true;
   }
 
-  //下
-  if (top < (puzzleSpec * canvasHeight)) {
-    let newtop = top + canvasHeight;
-    if (newtop == targetTop && left == targetLeft) {
-      result = true;
-    }
+  //可否左右移動？
+  if ( Math.abs(left - targetLeft) == 0 && Math.abs(top - targetTop) == canvasWidth){
+    return true;
   }
 
-  //左
-  if (left > 0) {
-    let newLeft = left - canvasWidth;
-    if (top == targetTop && newLeft == targetLeft) {
-      result = true;
-    }
-  }
-
-  //右
-  if (left < (puzzleSpec * canvasWidth)) {
-    let newLeft = left + canvasWidth;
-    if (top == targetTop && newLeft == targetLeft) {
-      result = true;
-    }
-  }
-  return result;
+  return false;  
 }
 
 function Checker(TargetArray) {

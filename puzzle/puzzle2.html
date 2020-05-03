@@ -25,19 +25,13 @@
       width: 630px;
       text-align: center;
       position: relative;
-    
     }
-    .items{
-      height: 400px;
-      width: 400px;
-    }
-
     .puzzleArea canvas {
       vertical-align: top;
       position: absolute;
       border: 1px solid darkgrey;
     }
-    .container{
+    .container-fluid{
       background:linear-gradient(to bottom, #00c4ff,#00ff64e0);
     }
   </style>
@@ -48,7 +42,7 @@
   <!-- 4/29 初版完成 -->
   <!-- 5/1 堅持下去，你看，做出來了吧 -->
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-lg-6 d-flex justify-content-center my-5"> 
         <div class="items d-flex flex-column my-5">
@@ -64,12 +58,19 @@
             <button class="btn btn-info" id="start">打亂</button>
             <button class="btn btn-info" id="automation" onclick='GoBack()'>自動</button>
           </div>
-          <div class="item-body my-1 btn-group mr-2">
-            <button class="btn btn-info" id="changePic" disabled>換圖</button>
+          <label for="changePic">變更圖片</label>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="圖片網址:https://..." aria-label="Recipient's username" aria-describedby="button-addon2" id="changePic"disabled>
+            <div class="input-group-append">
+              <button class="btn btn-info" type="button" id="button-addon2" disabled>UpLoad</button>
+            </div>
+          </div>
+          <div class="info text-center">
+            <span id="count-times">共移動_次</span>
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-6 my-5">
+      <div class="col-12 col-lg-6 d-flex justify-content-center my-5">
         <div class="puzzleArea my-5">
         </div>
       </div>
