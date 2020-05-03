@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>pokemon</title>
+    <style>
+      body{
+        background:linear-gradient(to bottom, #8bbb89,#85c2a4);
+      }
+
+      #list{
+        border: 1px solid darkcyan;
+        height: 667px;
+      }
+
+    </style>
+  </head>
+  <body>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="item-title">
+            <h3>寶可夢圖鑑列表</h3>
+          </div>
+          <div class="item-pic" id="main-pic">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png" alt="" class="pic-title d-block m-auto">
+            <button type="button" class="btn btn-info" id="change">換一個</button>
+          </div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-12 justify-content-center d-flex my-2">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success" id="plus">+1</button>
+            <button type="button" class="btn btn-danger" id="minus">-1</button>
+            <button type="button" class="btn btn-info" id="getAll">ShowAll</button>
+            <button type="button" class="btn btn-danger" id="removeAll">RemoveAll</button>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="items overflow-auto" id="list"></div>
+        </div>
+      </div>
+    </div>
+  
+  <script>
+
+    $('#change').click(function(){
+      let random = Math.floor(Math.random() * 500) + 1;
+      let fileName = random.toString().padStart(3, '0')
+      let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+      $('.pic-title').attr('src', pathFile);
+    })
+
+    $('#plus').click(function(){
+      let img = document.createElement('img');
+      let random = (Math.floor(Math.random() * 500) + 1);
+      let fileName = random.toString().padStart(3, '0')
+      img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`);
+      $('.items').append(img);
+    });
+
+    $('#minus').click(function(){
+      let imgArray = document.getElementById('list');
+      let len = imgArray.childNodes.length;
+      if(len > 0){ //長度如果大於0
+        imgArray.removeChild(imgArray.childNodes[len-1]); //長度-1
+      }
+    })
+
+    $('#getAll').click(function() {
+      $('#list>img').remove();
+  
+        for (let i = 1; i <=500; i++){
+        let img = document.createElement('img');
+        let fileName = i.toString().padStart(3, '0')
+        let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+        img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`);
+        $('.items').append(img);
+        }
+    })
+
+    $('#removeAll').click(function(){
+      $('#list>img').remove();
+    })
+
+
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  </body>
+</html>
