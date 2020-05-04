@@ -106,7 +106,7 @@
       ul.innerHTML = '';
       userGuess.value = '';
       if (giveUP.A != 4) {
-        msg.innerText = "豬一樣的大腦，只想著放棄！";
+        msg.innerText = "真是可惜！";
         $('#show').modal('show');
       }
 
@@ -175,7 +175,7 @@
       }
       let distinctNum = guessArray.filter(distinct);
       if (distinctNum.length < 4) {
-        msg.innerText = '數字不能重覆或小於4個啦！豬哦！'
+        msg.innerText = '數字不能重覆或小於4個啦！'
         $('#show').modal('show')
         return;
       }

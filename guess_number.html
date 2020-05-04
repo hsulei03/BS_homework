@@ -124,7 +124,7 @@
     confirm.onclick = function(){
       let inputNumber = Number(txt.value);
       if(inputNumber >= maxtmp || inputNumber <= mintmp){
-        alert('你來亂的嗎？')
+        alert('不在範圍哦')
         answer.innerHTML = mintmp + '~' + maxtmp;
         txt.value ='';
       }
