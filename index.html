@@ -43,6 +43,9 @@
       font-family: "微軟正黑體";
     }
 
+    .pic-card{
+      height: 200px;
+    }
 
     @media screen and (min-width:768px) {
       .banner-txt {
@@ -69,7 +72,7 @@
       </div>
     </div>
     <div class="row banner">
-      <div class="col-12">
+      <div class="col-12 p-0">
         <div class="card text-white rounded-0">
           <img src="img/bg-slider.jpg" class="card-img w-100 rounded-0" alt="...">
           <div class="card-img-overlay banner-txt">
@@ -83,7 +86,7 @@
 
 
   <div class="container">
-    <section class="row">
+    <!-- <section class="row">
       <div class="col-12">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -105,45 +108,27 @@
           </div>
         </nav>
       </div>
-    </section>
+    </section> -->
     <section class="row datarow">
       <!-- template add block-->
-      <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
-        <div class="card h-100">
-          <div class="pic-card">
-            <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <a href="#" class="btn btn-primary">Link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
-        <div class="card h-100">
-          <div class="pic-card">
-            <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut tenetur porro fugit veniam quia cupiditate rem cum, nisi explicabo sit possimus, cumque harum corporis quod. Beatae consequuntur perspiciatis debitis voluptate?</h5>
-            <a href="#" class="btn btn-primary">Link</a>
-          </div>
-        </div>
-      </div>
-
 
     </section>
   </div>
 
   <template id="templateCard">
+
     <div class="col-6 col-md-3 col-lg-2 my-3 p-0">
-      <div class="card">
-        <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+    <a href="#" class="a-link text-decoration-none">
+      <div class="card h-100">
+        <div class="pic-card">
+          <img src="https://picsum.photos/300/300/?random=12" class="card-img-top w-100" alt="">
+        </div>
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <a href="#" class="btn btn-primary">Link</a>
+          <p class="description">description</p>
         </div>
       </div>
+    </a>
     </div>
   </template>
 
@@ -163,7 +148,8 @@
             name: item.gsx$name.$t,
             url: item.gsx$url.$t,
             img: item.gsx$img.$t,
-            type: item.gsx$type.$t
+            type: item.gsx$type.$t,
+            desc: item.gsx$description.$t
           });
         })
         CreateCard(data);
@@ -182,9 +168,11 @@
         let img = cloneContent.querySelector('.card-img-top');
         let cardTitle = cloneContent.querySelector('.card-title');
         let aLink = cloneContent.querySelector('a');
-        img.setAttribute('src', 'https://picsum.photos/300/300/?random=15');
+        let desc = cloneContent.querySelector('.description');
+        img.setAttribute('src', item.img);
         cardTitle.innerText = item.name;
         aLink.setAttribute('href', item.url);
+        desc.innerText = item.desc;
         dataRow.appendChild(cloneContent);
       })
     }

@@ -125,8 +125,6 @@ function ChangePosition(oneBlock) {
     puzzleArray[toBeIndex].style.left = tempX;
     puzzleArray[toBeIndex].style.top = tempY;
 
-
-
     // if (targetTop - top != 0) {
     //   let move = (targetTop - top) / 10;
     //   let times = 0;

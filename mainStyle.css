@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+}
+
+.navbar a {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 40px;
+  font-weight: bold;
+  color: dimgray;
+}
+
+.banner-txt {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(87, 78, 78);
+}
+
+.container .datarow {
+  font-family: "微軟正黑體";
+}
+
+
+@media screen and (min-width:768px) {
+  .banner-txt {
+    font-size: 40px;
+  }
+}
+
+@media screen and (min-width:992px) {
+  .banner-txt {
+    font-size: 60px;
+  }
+}

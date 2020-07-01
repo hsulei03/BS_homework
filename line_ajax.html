@@ -40,11 +40,21 @@
       width: 10rem;
     }
 
+
+    .goHomePage{
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 2;
+      }
+      
   </style>
 
 </head>
 
 <body>
+
+
   <div id="bg"></div>
   <div class="container">
     <canvas id="lineChart" width="960" height="600"></canvas>
@@ -54,6 +64,22 @@
       </div>
     </div>
   </div>
+
+
+  <canvas id="MyChart"></canvas>
+
+
+
+
+
+  <div class="goHomePage">
+    <a href="http://applelala.azurewebsites.net/">
+        <i class="fa fa-home" aria-hidden="true" title="回首頁"></i>
+    </a>
+</div>
+
+
+
 
 
   <script>
@@ -126,6 +152,53 @@
       }
     })
 
+
+    var dddddd =JSON.parse(`[{"Name":"美甲","Data":[20,30,21,15,53],"BorderColor":"#ff0fff","PointBackgroundColor":"#ff0fff"},{"Name":"美睫","Data":[20,30,21,15,53],"BorderColor":"#ff0fff","PointBackgroundColor":"#ff0fff"}]`);
+            var ctx = document.getElementById("MyChart");
+            var chart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: 'fffff',
+                    datasets: []
+                      },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        fontSize: 26,
+                        text: 'SalesReport'
+                    },
+                    tooltips: {
+                        mode: 'point',
+                        intersect: true,
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: 'black',
+                        }
+                    }
+                }
+            });
+
+        window.onload = function () {
+            dddddd.forEach((element) => {
+
+                var info = {
+                    label: element.Name,
+                    data: element.Data,
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,0,0)',
+                    pointStyle: "point",
+                    pointBackgroundColor: 'rgb(0,255,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                };
+                this.chart.data.datasets.push(info)
+            });
+            chart.update();
+        }
   </script>
 
 

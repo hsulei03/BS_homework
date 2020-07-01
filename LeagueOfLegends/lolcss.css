@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Long Cang', cursive;
+}
+body{
+  background-color: rgba(6, 28, 37);
+}
+
+.card .pic {
+  position: relative;
+}
+
+
+.name {
+  position: absolute;
+  color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: rgba(6, 28, 37,.8);
+  opacity: 0;
+  transform: scale(0);
+}
+
+.someinfo {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.someinfo::after{
+  content: '';
+  width: 100%;
+  border: .5px solid rgba(141, 139, 139, 0.8);
+  position:absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+
+.card .pic:hover .name {
+  opacity: 1;
+  transition: .8s;
+  transform: scale(1);
+}
