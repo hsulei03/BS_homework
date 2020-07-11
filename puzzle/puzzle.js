@@ -41,7 +41,7 @@ $('#create').click(function () {
 });
 
 $('#start').click(function () {
-  GoBack();
+  // GoBack();
   while(record.length != 50){
     let random = Math.floor(Math.random() * puzzleArray.length);
     ChangePosition(puzzleArray[random]);
@@ -160,14 +160,13 @@ function ChangePosition(oneBlock) {
   }
 }
 
-// function Change(current,goal,times, puzzle) {
-//   let move = (goal - current) / 10;
-//   for ( let m = 1; m <= times; m++){
-//     puzzle
-//   }
+function Change(current,goal,times, puzzle) {
+  let move = (goal - current) / 10;
+  for ( let m = 1; m <= times; m++){
+    puzzle
+  }
   
-
-//   }
+}
 
 function IsMoveable(top, left, targetTop, targetLeft) {
   //可否上下移動？
