@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- JQuery 3.5.1 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <style>
+    .calculator {
+      margin: 0 auto;
+      width: 400px;
+      font-size: 40px;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(50px, auto);
+    }
+
+    .display {
+      grid-column: 1/5;
+      background-color: #333;
+      color: white;
+    }
+
+    .zero {
+      grid-column: 1/3;
+    }
+
+    .btn-calculator {
+      background-color: #f2f2f2;
+      border: 1px solid #999;
+      border-radius: 0;
+    }
+
+    .operator {
+      background-color: orange;
+      color: white;
+    }
+  </style>
+  <title>Vue.js 簡易計算機練習</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 my-5">
+        <h5>Vue.js 簡易計算機練習</h5>
+      </div>
+      <div class="col-12 my-5">
+        <div class="calculator" id="calcuator">
+          <div class="display">{{current || 0}}</div>
+          <div class="btn-calculator" @click="Clear">C</div>
+          <div class="btn-calculator" @click="Sing">+/-</div>
+          <div class="btn-calculator" @click="Percent">%</div>
+          <div class="btn-calculator operator" @click="Divide">÷</div>
+          <div class="btn-calculator" @click="Append('7')">7</div>
+          <div class="btn-calculator" @click="Append('8')">8</div>
+          <div class="btn-calculator" @click="Append('9')">9</div>
+          <div class="btn-calculator operator" @click="Times">×</div>
+          <div class="btn-calculator" @click="Append('4')">4</div>
+          <div class="btn-calculator" @click="Append('5')">5</div>
+          <div class="btn-calculator" @click="Append('6')">6</div>
+          <div class="btn-calculator operator" @click="Minus">-</div>
+          <div class="btn-calculator" @click="Append('1')">1</div>
+          <div class="btn-calculator" @click="Append('2')">2</div>
+          <div class="btn-calculator" @click="Append('3')">3</div>
+          <div class="btn-calculator operator" @click="Add()">+</div>
+          <div class="btn-calculator zero" @click="Append('0')">0</div>
+          <div class="btn-calculator" @click="Dot">.</div>
+          <div class="btn-calculator operator" @click="Equals">=</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    var calcVM;
+    function Binding() {
+      calcVM = new Vue(
+        {
+          el: '#calcuator',
+          data: {
+            previous: null,
+            current: '',
+            answer: null,
+            operatorClicked: false
+          },
+          methods: {
+            Clear() {
+              this.current = '';
+            },
+            Sing() {
+              this.current = this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`;
+              // charAt() 方法用于返回指定索引處的字符。索引範圍為從 0 到 length() - 1
+              // slice() 方法會回傳一個新陣列物件，為原陣列選擇之 begin 至 end（不含 end）部分
+            },
+            Percent() {
+              this.current = `${parseFloat(this.current) / 100}`
+            },
+            Append(number) {
+              if (this.operatorClicked) {
+                this.current = '';
+                this.operatorClicked = false;
+              }
+              this.current = `${this.current}${number}`;
+              console.log("current:" + this.current);
+            },
+            Dot() {
+              if (!this.current.includes('.')) {
+                this.Append('.');
+              }
+            },
+            SetPrevious() {
+              this.previous = this.current;
+              this.operatorClicked = true;
+              
+            },
+            Divide() {
+              this.answer = function (a, b) { return a / b; }
+              this.SetPrevious();
+            },
+            Times() {
+              this.answer = (a, b) => a * b;
+              this.SetPrevious();
+            },
+            Minus() {
+              this.answer = (a, b) => a - b;
+              this.SetPrevious();
+            },
+            Add() {
+              this.answer = (a, b) => a + b;
+              this.SetPrevious();
+            },
+            Equals() {
+              this.current = `${this.answer(
+                parseFloat(this.current), parseFloat(this.previous)
+                )}`;
+              this.previous = null;
+            }
+
+          }
+        }
+      )
+    }
+
+    $(document).ready(function () {
+      Binding();
+    });
+
+  </script>
+
+
+
+  <!-- Optional JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+
+
+
+  </script>
+</body>
+
+</html>
